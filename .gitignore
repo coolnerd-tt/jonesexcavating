@@ -1,0 +1,12 @@
+# Internal / proposal files — not for this repo
+callus.html
+brand_concepts.html
+build_proposal.py
+jones_proposal.pdf
+jones_adsc_magazine_excerpt.pdf
+
+# Claude Code config
+.claude/
+
+# OS
+.DS_Store
