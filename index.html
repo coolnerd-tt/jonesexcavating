@@ -145,27 +145,14 @@
     }
     .nav-logo {
       display: flex;
-      flex-direction: column;
-      line-height: 1;
+      align-items: center;
       flex-shrink: 0;
     }
-    .nav-logo-top {
-      font-family: var(--font-head);
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white);
-    }
-    .nav-logo-top span { color: var(--orange); }
-    .nav-logo-sub {
-      font-family: var(--font-body);
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gray-300);
-      margin-top: 2px;
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.35));
     }
     .nav-links {
       display: flex;
@@ -1195,8 +1182,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <div class="nav-logo-top">JONES<span>.</span></div>
-        <div class="nav-logo-sub">Excavating Co.</div>
+        <img src="jones-assets/jones-logo-orange.png" alt="Jones Excavating Co.">
       </a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
@@ -1767,8 +1753,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="nav-logo">
-          <div class="nav-logo-top">JONES<span style="color:var(--orange)">.</span></div>
-          <div class="nav-logo-sub">Excavating Co.</div>
+          <img src="jones-assets/jones-logo-orange.png" alt="Jones Excavating Co." style="height:48px; width:auto; filter:drop-shadow(0 1px 6px rgba(0,0,0,0.5));">
         </div>
         <p class="footer-tagline">Utah's premier excavating general contractor — specializing in the complex, the deep, and the difficult since 1999.</p>
         <div class="footer-socials">
