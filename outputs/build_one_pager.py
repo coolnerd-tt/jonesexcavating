@@ -25,8 +25,8 @@ GRAY_700 = HexColor('#4A4845')
 
 W, H = letter
 BASE = "/Users/tylertoone/Desktop/Claude Work/inbox/excavating-site"
-JONES_LOGO  = os.path.join(BASE, "jones-assets/jones-logo-orange.png")
-CALLUS_LOGO = os.path.join(BASE, "callus-logo-concepts/callus-logo-spark.png")
+JONES_LOGO  = os.path.join(BASE, "jones-assets/jones-logo.png")
+CALLUS_LOGO = os.path.join(BASE, "callus-logo-concepts/callus-logo-hz.png")
 OUTPUT      = os.path.join(BASE, "outputs/jones_callus_one_pager.pdf")
 
 def S(n, **kw): return ParagraphStyle(n, **kw)

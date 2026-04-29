@@ -40,8 +40,8 @@ W, H = letter
 CONTENT_W = 6.6 * inch  # 0.7" margins each side
 
 BASE = "/Users/tylertoone/Desktop/Claude Work/inbox/excavating-site"
-JONES_LOGO   = os.path.join(BASE, "jones-assets/jones-logo-orange.png")
-CALLUS_LOGO  = os.path.join(BASE, "callus-logo-concepts/callus-logo-spark.png")
+JONES_LOGO   = os.path.join(BASE, "jones-assets/jones-logo.png")
+CALLUS_LOGO  = os.path.join(BASE, "callus-logo-concepts/callus-logo-hz.png")
 
 OUTPUT = os.path.join(BASE, "outputs/jones_callus_proposal_v4.pdf")
 
@@ -305,8 +305,8 @@ class Canv:
                             mask='auto', preserveAspectRatio=True)
                 c.setFillAlpha(0.05)
                 c.drawImage(ImageReader(CALLUS_LOGO),
-                            W - 3.4*inch, H/2 - 1.5*inch - 0.3*inch,
-                            width=3.0*inch, height=3.0*inch,
+                            W - 4.2*inch, H/2 - 0.8*inch,
+                            width=4.0*inch, height=2.0*inch,
                             mask='auto', preserveAspectRatio=True)
                 c.restoreState()
             except Exception:
@@ -322,7 +322,7 @@ class Canv:
             c.drawString(30, H-21, 'JONES \u00D7 CALLUS')
             c.setFillColor(ORANGE); c.drawString(30+82, H-21, '|')
             c.setFillColor(GRAY_300); c.setFont('Helvetica', 7.5)
-            c.drawString(30+90, H-21, 'Full-Stack Digital Proposal  \u00B7  v3  \u00B7  2026')
+            c.drawString(30+90, H-21, 'Full-Stack Digital Proposal  \u00B7  v4  \u00B7  2026')
             c.setFont('Helvetica-Bold', 7.5); c.setFillColor(ORANGE)
             c.drawRightString(W-30, H-21, f'{page}')
             # Footer bar
@@ -351,9 +351,9 @@ def build():
 
     # Real logo lockup
     j_img = Image(JONES_LOGO,  width=2.4*inch, height=0.95*inch, kind='proportional')
-    c_img = Image(CALLUS_LOGO, width=1.2*inch, height=1.2*inch,  kind='proportional')
+    c_img = Image(CALLUS_LOGO, width=2.0*inch, height=1.25*inch, kind='proportional')
     logo_row = Table([[j_img, '', c_img]],
-                     colWidths=[2.7*inch, 0.4*inch, 1.4*inch])
+                     colWidths=[2.7*inch, 0.3*inch, 2.3*inch])
     logo_row.setStyle(TableStyle([
         ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
         ('ALIGN',(0,0),(0,0),'LEFT'),
