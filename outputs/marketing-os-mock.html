@@ -1029,9 +1029,22 @@ function renderField() {
       </div>
     `).join('')}
     <div class="custom-form">
-      <label>Or type your own foreman text-in</label>
-      <textarea id="custom-field" rows="3" placeholder="e.g. Wrapped utilities at the Heber subdivision today. 18 lots, ran sewer main clean..."></textarea>
-      <button class="btn-primary" onclick="runFieldCustom()">Run agent</button>
+      <label>Or dictate / type your own foreman text-in</label>
+      <div class="ds-textarea-wrap">
+        <textarea id="custom-field" rows="3" placeholder="Hit the mic and talk like you're calling it in from the cab. e.g. 'Wrapped utilities at the Heber subdivision today, 18 lots, sewer main pressure tested clean...'"></textarea>
+        <button class="mic-btn" id="custom-field_mic" title="Dictate" onclick="micToggleIntake()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+      </div>
+      <div class="live-transcript" id="custom-field_lt">
+        <div class="label">Listening</div>
+        <div class="text"><span class="final"></span><span class="interim"></span></div>
+      </div>
+      <div class="polishing" id="custom-field_polish" style="display:none">
+        <div class="spinner"></div>
+        <div>Cleaning up the foreman text-in…</div>
+      </div>
+      <button class="btn-primary" style="margin-top:10px" onclick="runFieldCustom()">Run agent</button>
     </div>
   `;
 }
@@ -1194,9 +1207,19 @@ function renderAbout() {
       <p style="color:var(--muted);font-size:13px">All drafts are pre-baked from the same prompts the real Claude-backed agents run, so you can show this off without any API key, any backend, or any costs.</p>
     </div>
     <div style="background:var(--panel);padding:24px;border-left:3px solid var(--red);margin-bottom:16px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;margin-bottom:8px">🎤 NEW · VOICE-TO-DRAFT</div>
-      <p style="margin-bottom:10px">Every editable field has a mic button. Click it, talk for ten seconds, click again — your dictation gets cleaned up and rendered in Jones brand voice. Toggle <strong>[Raw / Polished]</strong> to see exactly what changed.</p>
-      <p style="color:var(--muted);font-size:13px">In production, the polish step is a Claude API call with the tenant's brand-voice prompt. In this demo it's a deterministic ruleset that mimics the same output. Try it on any review reply, lead reply, or content draft.</p>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;margin-bottom:8px">🎤 NEW · VOICE-TO-DRAFT (channel-aware)</div>
+      <p style="margin-bottom:10px">Every editable field has a mic button — including the foreman text-in box. Click, talk, click again. Your dictation gets cleaned up <em>per channel</em>, not generically:</p>
+      <ul style="list-style:none;padding:0;margin-bottom:12px;font-size:13px;color:var(--text)">
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Foreman intake</strong> — keeps it punchy, allows fragments, normalizes "thousand yards" → "k yards"</li>
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">LinkedIn</strong> — full sentences, brand close ("Since 1947." or "Built by hand."), hashtag tail</li>
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Google Business</strong> — friendly close, length-capped, CTA-aware</li>
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Instagram</strong> — punchy, allows fragments, sign-off ("— the Jones crew"), hashtag bank</li>
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Blog snippet</strong> — long-form, inserts paragraph break, full sentences</li>
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Internal newsletter</strong> — looser tone, internal voice OK</li>
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Review reply</strong> — tier-aware (1-2★ adds named-contact close, 3-4★ adds path forward, 5★ adds crew thanks)</li>
+        <li style="padding:4px 0"><strong style="color:var(--orange)">Lead auto-reply / SEO content</strong> — branded sign-off / formal grammar respectively</li>
+      </ul>
+      <p style="color:var(--muted);font-size:13px">Toggle <strong>[Raw / Polished]</strong> on any field to see what you actually said vs what got rendered. In production each channel calls Claude with that channel's brand-voice prompt; in this demo it's a deterministic ruleset that mimics what Claude would do.</p>
     </div>
     <div style="background:var(--panel);padding:24px;border-left:3px solid var(--teal);margin-bottom:16px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.14em;margin-bottom:8px">WHAT THE REAL SYSTEM ADDS</div>
@@ -1659,9 +1682,9 @@ function runPolish(draftId, fieldKey, raw, durationSec) {
 
   // Simulate Claude API call latency
   setTimeout(() => {
-    const polished = polishTranscript(raw, fieldKey);
     const d = state.drafts.find(x => x.id === draftId);
     if (!d) return;
+    const polished = polishTranscript(raw, fieldKey, d);
     if (!d.dictation) d.dictation = {};
     d.dictation[fieldKey] = {
       raw: raw,
@@ -1675,8 +1698,63 @@ function runPolish(draftId, fieldKey, raw, durationSec) {
     saveState();
     if (polishEl) polishEl.style.display = 'none';
     render();
-    toast('Polished into Jones brand voice');
+    const modeLabel = polishModeLabel(fieldKey, d);
+    toast('Polished · ' + modeLabel);
   }, 1100);
+}
+
+// ─── Foreman intake mic (separate textarea, no draft) ─────────────
+function micToggleIntake() {
+  if (activeRecognizer) { try { activeRecognizer.stop(); } catch(e) {} return; }
+  if (!SpeechRecognition) { toast('Voice capture not supported — try Chrome or Safari'); return; }
+  const ta = document.getElementById('custom-field');
+  const micBtn = document.getElementById('custom-field_mic');
+  const lt = document.getElementById('custom-field_lt');
+  const ltFinal = lt.querySelector('.final');
+  const ltInterim = lt.querySelector('.interim');
+  ltFinal.textContent = '';
+  ltInterim.textContent = '';
+  lt.classList.add('active');
+  micBtn.classList.add('recording');
+
+  const rec = new SpeechRecognition();
+  rec.continuous = true;
+  rec.interimResults = true;
+  rec.lang = 'en-US';
+  let finalTranscript = '';
+  recordStartedAt = Date.now();
+
+  rec.onresult = (event) => {
+    let interim = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      const piece = event.results[i][0].transcript;
+      if (event.results[i].isFinal) finalTranscript += piece + ' ';
+      else interim += piece;
+    }
+    ltFinal.textContent = finalTranscript;
+    ltInterim.textContent = interim ? ' ' + interim : '';
+  };
+  rec.onerror = (event) => { if (event.error !== 'no-speech') toast('Mic error: ' + event.error); };
+  rec.onend = () => {
+    micBtn.classList.remove('recording');
+    lt.classList.remove('active');
+    activeRecognizer = null;
+    const raw = (finalTranscript + ' ' + (ltInterim.textContent || '')).trim();
+    if (!raw) { toast('Nothing captured'); return; }
+
+    const polishEl = document.getElementById('custom-field_polish');
+    if (polishEl) polishEl.style.display = 'flex';
+    setTimeout(() => {
+      const polished = polishTranscript(raw, '__intake__', null);
+      ta.value = polished;
+      if (polishEl) polishEl.style.display = 'none';
+      toast('Cleaned up — ready to run agent');
+    }, 900);
+  };
+
+  try { rec.start(); }
+  catch(e) { toast('Could not start mic — check permissions'); micBtn.classList.remove('recording'); lt.classList.remove('active'); return; }
+  activeRecognizer = rec;
 }
 
 function dictView(draftId, fieldKey, which) {
@@ -1689,61 +1767,188 @@ function dictView(draftId, fieldKey, which) {
   render();
 }
 
+function polishModeLabel(fieldKey, d) {
+  if (!d) return 'foreman voice';
+  if (d.kind === 'review') return 'review reply · ' + (d.outputs.tier || '3-4 star');
+  if (d.kind === 'lead') return 'lead auto-reply';
+  if (d.kind === 'seo') return 'SEO content';
+  if (d.kind === 'field') {
+    if (fieldKey === 'linkedin')   return d.brand === 'callus' ? 'LinkedIn · Callus voice' : 'LinkedIn · Jones voice';
+    if (fieldKey === 'gmb')        return 'Google Business · friendly close';
+    if (fieldKey === 'instagram')  return 'Instagram · punchy + hashtags';
+    if (fieldKey === 'blog')       return 'Blog · long-form';
+    if (fieldKey === 'newsletter') return 'Internal newsletter · loose';
+  }
+  return 'brand voice';
+}
+
 /**
- * polishTranscript — demo-grade brand-voice cleanup.
- * In production this is a Claude API call with the tenant's brand-voice
- * prompt. The cleanup rules below mimic what that prompt would produce.
+ * polishTranscript — multi-mode brand-voice cleanup.
+ *
+ * Branches on (fieldKey, draft.kind, draft.brand) to apply the right
+ * rules per channel. In production this is a single Claude API call
+ * with the matching tenant prompt; the rule-based version below mimics
+ * what Claude would do per channel for the demo.
  */
-function polishTranscript(raw, fieldKey) {
+function polishTranscript(raw, fieldKey, draft) {
+  let mode = 'general';
+  let brand = (draft && draft.brand) || 'jones';
+  if (!draft && fieldKey === '__intake__') mode = 'foreman';
+  else if (draft && draft.kind === 'field') {
+    mode = ({linkedin:'linkedin', gmb:'gmb', instagram:'instagram',
+             blog:'blog', newsletter:'newsletter'})[fieldKey] || 'general';
+  }
+  else if (draft && draft.kind === 'review') mode = 'review';
+  else if (draft && draft.kind === 'lead')   mode = 'autoreply';
+  else if (draft && draft.kind === 'seo')    mode = 'seo';
+
+  // ─── Pass 1 — universal cleanup ──────────────────────────────────
   let text = raw.trim();
 
-  // 1. Strip filler words
-  const fillers = /\b(uh+|um+|er+|ah+|hmm+|like|you know|i mean|basically|literally|sorta|kinda|sort of|kind of|right\?|y'know|yeah)\b[,]?\s*/gi;
+  const fillers = /\b(uh+|um+|er+|ah+|hmm+|like|you know|i mean|basically|literally|sorta|kinda|sort of|kind of|right\?|y'know|yeah|so so)\b[,]?\s*/gi;
   text = text.replace(fillers, '');
-
-  // 2. Collapse repeated words ("the the", "we we")
+  // collapse repeated words
   text = text.replace(/\b(\w+)(\s+\1\b)+/gi, '$1');
-
-  // 3. Normalize whitespace
+  // normalize whitespace + spacing before punctuation
   text = text.replace(/\s+/g, ' ').trim();
-  text = text.replace(/\s+([,.!?])/g, '$1');
+  text = text.replace(/\s+([,.!?;:])/g, '$1');
 
-  // 4. Capitalize known names + brand terms
-  const NAMES = ['brent','cassidy','aaron','steve','rico','marco','tony','manny','linda','jen','jones','callus','holladay','spanish fork','utah','salt lake','mapleton','wasatch','udot','rocky mountain power','dominion energy','lehi','sandy','west jordan','kaysville','tooele','provo'];
-  NAMES.forEach(name => {
+  // capitalize known nouns (names, places, brands, equipment)
+  const PROPER = [
+    // people
+    'brent','cassidy','aaron','steve','rico','marco','tony','manny','linda','jen',
+    // brands
+    'jones','callus','holladay builders','wm. clyde','geneva rock','staker parson','sunroc','sunco','suncore',
+    // utah places
+    'spanish fork','utah county','utah','salt lake','mapleton','wasatch','wasatch front',
+    'lehi','sandy','west jordan','kaysville','tooele','provo','orem','ogden','draper',
+    'south jordan','american fork','bountiful','layton','heber','park city',
+    // utility / regulatory
+    'udot','rocky mountain power','dominion energy','aws','aisc','swppp','agc',
+    'mig','tig','osha',
+    // equipment slang (capitalize where appropriate)
+    'cat','komatsu','john deere','kenworth','peterbilt'
+  ];
+  PROPER.forEach(name => {
     const re = new RegExp('\\b' + name.replace(/ /g, '\\s+') + '\\b', 'gi');
     text = text.replace(re, name.replace(/\b\w/g, c => c.toUpperCase()));
   });
-
-  // 5. Capitalize "I" forms
+  // pronoun "I" forms
   text = text.replace(/\bi\b/g, 'I');
-  text = text.replace(/\bi'm\b/gi, "I'm");
-  text = text.replace(/\bi'll\b/gi, "I'll");
-  text = text.replace(/\bi've\b/gi, "I've");
-  text = text.replace(/\bi'd\b/gi, "I'd");
-
-  // 6. Sentence-case
+  text = text.replace(/\bi'(m|ll|ve|d)\b/gi, "I'$1");
+  // sentence-case
   text = text.replace(/(^|[.!?]\s+)([a-z])/g, (_, p1, p2) => p1 + p2.toUpperCase());
-
-  // 7. Ensure ending punctuation
   if (!/[.!?]$/.test(text)) text += '.';
 
-  // 8. Brand-voice flourishes — context-aware (review reply variants)
+  // ─── Pass 2 — mode-specific shaping ──────────────────────────────
   const lower = text.toLowerCase();
-  if (fieldKey === 'response') {
-    // 1-2 star: ensure named-contact close present
-    if (/sorry|apolog|terrible|frustrat|disappoint/.test(lower) && !/call|reach out/.test(lower)) {
-      text = text.replace(/\.$/, '. Please give Steve a call at the office so we can look into it.');
-    }
-    // 5-star: tighten openers
-    if (/thanks|thank you|appreciate/.test(lower) && text.length > 280) {
-      // (placeholder for length trimming)
-    }
+
+  if (mode === 'foreman') {
+    // Foreman voice: keep punchy. Strip leading "so" / "yeah".
+    text = text.replace(/^(So,?\s+|Yeah,?\s+|Okay,?\s+|Alright,?\s+|All right,?\s+)/i, '');
+    // Normalize common dictation slang
+    text = text.replace(/\bthousand\s+yards?\b/gi, 'k yards');
+    text = text.replace(/\bcubic\s+yards?\b/gi, 'CY');
+    return text;
   }
+
+  if (mode === 'linkedin') {
+    // Ensure full-sentence cadence; allow ~3-4 sentences
+    if (text.length < 280) {
+      const close = brand === 'callus'
+        ? ' Built by hand. Built to last.'
+        : ' Since 1947.';
+      if (!/since 1947|built by hand/i.test(text)) text = text.replace(/\.$/, close);
+    }
+    // Ensure hashtag tail if none present
+    if (!/#\w/.test(text)) {
+      const tags = brand === 'callus'
+        ? '\n\n#MobileWelding #CustomFabrication #Wasatch'
+        : '\n\n#HeavyCivil #UtahConstruction #SiteWork';
+      text += tags;
+    }
+    return text;
+  }
+
+  if (mode === 'gmb') {
+    // Friendly close
+    if (!/give\s+us\s+a\s+call|reach\s+out|we'?d\s+be\s+glad|drop\s+us\s+a\s+line/i.test(text)) {
+      text = text.replace(/\.$/, '. If you\'ve got a project coming up, we\'d be glad to talk.');
+    }
+    // GMB caps at 1500 chars but typical is short
+    if (text.length > 600) text = text.slice(0, 580).replace(/[^.!?]*$/, '') + '…';
+    return text;
+  }
+
+  if (mode === 'instagram') {
+    // Punchy: allow fragments, keep short
+    // Sign-off if missing
+    const sig = brand === 'callus' ? ' — Callus shop crew' : ' — the Jones crew';
+    if (!/—\s*(the\s+)?(Jones|Callus)/i.test(text)) {
+      text = text.replace(/\.$/, sig);
+    }
+    if (!/#\w/.test(text)) {
+      const tags = brand === 'callus'
+        ? '\n\n#mobilewelder #shoplife #wasatchfront #builttough'
+        : '\n\n#yellowiron #dirtwork #utahbuilt #since1947';
+      text += tags;
+    }
+    return text;
+  }
+
+  if (mode === 'blog') {
+    // Full sentences, insert paragraph break after first ~2-3 sentences
+    const sentences = text.split(/(?<=[.!?])\s+/);
+    if (sentences.length >= 4) {
+      const split = Math.ceil(sentences.length / 2);
+      text = sentences.slice(0, split).join(' ') + '\n\n' + sentences.slice(split).join(' ');
+    }
+    return text;
+  }
+
+  if (mode === 'newsletter') {
+    // Internal voice — leave loose, but tighten openers
+    text = text.replace(/^(Just\s+|Also,?\s+|And\s+)/i, '');
+    return text;
+  }
+
+  if (mode === 'review') {
+    const tier = (draft && draft.outputs && draft.outputs.tier) || '3_4_star';
+    if (tier === '1_2_star') {
+      // mandatory named-contact close
+      if (!/call\s+(steve|the\s+office)|reach\s+out|give\s+(us|steve)\s+a\s+call/i.test(text)) {
+        text = text.replace(/\.$/, '. Please give Steve a call at the office so we can look into it directly.');
+      }
+    } else if (tier === '3_4_star') {
+      if (/sorry|apolog|frustrat|disappoint/i.test(lower) && !/call|reach/i.test(lower)) {
+        text = text.replace(/\.$/, '. If you want to walk through what could\'ve gone better, give Steve a call.');
+      }
+    } else if (tier === '5_star') {
+      if (text.length < 80) text = text.replace(/\.$/, '. We\'ll pass it along to the crew.');
+    }
+    return text;
+  }
+
+  if (mode === 'autoreply') {
+    if (!/—\s*(Jones|Callus)/.test(text)) {
+      const sig = brand === 'callus' ? '\n\n— Callus Fabrication' : '\n\n— Jones Excavating Co.';
+      text += sig;
+    }
+    return text;
+  }
+
+  if (mode === 'seo') {
+    // Expand contractions + tighten
+    text = text.replace(/\bdon't\b/g,'do not').replace(/\bcan't\b/g,'cannot').replace(/\bwon't\b/g,'will not')
+               .replace(/\bit's\b/g,'it is').replace(/\bwe're\b/g,'we are').replace(/\bthey're\b/g,'they are');
+    return text;
+  }
+
   return text;
 }
 window.micToggle = micToggle;
 window.dictView = dictView;
+window.micToggleIntake = micToggleIntake;
 
 // ════════════════════════════════════════════════════════════════════════
 //  UTIL
