@@ -1219,7 +1219,9 @@ function renderAbout() {
         <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Review reply</strong> — tier-aware (1-2★ adds named-contact close, 3-4★ adds path forward, 5★ adds crew thanks)</li>
         <li style="padding:4px 0"><strong style="color:var(--orange)">Lead auto-reply / SEO content</strong> — branded sign-off / formal grammar respectively</li>
       </ul>
-      <p style="color:var(--muted);font-size:13px">Toggle <strong>[Raw / Polished]</strong> on any field to see what you actually said vs what got rendered. In production each channel calls Claude with that channel's brand-voice prompt; in this demo it's a deterministic ruleset that mimics what Claude would do.</p>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:8px">Toggle <strong>[Raw / Polished]</strong> on any field to see what you actually said vs what got rendered. <strong>↺ Re-record</strong> replaces the current voice draft in one click.</p>
+      <p style="color:var(--muted);font-size:13px">Quality upgrades in this demo: ~80-term construction domain dictionary that auto-fixes common mis-hears ("Spanish work" → "Spanish Fork", "G B P" → "GBP", "cup fill" → "cut-fill"), spoken-number normalization ("eighteen thousand yards" → "18,000 yards"), and 3-way alternative picking that prefers transcripts containing recognized domain terms.</p>
+      <p style="color:var(--amber);font-size:12px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)"><strong>For production:</strong> swap to OpenAI Whisper / gpt-4o-transcribe for ~2× accuracy and proper punctuation. ~$0.006/min in API cost. Needs a tiny backend proxy. Listed in the Marketing OS roadmap.</p>
     </div>
     <div style="background:var(--panel);padding:24px;border-left:3px solid var(--teal);margin-bottom:16px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.14em;margin-bottom:8px">WHAT THE REAL SYSTEM ADDS</div>
@@ -1413,6 +1415,7 @@ function draftSection(channel, color, content, draftId, fieldKey, subtitle) {
           <span class="dt-label">From voice</span>
           <button class="dt-btn ${dict.view==='raw'?'active':''}" onclick="dictView('${draftId}','${fieldKey}','raw')">Raw</button>
           <button class="dt-btn ${dict.view==='polished'?'active':''}" onclick="dictView('${draftId}','${fieldKey}','polished')">Polished</button>
+          <button class="dt-btn" style="margin-left:10px;border-radius:3px" onclick="micToggle('${draftId}','${fieldKey}')" title="Record again — replaces current">↺ Re-record</button>
           <span class="dt-meta">${dict.duration}s · ${dict.word_count} words</span>
         </div>` : ''}
       </div>
@@ -1630,6 +1633,7 @@ function micToggle(draftId, fieldKey) {
   const rec = new SpeechRecognition();
   rec.continuous = true;
   rec.interimResults = true;
+  rec.maxAlternatives = 3;
   rec.lang = 'en-US';
   let finalTranscript = '';
   recordStartedAt = Date.now();
@@ -1637,8 +1641,10 @@ function micToggle(draftId, fieldKey) {
   rec.onresult = (event) => {
     let interim = '';
     for (let i = event.resultIndex; i < event.results.length; i++) {
-      const piece = event.results[i][0].transcript;
-      if (event.results[i].isFinal) {
+      const result = event.results[i];
+      // Pick the alternative with the most recognized domain terms
+      const piece = pickBestAlternative(result);
+      if (result.isFinal) {
         finalTranscript += piece + ' ';
       } else {
         interim += piece;
@@ -1720,6 +1726,7 @@ function micToggleIntake() {
   const rec = new SpeechRecognition();
   rec.continuous = true;
   rec.interimResults = true;
+  rec.maxAlternatives = 3;
   rec.lang = 'en-US';
   let finalTranscript = '';
   recordStartedAt = Date.now();
@@ -1727,8 +1734,9 @@ function micToggleIntake() {
   rec.onresult = (event) => {
     let interim = '';
     for (let i = event.resultIndex; i < event.results.length; i++) {
-      const piece = event.results[i][0].transcript;
-      if (event.results[i].isFinal) finalTranscript += piece + ' ';
+      const result = event.results[i];
+      const piece = pickBestAlternative(result);
+      if (result.isFinal) finalTranscript += piece + ' ';
       else interim += piece;
     }
     ltFinal.textContent = finalTranscript;
@@ -1782,6 +1790,188 @@ function polishModeLabel(fieldKey, d) {
   return 'brand voice';
 }
 
+// ─── Best-alternative picker ──────────────────────────────────────
+// Web Speech API can return multiple candidates per chunk. Pick the
+// one with the highest count of recognized domain terms — Spanish Fork
+// almost always beats "Spanish work" by this metric.
+const DOMAIN_VOCAB = [
+  'jones','callus','holladay','spanish fork','utah','salt lake','mapleton',
+  'wasatch','lehi','sandy','west jordan','kaysville','tooele','provo','orem',
+  'ogden','draper','american fork','heber','bountiful','layton','park city',
+  'udot','swppp','gbp','mig','tig','aws','aisc','osha','linkedin','google',
+  'mass-ex','cut-fill','subgrade','subbase','backfill','topsoil','grade',
+  'pad','foundation','utilities','sewer','storm','water main','rebar',
+  'concrete','asphalt','excavation','foreman','crew','operator','superintendent',
+  'aaron','steve','rico','marco','tony','manny','linda','brent','cassidy',
+  'rocky mountain','dominion','geneva rock','staker parson','sunroc','clyde',
+  'mobile welding','fabrication','handrail','conveyor','line bore','shop',
+  'truck','dozer','excavator','loader','grader','trackhoe','cat','komatsu',
+  'gc','pm','rfp','rfi','schedule','punch list','bid','estimate','quote'
+];
+function domainScore(text) {
+  const lower = text.toLowerCase();
+  let score = 0;
+  DOMAIN_VOCAB.forEach(term => { if (lower.includes(term)) score += 2 + term.length / 8; });
+  return score;
+}
+function pickBestAlternative(result) {
+  const alts = [];
+  for (let i = 0; i < result.length; i++) alts.push(result[i].transcript);
+  if (alts.length === 1) return alts[0];
+  // Score each — prefer domain match first, fall back to confidence
+  let best = alts[0];
+  let bestScore = domainScore(alts[0]);
+  for (let i = 1; i < alts.length; i++) {
+    const s = domainScore(alts[i]);
+    if (s > bestScore + 0.5) { best = alts[i]; bestScore = s; }
+  }
+  return best;
+}
+
+// ─── Domain term cleanup — fixes the common Web Speech mis-hears ────
+const DOMAIN_FIXES = [
+  // Mass excavation / earthwork
+  [/\bmass\s*(x|ex|axe|extra|excellent)\b/gi, 'mass-ex'],
+  [/\bcup\s*fill\b/gi, 'cut-fill'],
+  [/\bcup\s*and\s*fill\b/gi, 'cut and fill'],
+  [/\bsub\s*grade\b/gi, 'subgrade'],
+  [/\bsub\s*base\b/gi, 'subbase'],
+  [/\bback\s*fill\b/gi, 'backfill'],
+  [/\btoe\s*soil\b/gi, 'topsoil'],
+  [/\bre\s*bar\b/gi, 'rebar'],
+
+  // Welding / fab terms
+  [/\bm\s*i\s*g\b/gi, 'MIG'],
+  [/\bt\s*i\s*g\b/gi, 'TIG'],
+  [/\bfilly\s*bead\b/gi, 'fillet bead'],
+  [/\bweld\s*scene\b/gi, 'weld seam'],
+  [/\bo\s*f\s*c\s*a\b/gi, 'OFC-A'],
+
+  // Acronyms (often spelled out as letters)
+  [/\bg\s*b\s*p\b/gi, 'GBP'],
+  [/\bs\s*w\s*p+\b/gi, 'SWPPP'],
+  [/\boh?\s*sha\b/gi, 'OSHA'],
+  [/\ba\s*w\s*s\b/gi, 'AWS'],
+  [/\ba\s*i\s*s\s*c\b/gi, 'AISC'],
+  [/\bg\s*c\b(?=\s|$|[.,])/gi, 'GC'],
+  [/\bp\s*m\b(?=\s|$|[.,])/gi, 'PM'],
+  [/\br\s*f\s*p\b/gi, 'RFP'],
+  [/\br\s*f\s*i\b/gi, 'RFI'],
+  [/\bp\s*p\s*e\b/gi, 'PPE'],
+
+  // Utah place names
+  [/\bspanish\s*(work|fort|fourth|board|fork)\b/gi, 'Spanish Fork'],
+  [/\bsalt\s*(lake|lick)\b/gi, 'Salt Lake'],
+  [/\b(layhi|lay\s*hi|lay\s*high|lehigh|lay\s*hee|leehi|le\s*hi|lehi)\b/gi, 'Lehi'],
+  [/\b(maple\s*tin|maple\s*ten|maple\s*town|mapleton)\b/gi, 'Mapleton'],
+  [/\b(washsatch|wash\s*satch|wassatch|wasatch)\b/gi, 'Wasatch'],
+  [/\b(toe\s*welly|to\s*welly|to\s*we\s*lay|tooele|tuwilla)\b/gi, 'Tooele'],
+  [/\bk\s*ays?\s*ville\b/gi, 'Kaysville'],
+  [/\bwest\s*(jordan|jourdan|jordon)\b/gi, 'West Jordan'],
+  [/\bsouth\s*jordan\b/gi, 'South Jordan'],
+  [/\bamerican\s*fork\b/gi, 'American Fork'],
+  [/\b(park\s*city|provo|orem|ogden|draper|sandy|murray|heber|bountiful|layton)\b/gi,
+    m => m.replace(/\b\w/g, c => c.toUpperCase())],
+
+  // Brand names
+  [/\b(jonze|jonas|joanne's|joneses|jones')\b/gi, 'Jones'],
+  [/\b(colas|callous|cylis|kalu's|callouses|callus's)\b/gi, 'Callus'],
+  [/\bholiday\s*(builder|builders)\b/gi, 'Holladay Builders'],
+  [/\bgeneva\s*rock\b/gi, 'Geneva Rock'],
+  [/\bsta(c?ker?|kers)\s*parson?s?\b/gi, 'Staker Parson'],
+  [/\bs(un|un's)\s*roc\b/gi, 'Sunroc'],
+  [/\bclyde('?s)?\s*(companies|company)?\b/gi, 'W.W. Clyde'],
+  [/\brocky\s*mountain\s*power\b/gi, 'Rocky Mountain Power'],
+  [/\bdominion\s*energy\b/gi, 'Dominion Energy'],
+
+  // People (when said in context; first-letter cap is preserved by sentence-case pass too)
+  [/\b(aaron|erin|aaran|airon)\b/gi, 'Aaron'],
+  [/\b(stephen|steven|steve)\b/gi, 'Steve'],
+  [/\b(rico|ricco)\b/gi, 'Rico'],
+  [/\b(mark\s*o|marko|marco)\b/gi, 'Marco'],
+  [/\b(tony|tonee)\b/gi, 'Tony'],
+  [/\b(manny|manni|mannie)\b/gi, 'Manny'],
+  [/\b(linda|lynda)\b/gi, 'Linda'],
+
+  // Unit shorthand
+  [/\b(\d+)\s*(linear\s*foot|linear\s*feet|l\s*f)\b/gi, '$1 LF'],
+  [/\b(\d+)\s*(cubic\s*yards?|c\s*y)\b/gi, '$1 CY'],
+  [/\bsquare\s*foot\b/gi, 'sq ft'],
+  [/\bsquare\s*feet\b/gi, 'sq ft'],
+
+  // Hand-holds for common foreman phrasing
+  [/\bgeneral(ly)?\s*contractor\b/gi, 'general contractor'],
+  [/\b(supe|sup|soup)\s+(said|told|wants|ran)\b/gi, 'super $2'],
+  [/\b(punchy?\s*list)\b/gi, 'punch list'],
+];
+
+function applyDomainFixes(text) {
+  for (const [pat, rep] of DOMAIN_FIXES) {
+    text = text.replace(pat, rep);
+  }
+  return text;
+}
+
+// ─── Spoken number → digits ───────────────────────────────────────
+const NUM_WORDS = {
+  zero:0, one:1, two:2, three:3, four:4, five:5, six:6, seven:7, eight:8, nine:9,
+  ten:10, eleven:11, twelve:12, thirteen:13, fourteen:14, fifteen:15,
+  sixteen:16, seventeen:17, eighteen:18, nineteen:19,
+  twenty:20, thirty:30, forty:40, fifty:50, sixty:60, seventy:70, eighty:80, ninety:90
+};
+function wordsToNum(seq) {
+  // seq: array of lowercase words. Returns integer or null.
+  if (seq.length === 0) return null;
+  let total = 0, current = 0;
+  for (const w of seq) {
+    if (w === 'and') continue;
+    if (w === 'hundred') {
+      current = (current || 1) * 100;
+    } else if (w === 'thousand') {
+      total += (current || 1) * 1000;
+      current = 0;
+    } else if (w === 'million') {
+      total += (current || 1) * 1000000;
+      current = 0;
+    } else if (NUM_WORDS[w] != null) {
+      current += NUM_WORDS[w];
+    } else {
+      return null;
+    }
+  }
+  total += current;
+  return total > 0 ? total : null;
+}
+function normalizeNumbers(text) {
+  // Find sequences of number words and replace with digits.
+  const numWordSet = new Set(Object.keys(NUM_WORDS).concat(['hundred','thousand','million','and']));
+  return text.replace(/\b(?:[a-z]+(?:\s+[a-z]+)*)\b/gi, (match) => {
+    const words = match.toLowerCase().split(/\s+/);
+    // Only attempt if all words are number words AND length > 1 (single "two" stays as "two")
+    if (words.every(w => numWordSet.has(w)) && words.length > 1) {
+      const n = wordsToNum(words);
+      if (n != null) {
+        // Format with commas if >= 1000
+        return n >= 1000 ? n.toLocaleString('en-US') : String(n);
+      }
+    }
+    return match;
+  });
+}
+
+// ─── Master transcript cleanup pass ───────────────────────────────
+function cleanTranscript(raw) {
+  let t = raw.trim();
+  // Whitespace
+  t = t.replace(/\s+/g, ' ').replace(/\s+([,.!?;:])/g, '$1');
+  // Numbers first (so "eighteen thousand yards" → "18,000 yards" before
+  // domain pass converts "yards" to "CY")
+  t = normalizeNumbers(t);
+  // Domain dictionary
+  t = applyDomainFixes(t);
+  return t;
+}
+
 /**
  * polishTranscript — multi-mode brand-voice cleanup.
  *
@@ -1791,6 +1981,7 @@ function polishModeLabel(fieldKey, d) {
  * what Claude would do per channel for the demo.
  */
 function polishTranscript(raw, fieldKey, draft) {
+  raw = cleanTranscript(raw);
   let mode = 'general';
   let brand = (draft && draft.brand) || 'jones';
   if (!draft && fieldKey === '__intake__') mode = 'foreman';
