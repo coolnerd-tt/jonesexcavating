@@ -581,6 +581,133 @@
   }
   .footer-link a { color: var(--orange); }
 
+  /* ── DICTATION ─────────────────────────────────────────── */
+  .ds-textarea-wrap { position: relative; }
+  .mic-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--panel-3);
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    border: 1px solid var(--border);
+    z-index: 2;
+  }
+  .mic-btn:hover {
+    color: var(--orange);
+    border-color: var(--orange);
+    background: var(--panel);
+  }
+  .mic-btn.recording {
+    background: var(--red);
+    color: white;
+    border-color: var(--red);
+    box-shadow: 0 0 0 0 rgba(217,83,79,0.7);
+    animation: micPulse 1.4s infinite;
+  }
+  .mic-btn.recording:hover { background: var(--red); color: white; }
+  @keyframes micPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(217,83,79,0.6); }
+    70%  { box-shadow: 0 0 0 12px rgba(217,83,79,0); }
+    100% { box-shadow: 0 0 0 0 rgba(217,83,79,0); }
+  }
+  .mic-btn svg { width: 16px; height: 16px; }
+  .mic-btn[disabled] { opacity: 0.3; cursor: not-allowed; }
+
+  .live-transcript {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: rgba(217,83,79,0.08);
+    border-left: 2px solid var(--red);
+    font-size: 12.5px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.5;
+    display: none;
+  }
+  .live-transcript.active { display: block; }
+  .live-transcript .label {
+    color: var(--red);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .live-transcript .label::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    animation: micPulse 1.4s infinite;
+  }
+  .live-transcript .interim { opacity: 0.55; font-style: italic; }
+
+  .polishing {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: rgba(245,166,35,0.08);
+    border-left: 2px solid var(--amber);
+    font-size: 12.5px;
+    color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .polishing .spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(245,166,35,0.25);
+    border-top-color: var(--amber);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .dictation-toggle {
+    margin-top: 8px;
+    display: flex;
+    gap: 0;
+    align-items: center;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .dictation-toggle .dt-label {
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-right: 10px;
+    text-transform: uppercase;
+  }
+  .dictation-toggle .dt-btn {
+    background: var(--panel-2);
+    color: var(--muted);
+    padding: 4px 12px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--border);
+  }
+  .dictation-toggle .dt-btn:first-of-type { border-radius: 3px 0 0 3px; }
+  .dictation-toggle .dt-btn:last-of-type  { border-radius: 0 3px 3px 0; border-left: none; }
+  .dictation-toggle .dt-btn.active {
+    background: var(--orange);
+    color: var(--bg);
+    border-color: var(--orange);
+  }
+  .dictation-toggle .dt-meta {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
   ::-webkit-scrollbar { width: 8px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--panel-3); border-radius: 4px; }
@@ -1066,6 +1193,11 @@ function renderAbout() {
       <p style="margin-bottom:12px">A fully client-side simulator of the Marketing OS. Every interaction here mirrors the real production pipeline — pick a trigger (field intake, review, lead, SEO request) → agent drafts → land in your approval queue → you edit / approve → render as platform-styled "published" cards.</p>
       <p style="color:var(--muted);font-size:13px">All drafts are pre-baked from the same prompts the real Claude-backed agents run, so you can show this off without any API key, any backend, or any costs.</p>
     </div>
+    <div style="background:var(--panel);padding:24px;border-left:3px solid var(--red);margin-bottom:16px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;margin-bottom:8px">🎤 NEW · VOICE-TO-DRAFT</div>
+      <p style="margin-bottom:10px">Every editable field has a mic button. Click it, talk for ten seconds, click again — your dictation gets cleaned up and rendered in Jones brand voice. Toggle <strong>[Raw / Polished]</strong> to see exactly what changed.</p>
+      <p style="color:var(--muted);font-size:13px">In production, the polish step is a Claude API call with the tenant's brand-voice prompt. In this demo it's a deterministic ruleset that mimics the same output. Try it on any review reply, lead reply, or content draft.</p>
+    </div>
     <div style="background:var(--panel);padding:24px;border-left:3px solid var(--teal);margin-bottom:16px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:0.14em;margin-bottom:8px">WHAT THE REAL SYSTEM ADDS</div>
       <ul style="list-style:none;padding:0">
@@ -1229,6 +1361,9 @@ function renderDraft() {
 }
 
 function draftSection(channel, color, content, draftId, fieldKey, subtitle) {
+  const fid = `f_${draftId}_${fieldKey}`;
+  const d = state.drafts.find(x => x.id === draftId);
+  const dict = d && d.dictation && d.dictation[fieldKey];
   return `
     <div class="draft-section ${color}">
       <div class="ds-head">
@@ -1236,7 +1371,27 @@ function draftSection(channel, color, content, draftId, fieldKey, subtitle) {
         ${subtitle ? `<span style="font-size:11px;color:var(--muted)">${escapeHtml(subtitle)}</span>` : ''}
       </div>
       <div class="ds-body">
-        <textarea oninput="updateDraft('${draftId}','${fieldKey}',this.value)">${escapeHtml(content)}</textarea>
+        <div class="ds-textarea-wrap">
+          <textarea id="${fid}" oninput="updateDraft('${draftId}','${fieldKey}',this.value)">${escapeHtml(content)}</textarea>
+          <button class="mic-btn" id="${fid}_mic" title="Dictate" onclick="micToggle('${draftId}','${fieldKey}')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </button>
+        </div>
+        <div class="live-transcript" id="${fid}_lt">
+          <div class="label">Listening</div>
+          <div class="text"><span class="final"></span><span class="interim"></span></div>
+        </div>
+        <div class="polishing" id="${fid}_polish" style="display:none">
+          <div class="spinner"></div>
+          <div>Polishing voice into Jones brand voice…</div>
+        </div>
+        ${dict ? `
+        <div class="dictation-toggle" id="${fid}_toggle">
+          <span class="dt-label">From voice</span>
+          <button class="dt-btn ${dict.view==='raw'?'active':''}" onclick="dictView('${draftId}','${fieldKey}','raw')">Raw</button>
+          <button class="dt-btn ${dict.view==='polished'?'active':''}" onclick="dictView('${draftId}','${fieldKey}','polished')">Polished</button>
+          <span class="dt-meta">${dict.duration}s · ${dict.word_count} words</span>
+        </div>` : ''}
       </div>
     </div>
   `;
@@ -1418,6 +1573,177 @@ function rejectDraft(id) {
     state.drafts.find(x=>x.id===id)?.kind || 'field'] || 'field';
   render();
 }
+
+// ════════════════════════════════════════════════════════════════════════
+//  DICTATION — Web Speech API + brand-voice polish
+// ════════════════════════════════════════════════════════════════════════
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let activeRecognizer = null; // only one mic at a time
+let activeFieldKey = null;
+let activeDraftId = null;
+let recordStartedAt = 0;
+
+function micToggle(draftId, fieldKey) {
+  // Stop existing
+  if (activeRecognizer) {
+    try { activeRecognizer.stop(); } catch(e) {}
+    return;
+  }
+  if (!SpeechRecognition) {
+    toast('Voice capture not supported — try Chrome or Safari');
+    return;
+  }
+  const fid = `f_${draftId}_${fieldKey}`;
+  const micBtn = document.getElementById(`${fid}_mic`);
+  const lt = document.getElementById(`${fid}_lt`);
+  const ltFinal = lt.querySelector('.final');
+  const ltInterim = lt.querySelector('.interim');
+  ltFinal.textContent = '';
+  ltInterim.textContent = '';
+  lt.classList.add('active');
+  micBtn.classList.add('recording');
+  micBtn.title = 'Stop dictation';
+
+  const rec = new SpeechRecognition();
+  rec.continuous = true;
+  rec.interimResults = true;
+  rec.lang = 'en-US';
+  let finalTranscript = '';
+  recordStartedAt = Date.now();
+
+  rec.onresult = (event) => {
+    let interim = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      const piece = event.results[i][0].transcript;
+      if (event.results[i].isFinal) {
+        finalTranscript += piece + ' ';
+      } else {
+        interim += piece;
+      }
+    }
+    ltFinal.textContent = finalTranscript;
+    ltInterim.textContent = interim ? ' ' + interim : '';
+  };
+
+  rec.onerror = (event) => {
+    if (event.error === 'no-speech') return; // benign
+    toast('Mic error: ' + event.error);
+  };
+
+  rec.onend = () => {
+    micBtn.classList.remove('recording');
+    micBtn.title = 'Dictate';
+    lt.classList.remove('active');
+    activeRecognizer = null;
+    activeFieldKey = null;
+    activeDraftId = null;
+    const raw = (finalTranscript + ' ' + (ltInterim.textContent || '')).trim();
+    if (!raw) {
+      toast('Nothing captured');
+      return;
+    }
+    runPolish(draftId, fieldKey, raw, Math.round((Date.now() - recordStartedAt) / 1000));
+  };
+
+  try { rec.start(); }
+  catch (e) { toast('Could not start mic — check permissions'); micBtn.classList.remove('recording'); lt.classList.remove('active'); return; }
+  activeRecognizer = rec;
+  activeFieldKey = fieldKey;
+  activeDraftId = draftId;
+}
+
+function runPolish(draftId, fieldKey, raw, durationSec) {
+  const fid = `f_${draftId}_${fieldKey}`;
+  const polishEl = document.getElementById(`${fid}_polish`);
+  if (polishEl) polishEl.style.display = 'flex';
+
+  // Simulate Claude API call latency
+  setTimeout(() => {
+    const polished = polishTranscript(raw, fieldKey);
+    const d = state.drafts.find(x => x.id === draftId);
+    if (!d) return;
+    if (!d.dictation) d.dictation = {};
+    d.dictation[fieldKey] = {
+      raw: raw,
+      polished: polished,
+      view: 'polished',
+      duration: durationSec,
+      word_count: raw.split(/\s+/).filter(Boolean).length,
+      timestamp: new Date().toISOString()
+    };
+    d.outputs[fieldKey] = polished;
+    saveState();
+    if (polishEl) polishEl.style.display = 'none';
+    render();
+    toast('Polished into Jones brand voice');
+  }, 1100);
+}
+
+function dictView(draftId, fieldKey, which) {
+  const d = state.drafts.find(x => x.id === draftId);
+  if (!d || !d.dictation || !d.dictation[fieldKey]) return;
+  const dict = d.dictation[fieldKey];
+  dict.view = which;
+  d.outputs[fieldKey] = which === 'raw' ? dict.raw : dict.polished;
+  saveState();
+  render();
+}
+
+/**
+ * polishTranscript — demo-grade brand-voice cleanup.
+ * In production this is a Claude API call with the tenant's brand-voice
+ * prompt. The cleanup rules below mimic what that prompt would produce.
+ */
+function polishTranscript(raw, fieldKey) {
+  let text = raw.trim();
+
+  // 1. Strip filler words
+  const fillers = /\b(uh+|um+|er+|ah+|hmm+|like|you know|i mean|basically|literally|sorta|kinda|sort of|kind of|right\?|y'know|yeah)\b[,]?\s*/gi;
+  text = text.replace(fillers, '');
+
+  // 2. Collapse repeated words ("the the", "we we")
+  text = text.replace(/\b(\w+)(\s+\1\b)+/gi, '$1');
+
+  // 3. Normalize whitespace
+  text = text.replace(/\s+/g, ' ').trim();
+  text = text.replace(/\s+([,.!?])/g, '$1');
+
+  // 4. Capitalize known names + brand terms
+  const NAMES = ['brent','cassidy','aaron','steve','rico','marco','tony','manny','linda','jen','jones','callus','holladay','spanish fork','utah','salt lake','mapleton','wasatch','udot','rocky mountain power','dominion energy','lehi','sandy','west jordan','kaysville','tooele','provo'];
+  NAMES.forEach(name => {
+    const re = new RegExp('\\b' + name.replace(/ /g, '\\s+') + '\\b', 'gi');
+    text = text.replace(re, name.replace(/\b\w/g, c => c.toUpperCase()));
+  });
+
+  // 5. Capitalize "I" forms
+  text = text.replace(/\bi\b/g, 'I');
+  text = text.replace(/\bi'm\b/gi, "I'm");
+  text = text.replace(/\bi'll\b/gi, "I'll");
+  text = text.replace(/\bi've\b/gi, "I've");
+  text = text.replace(/\bi'd\b/gi, "I'd");
+
+  // 6. Sentence-case
+  text = text.replace(/(^|[.!?]\s+)([a-z])/g, (_, p1, p2) => p1 + p2.toUpperCase());
+
+  // 7. Ensure ending punctuation
+  if (!/[.!?]$/.test(text)) text += '.';
+
+  // 8. Brand-voice flourishes — context-aware (review reply variants)
+  const lower = text.toLowerCase();
+  if (fieldKey === 'response') {
+    // 1-2 star: ensure named-contact close present
+    if (/sorry|apolog|terrible|frustrat|disappoint/.test(lower) && !/call|reach out/.test(lower)) {
+      text = text.replace(/\.$/, '. Please give Steve a call at the office so we can look into it.');
+    }
+    // 5-star: tighten openers
+    if (/thanks|thank you|appreciate/.test(lower) && text.length > 280) {
+      // (placeholder for length trimming)
+    }
+  }
+  return text;
+}
+window.micToggle = micToggle;
+window.dictView = dictView;
 
 // ════════════════════════════════════════════════════════════════════════
 //  UTIL
