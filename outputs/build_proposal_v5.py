@@ -478,34 +478,34 @@ def build():
 
     # ═══ 02 THE OPPORTUNITY (MARKET DATA) ════════════════════════════════════
     s.append(section_header(2, 'The Opportunity',
-        kicker='Where Jones and Callus stand against the Utah comp set today.'))
+        kicker='Where Jones stands against competitors.'))
 
     s.append(P(
-        'Before designing anything, we benchmarked Jones against the contractors you bid against. '
-        'Two takeaways drive this entire proposal: <b>(1) LinkedIn is where Utah heavy-civil B2B happens</b>, '
-        'and <b>(2) Google Business Profile, not the website, is the front door for local search.</b> '
-        'Both are areas where Jones is currently underweight versus the comp set.',
+        'Before designing anything, we conducted market research. Two takeaways drive this proposal: '
+        '<b>(1) LinkedIn is where Utah heavy-civil B2B happens</b>, and <b>(2) Google Business Profile '
+        'is critical to building local awareness of your business.</b> Both are areas of opportunity for Jones.',
         body_lead))
 
-    s.append(P('Utah heavy-civil LinkedIn footprint', h2))
+    s.append(P('LinkedIn Competitive Landscape', h2))
     s.append(P(
-        'LinkedIn is where commercial GCs, owners\u2019 reps, and project managers vet contractors '
-        'before short-listing. The Utah comp set has a clear digital footprint Jones can match '
-        'within 12 months.',
+        'LinkedIn is where commercial GCs, owners\u2019 reps, developers, and project managers '
+        'vet contractors before short-listing. Jones can become a player within this space within '
+        '12 months.',
         body))
 
     s.append(comp_table([
         ['Company',                     'LinkedIn',  'Founded',  'Notes'],
-        ['W.W. Clyde &amp; Co.',        '7,065',     '1926',     'Clyde Companies'],
-        ['Staker Parson',               '~6,140',    '1952',     'Materials + civil'],
+        ['BHI',                         '~19k',      '~2000',    'Excavation + construction'],
+        ['W.W. Clyde &amp; Co.',        '~14k',      '1926',     'Clyde Companies'],
+        ['Staker Parson',               '~6,100',    '1952',     'Materials + civil'],
         ['Geneva Rock Products',        '~6,000',    '1954',     'Clyde Companies'],
-        ['Sunroc / Suncore',            '~5,920',    '1937',     'Materials + civil'],
-        ['Whitaker Construction',       '2,100+',    '1953',     'ESOP, 700 employees'],
-        ['Jones Excavating Co.',        '~1,750',    '1946',     '\u2190 You are here'],
+        ['Sunroc / Suncore',            '~6,000',    '1937',     'Materials + civil'],
+        ['Hadco',                       '~1,300',    '1989',     'Excavation'],
+        ['Jones Excavating Co.',        '331',       '1946',     ''],
     ]))
     s.append(sp(4))
     s.append(P(
-        'LinkedIn followings as of April 2026, rounded. Sources: company LinkedIn pages, '
+        'LinkedIn followings as of May 2026, rounded. Sources: company LinkedIn pages, '
         'agc-utah.org member directory.',
         ParagraphStyle('cap', fontName='Helvetica-Oblique', fontSize=7.5,
                        textColor=GRAY_500, leading=10)))
@@ -516,13 +516,16 @@ def build():
     s.append(bullet('<b>89% of B2B marketers</b> use LinkedIn for lead gen and <b>40%</b> rate it their '
                     'most effective channel.'))
     s.append(bullet('In Utah heavy-civil specifically, LinkedIn following runs roughly <b>33% higher</b> '
-                    'than Facebook for the same companies. That gap widens every year.'))
+                    'than Facebook for the same companies.'))
 
-    s.append(P('The Google Maps gap', h2))
+    s.append(P('Google Business Profile: Win the Map Pack', h2))
     s.append(P(
-        'For everyone who is not already on LinkedIn, the discovery moment is Google. And for '
-        'service-area searches like "excavating contractor Utah" or "deep foundation Salt Lake City," '
-        'Google Maps results sit <b>above</b> the website results. Whoever owns the map pack owns the lead.',
+        'Google Maps is where most buyers build the short list. A search for &quot;excavating contractor '
+        'Utah&quot; or &quot;deep foundation Salt Lake City&quot; returns the Map Pack first — star ratings, '
+        'reviews, photos, and a one-tap path to call. Miss that real estate and Jones is invisible '
+        'at the moment buyer intent is highest. A strong Google Business Profile and an active review '
+        'program build instant trust, drive inbound calls, and route qualified traffic straight to the '
+        'new website.',
         body))
 
     s.append(comp_table([
@@ -540,13 +543,6 @@ def build():
         'whose average ticket is six figures, the unit economics are obvious.',
         body))
 
-    s.append(callout(
-        'ROI context',
-        'A single mid-size deep foundation or shoring contract can range from $500,000 to '
-        '$5M+. If this digital presence helps Jones win just one additional bid per year that '
-        'they would not have otherwise won, the return on this investment is 10\u2013100\u00D7. '
-        'The goal is not a nice website \u2014 the goal is a pipeline of better, larger bids.',
-        bg=CHARCOAL, accent=ORANGE))
     s.append(PageBreak())
 
     # ═══ 03 BRAND & WEB STRATEGY ═════════════════════════════════════════════
