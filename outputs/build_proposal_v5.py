@@ -551,15 +551,14 @@ def build():
 
     s.append(P(
         'Jones and Callus are different businesses serving different buyers. They should look '
-        'related \u2014 same family, same standards \u2014 without sharing a brand. The web work '
-        'follows the same logic.',
+        'related \u2014 same family, same standards \u2014 without sharing a brand.',
         body_lead))
 
     s.append(P('Jones Excavating Co. \u2014 Brand refresh', h3))
     s.append(P(
         'Jones already has equity. The orange J-mark is the most recognizable element you have, '
-        'and 80 years of jobsite work back it up. The refresh sharpens the typography, modernizes '
-        'the palette, and tightens the visual system without throwing away what people know.',
+        'and 80 years of excavation and utilities work back it up. The refresh sharpens the typography, '
+        'modernizes the palette, and tightens the visual system while keeping core elements people know.',
         body))
     s.append(bullet('Logo: keep the orange mark; clean up the lockup and add a horizontal version for '
                     'web/social.'))
@@ -580,41 +579,41 @@ def build():
     s.append(bullet('Logo: glove + spark mark, finalized, with horizontal lockup and stacked variant.'))
     s.append(bullet('Palette: black + spark red + amber, with charcoal and metal grays for depth.'))
     s.append(bullet('Voice: short sentences. Trade language. No corporate filler. "Built tough. Welded right."'))
-    s.append(bullet('Family link: Callus carries a "backed by Jones Excavating Co." line in the hero, '
+    s.append(bullet('Family link: Callus carries a "backed by Jones Excavating Co." line in the banner, '
                     'about, and footer \u2014 borrowing trust without diluting the new brand.'))
 
     s.append(P('Web build \u2014 both sites', h2))
     s.append(P(
-        'Both sites ship on the same modern stack so they are fast, easy to update, and friendly '
-        'to Google. Each site is built page by page; nothing is template-glued.',
+        'Both sites ship on the same modern stack so they are fast, easy to update, and search-friendly. '
+        'Each site is built for the company\u2019s needs.',
         body))
 
     s.append(P('Architecture', h3))
-    s.append(bullet('Static-first build (HTML/CSS/JS) with a CMS layer for blog and project entries, '
-                    'so updates take minutes, not engineering tickets.'))
-    s.append(bullet('Lighthouse 95+ targets for performance, accessibility, and SEO on every page.'))
-    s.append(bullet('Mobile-first design (60\u201370% of contractor traffic is on phones).'))
-    s.append(bullet('Schema.org markup baked into every page (LocalBusiness, Service, Project) so '
-                    'Google can read the site cleanly.'))
+    s.append(bullet('Static-first build (HTML/CSS/JS) with a content management system for blog and project '
+                    'entries, so updates take minutes, not engineering tickets.'))
+    s.append(bullet('Designed for mobile first \u2014 too many websites get built for desktop and feel broken on '
+                    'a phone. Most contractor staff and customers browse from the jobsite or the truck.'))
+    s.append(bullet('Maximize search outputs by using schema.org on every page (LocalBusiness, Service, '
+                    'Project) so search engines can read the site cleanly.'))
 
     s.append(P('Page set', h3))
     s.append(two_col([
         P('<b>jonesexcavating.com</b>', body),
-        bullet('Home (hero, services, projects, callout)'),
+        bullet('Home (banner, services, projects, callout)'),
         bullet('Services (with sub-pages: excavation, shoring, deep foundation, trucking)'),
         bullet('Projects (case studies, filterable)'),
         bullet('About (history, leadership, equipment yard)'),
         bullet('Careers'),
-        bullet('Service areas (Salt Lake, Utah County, Davis, Weber)'),
+        bullet('Service areas'),
         bullet('Contact / Get a quote'),
     ], [
         P('<b>callusfabrication.com</b>', body),
-        bullet('Home (split hero, services, shop, projects)'),
+        bullet('Home (split banner, services, shop, projects)'),
         bullet('Services (mobile welding, MIG/TIG/Stick, line boring, OFC-A)'),
         bullet('Shop (capabilities, equipment, certifications)'),
         bullet('Projects (gallery)'),
         bullet('About / family of companies'),
-        bullet('Service areas (Wasatch Front)'),
+        bullet('Service areas'),
         bullet('Contact / 24-hour line'),
     ]))
     s.append(PageBreak())
