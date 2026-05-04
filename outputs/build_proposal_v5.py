@@ -101,6 +101,11 @@ c_pri  = S('CPr', fontName='Helvetica-Bold',        fontSize=8,   textColor=ORAN
 c_num  = S('CN',  fontName='Helvetica-Bold',        fontSize=8.5, textColor=BLACK,    leading=11, alignment=TA_RIGHT)
 c_num_g = S('CNg',fontName='Helvetica',             fontSize=8.5, textColor=GRAY_500, leading=11, alignment=TA_RIGHT)
 c_num_orange = S('CNo', fontName='Helvetica-Bold',  fontSize=8.5, textColor=ORANGE,   leading=11, alignment=TA_RIGHT)
+# Centered numeric variants
+c_num_c        = S('CNc',  fontName='Helvetica-Bold', fontSize=8.5, textColor=BLACK,  leading=11, alignment=TA_CENTER)
+c_num_orange_c = S('CNoc', fontName='Helvetica-Bold', fontSize=8.5, textColor=ORANGE, leading=11, alignment=TA_CENTER)
+c_body_c       = S('CBc',  fontName='Helvetica',      fontSize=8,   textColor=GRAY_700, leading=11, alignment=TA_CENTER)
+c_pri_c        = S('CPrc', fontName='Helvetica-Bold', fontSize=8,   textColor=ORANGE,   leading=11, alignment=TA_CENTER)
 
 # Pricing
 pr_item   = S('PI',  fontName='Helvetica-Bold', fontSize=10, textColor=BLACK,   leading=13)
@@ -246,24 +251,39 @@ def price_row(item, price, note='', highlight=False):
     ]))
     return t
 
-def comp_table(rows):
+def comp_table(rows, center=False):
     """rows: header + data rows, each a list of strings.
-       First column = company name (bold), numeric columns right-aligned."""
+       First column = company name (bold), numeric columns right-aligned
+       by default. Pass center=True to center-align all non-name columns
+       (used for the GBP benchmark table where columns are paired
+       categorical values, not magnitudes)."""
     table_rows = []
-    # Header
-    hdr = [P(c, c_hdr) for c in rows[0]]
+    # Header — center alignment of header cells matches body when center=True
+    if center:
+        c_hdr_style = S('CHc', fontName='Helvetica-Bold', fontSize=7.5, textColor=WHITE, leading=10, alignment=TA_CENTER)
+    else:
+        c_hdr_style = c_hdr
+    hdr = [P(rows[0][0], c_hdr)] + [P(c, c_hdr_style) for c in rows[0][1:]]
     table_rows.append(hdr)
     for r in rows[1:]:
         is_jones = 'Jones' in r[0]
         name_style = c_pri if is_jones else c_body_b
         out = [P(r[0], name_style)]
         for v in r[1:]:
-            # right-align numbers, normal for text
-            if any(ch.isdigit() for ch in v) and not v.endswith(')'):
-                style = c_num_orange if is_jones else c_num
+            if center:
+                # All non-name columns centered, regardless of digit content
+                if any(ch.isdigit() for ch in v) and not v.endswith(')'):
+                    style = c_num_orange_c if is_jones else c_num_c
+                else:
+                    style = c_pri_c if is_jones else c_body_c
                 out.append(P(v, style))
             else:
-                out.append(P(v, c_body if not is_jones else c_pri))
+                # Default: right-align numbers, left-align text
+                if any(ch.isdigit() for ch in v) and not v.endswith(')'):
+                    style = c_num_orange if is_jones else c_num
+                    out.append(P(v, style))
+                else:
+                    out.append(P(v, c_body if not is_jones else c_pri))
         table_rows.append(out)
     n_cols = len(rows[0])
     col_w = CONTENT_W / n_cols
@@ -535,7 +555,7 @@ def build():
         ['GBP photos (recent, geo-tagged)',                     '40+',       '10\u201320','&lt;5'],
         ['Owner replies to reviews',                            '100%',      '~50%',      '0%'],
         ['Service area pages (linked from GBP)',                '8\u201312', '3\u20136',  '0\u20132'],
-    ]))
+    ], center=True))
     s.append(sp(4))
     s.append(P(
         'Each additional Google review correlates with <b>+80 website visits, +63 direction requests, '
