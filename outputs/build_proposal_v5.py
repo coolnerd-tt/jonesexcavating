@@ -419,7 +419,7 @@ def build():
     meta_row = Table([
         [P('PREPARED FOR', cover_label), P('PROPOSAL VERSION', cover_label), P('STATUS', cover_label)],
         [P('Jones Excavating Co.<br/>Callus Fabrication', cover_meta),
-         P('v4  \u00B7  April 2026', cover_meta),
+         P('v5  \u00B7  May 2026', cover_meta),
          P('For Review', cover_meta)],
     ], colWidths=[2.4*inch, 2.2*inch, 1.7*inch])
     meta_row.setStyle(TableStyle([
@@ -430,6 +430,16 @@ def build():
         ('RIGHTPADDING',(0,0),(-1,-1),0),
     ]))
     s.append(meta_row)
+
+    # Confidentiality line at bottom of cover
+    s.append(sp(28))
+    confid_style = S('confid', fontName='Helvetica-Oblique', fontSize=7.5,
+                     textColor=GRAY_500, leading=10, alignment=TA_LEFT)
+    s.append(P(
+        'This proposal contains proprietary methodology and pricing, shared in confidence with '
+        'Jones Excavating Co. leadership. Not for external distribution.',
+        confid_style))
+
     s.append(PageBreak())
 
     # ═══ TOC ═════════════════════════════════════════════════════════════════
@@ -782,7 +792,7 @@ def build():
     s.append(P('Why this is possible now', h2))
     s.append(bullet('AI models are now good enough to draft brand-voice content from a 2-sentence note + '
                     '3 photos sent by a foreman from a jobsite.'))
-    s.append(bullet('Workflow tools (n8n, Make.com) can route those drafts into approval queues, post on '
+    s.append(bullet('Modern workflow tools can route those drafts into approval queues, post on '
                     'schedule, and track performance without custom engineering.'))
     s.append(bullet('Google, Meta, and LinkedIn APIs are stable and accessible \u2014 we are no longer '
                     'screen-scraping or fighting tooling.'))
@@ -940,9 +950,8 @@ def build():
 
     s.append(sp(14))
     s.append(P(
-        'Underneath: Claude API for content generation, n8n for orchestration, Buffer/Later for '
-        'scheduled posting, Google Business Profile + LinkedIn + Meta APIs for distribution, and a '
-        'small SQLite store for the approval queue. Self-hosted; no monthly SaaS lock-in.',
+        'Built on modern orchestration tools and platform APIs (LinkedIn, Google Business Profile, '
+        'Meta). Self-hosted; no monthly SaaS lock-in.',
         body))
 
     s.append(P('Three-phase ownership transfer', h2))
@@ -970,10 +979,11 @@ def build():
     s.append(sp(10))
     s.append(callout(
         'What you own at the end',
-        'Working code, your tenant configuration, your brand voice profile, your prompts, your '
-        'historical content library, and access to every technical integration. If you ever want to '
-        'take it fully in-house or move it to another vendor, you can. You walk out the door with '
-        'the whole system.',
+        'You own all your data, content, brand voice configuration, and historical drafts. The '
+        'underlying Marketing OS — the agents, prompts, and orchestration code — stays our IP, with '
+        'a perpetual license to operate it as long as you are on a retainer tier (including the '
+        '$350/mo Self-serve tier). Move on whenever you want; your data, content, and configuration '
+        'come with you.',
         bg=CHARCOAL, accent=ORANGE))
     s.append(PageBreak())
 
@@ -1027,8 +1037,8 @@ def build():
                        'Month 7+. Quarterly strategy review, prompt updates, integration patches.'))
     s.append(sp(6))
     s.append(P(
-        '<b>Plus infrastructure:</b> ~$200/mo in API + hosting costs (Claude API, n8n hosting, '
-        'scheduler, SMTP), billed at cost or paid directly to providers \u2014 your choice.',
+        '<b>Plus infrastructure:</b> ~$200/mo in API + hosting costs (AI provider, hosting, '
+        'scheduler, email), billed at cost or paid directly to providers \u2014 your choice.',
         body))
 
     s.append(P('Timeline \u2014 90 days to launch', h2))
