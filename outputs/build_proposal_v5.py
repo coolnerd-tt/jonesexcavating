@@ -998,13 +998,13 @@ def build():
                        'Logo refresh, palette, typography, usage guide.'))
     s.append(price_row('Brand system \u2014 Callus',
                        '$4,500',
-                       'Full new identity build: mark, lockups, palette, voice, guide.'))
+                       'New brand identity from the ground up — logo system, palette, tone of voice, and brand guidelines.'))
     s.append(price_row('Website \u2014 jonesexcavating.com',
                        '$8,500',
-                       '7 templated pages + service-area pages. Performance build.'))
+                       '7 templated pages + service-area pages.'))
     s.append(price_row('Website \u2014 callusfabrication.com',
                        '$7,500',
-                       '7 templated pages + shop section. Performance build.'))
+                       '7 templated pages + shop section.'))
     s.append(price_row('SEO foundation (both)',
                        '$3,500',
                        'GBP setup, schema, citations, technical audit, on-page.'))
