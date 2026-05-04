@@ -806,23 +806,22 @@ def build():
     s.append(P('Reputation Agent', h3))
     s.append(P(
         'Watches Google reviews and Facebook recommendations across both brands. Drafts a brand-voice '
-        'reply within hours, calibrated to the rating (gracious for 5\u2605, measured-with-private-'
-        'resolution-offer for 1\u20132\u2605). Office manager approves; reply posts.',
+        'reply within hours, calibrated to the rating (gracious for 5\u2605, measured with a private '
+        'resolution offer for 1\u20132\u2605). Office manager approves; reply posts.',
         body))
 
     s.append(P('SEO Content Agent', h3))
     s.append(P(
         'Each month: pulls keyword movement, identifies 1\u20132 service-area pages or blog posts that '
-        'would close ranking gaps versus the comp set, drafts the full page (H1, intro, sections, FAQ, '
-        'meta description), and queues it for review. Closes the WW Clyde / Geneva content-depth gap '
-        'over 12 months without a copywriter.',
+        'would close ranking gaps with competitors, drafts the full page, and queues it for review. '
+        'Closes the gap between you and your competitors over 12 months without a copywriter.',
         body))
 
     s.append(P('Lead Triage Agent', h3))
     s.append(P(
         'Sits behind the website contact form and (optionally) a site chat widget. Classifies inbound '
         'inquiries (excavation / fabrication / spam / general), extracts contact info and project '
-        'signals, drafts an internal Slack-style alert and a 3-line auto-reply. Routes hot leads '
+        'signals, drafts an internal message alert and a 3-line auto-reply. Routes hot leads '
         'directly to estimating in under a minute.',
         body))
 
@@ -830,7 +829,7 @@ def build():
     s.append(P(
         'A central scheduler routes events to the right agent and lands all drafts in a single '
         'approval queue \u2014 one screen, one inbox, every brand. Approved items publish on the '
-        'right cadence. Rejected items train the prompts.',
+        'right cadence. Rejected items improve the AI prompts inside each agent.',
         body))
 
     s.append(callout(
@@ -956,7 +955,7 @@ def build():
     s.append(phase_card_basic('Phase 1', 'Concierge', 'Months 1\u20133',
         ['We run the OS day-to-day while training it on your voice',
          '90 days of approved content captured as training data',
-         'Office manager observes; we document the SOP']))
+         'Office manager observes; we document the standard operating procedures (everything on how to run the system)']))
     s.append(sp(6))
     s.append(phase_card_basic('Phase 2', 'Co-pilot', 'Months 4\u20136',
         ['Office manager runs the approval queue; we maintain the system',
@@ -972,8 +971,9 @@ def build():
     s.append(callout(
         'What you own at the end',
         'Working code, your tenant configuration, your brand voice profile, your prompts, your '
-        'historical content library, and access to every API integration. If you ever want to take '
-        'it fully in-house or move it to another vendor, you walk out the door with the whole system.',
+        'historical content library, and access to every technical integration. If you ever want to '
+        'take it fully in-house or move it to another vendor, you can. You walk out the door with '
+        'the whole system.',
         bg=CHARCOAL, accent=ORANGE))
     s.append(PageBreak())
 
