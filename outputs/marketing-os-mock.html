@@ -772,12 +772,12 @@ const FIELD_SCENARIOS = [
     intake: "Wrapped mass-ex on the Spring Creek Commerce Pad in Spanish Fork today. ~18,000 yards moved, cut-fill balanced on site, no haul-off. Two weather days but we held grade. Crew killed it.",
     division: 'excavating',
     drafts: {
-      linkedin: "Wrapped mass excavation on Spring Creek Commerce Pad in Spanish Fork, Utah County this week — roughly 18,000 cubic yards moved, cut-fill balanced on site, no haul-off. The crew kept the pad on grade through two days of weather that wanted otherwise. Thanks to the GC for keeping the schedule honest and to our operators for reading the dirt right. On to subgrade next week. Since 1947.",
+      linkedin: "Wrapped mass excavation on Spring Creek Commerce Pad in Spanish Fork, Utah County this week — roughly 18,000 cubic yards moved, cut-fill balanced on site, no haul-off. The crew kept the pad on grade through two days of weather that wanted otherwise. Thanks to the GC for keeping the schedule honest and to our operators for reading the dirt right. On to subgrade next week. Since 1946.",
       linkedin_tags: ['#HeavyCivil', '#UtahConstruction', '#SiteWork'],
       gmb: "Crew wrapped the dirt phase on Spring Creek Commerce Pad over in Spanish Fork, Utah County. Pad's on grade, site's clean, and we're set up for utilities next. If you've got a commercial pad coming up on the Wasatch Front, we'd be glad to talk.",
       gmb_cta: 'Get quote — Request a bid',
       instagram: "Eighteen thousand yards later, Spring Creek Commerce Pad is on grade. Two weather days, one cut-fill plan, zero haul-off. Hood down. Heads up. — the Jones crew",
-      instagram_tags: ['#yellowiron', '#dirtwork', '#utahbuilt', '#since1947'],
+      instagram_tags: ['#yellowiron', '#dirtwork', '#utahbuilt', '#since1946'],
       blog_title: "Mass Excavation in Spanish Fork: How We Balanced Cut-Fill on Spring Creek Commerce Pad",
       blog: "Mass excavation on a tight commercial pad in Spanish Fork, Utah County comes down to two things: reading the dirt and reading the schedule. On Spring Creek Commerce Pad, our crew moved roughly 18,000 cubic yards over six working days, balancing cut-and-fill on site to avoid import or haul-off costs.\n\nGPS-guided iron does the math; experienced operators do the judgment. We coordinated with the GC's surveyor daily, kept stockpiles staged away from the future utility corridor, and turned over a clean pad on grade — ready for the wet utilities crew without a punch list.",
       newsletter: "Big week for the Spring Creek Commerce Pad crew — Tony, Manny, and the operators wrapped the mass-ex phase on grade and on schedule, balancing cut-fill with no import. Two weather days didn't stop them. Utilities phase kicks off Monday. Nice work, all."
@@ -927,7 +927,7 @@ const SEO_TARGETS = [
     target_area: 'Utah (statewide)',
     page: {
       h1: 'Excavation Contractor in Utah — Jones Excavating Co.',
-      meta: 'Jones Excavating Co. handles commercial site work, mass excavation, and utilities across Utah. Family-run since 1947. Call for a bid.',
+      meta: 'Jones Excavating Co. handles commercial site work, mass excavation, and utilities across Utah. Family-run since 1946. Call for a bid.',
       intro: "We move dirt across Utah for commercial pads, subdivisions, and public work. Four generations on the same yard in Mapleton, Utah. If it involves a track hoe, a pay item, and a tight schedule, we're at home.",
       sections: [
         { h2: 'Scope: What We Self-Perform', body: "Mass excavation, stripping topsoil to subgrade, cut-fill balance with GPS-guided iron, structural fill placement, storm and sewer mains, and import/export when the site demands it. We coordinate joint trench with Rocky Mountain Power and Dominion Energy directly so your dry-utility schedule doesn't slip." },
@@ -1211,7 +1211,7 @@ function renderAbout() {
       <p style="margin-bottom:10px">Every editable field has a mic button — including the foreman text-in box. Click, talk, click again. Your dictation gets cleaned up <em>per channel</em>, not generically:</p>
       <ul style="list-style:none;padding:0;margin-bottom:12px;font-size:13px;color:var(--text)">
         <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Foreman intake</strong> — keeps it punchy, allows fragments, normalizes "thousand yards" → "k yards"</li>
-        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">LinkedIn</strong> — full sentences, brand close ("Since 1947." or "Built by hand."), hashtag tail</li>
+        <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">LinkedIn</strong> — full sentences, brand close ("Since 1946." or "Built by hand."), hashtag tail</li>
         <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Google Business</strong> — friendly close, length-capped, CTA-aware</li>
         <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Instagram</strong> — punchy, allows fragments, sign-off ("— the Jones crew"), hashtag bank</li>
         <li style="padding:4px 0;border-bottom:1px dashed var(--border)"><strong style="color:var(--orange)">Blog snippet</strong> — long-form, inserts paragraph break, full sentences</li>
@@ -2048,8 +2048,8 @@ function polishTranscript(raw, fieldKey, draft) {
     if (text.length < 280) {
       const close = brand === 'callus'
         ? ' Built by hand. Built to last.'
-        : ' Since 1947.';
-      if (!/since 1947|built by hand/i.test(text)) text = text.replace(/\.$/, close);
+        : ' Since 1946.';
+      if (!/since 1946|built by hand/i.test(text)) text = text.replace(/\.$/, close);
     }
     // Ensure hashtag tail if none present
     if (!/#\w/.test(text)) {
@@ -2081,7 +2081,7 @@ function polishTranscript(raw, fieldKey, draft) {
     if (!/#\w/.test(text)) {
       const tags = brand === 'callus'
         ? '\n\n#mobilewelder #shoplife #wasatchfront #builttough'
-        : '\n\n#yellowiron #dirtwork #utahbuilt #since1947';
+        : '\n\n#yellowiron #dirtwork #utahbuilt #since1946';
       text += tags;
     }
     return text;

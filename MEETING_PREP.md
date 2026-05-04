@@ -43,7 +43,7 @@ This is the closer. Scroll through:
 - The lead triage that auto-routes to Aaron in Estimating
 - The full SEO service-area page
 
-**Key talking point:** every draft references real Jones details — Mapleton, Spanish Fork, UDOT, Rocky Mountain Power, "since 1947," the actual ops org chart. This isn't generic AI slop. The system already knows Jones.
+**Key talking point:** every draft references real Jones details — Mapleton, Spanish Fork, UDOT, Rocky Mountain Power, "since 1946," the actual ops org chart. This isn't generic AI slop. The system already knows Jones.
 
 ### 4. Inline PDF or download (60 sec)
 Open chapter 06 (The Marketing OS) in the v4 proposal for the technical/financial backup. Then Investment chapter for the three-tier pricing.

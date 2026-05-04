@@ -109,7 +109,7 @@ def build():
     # The opportunity (compressed)
     s.append(Paragraph('The opportunity', h2))
     s.append(Paragraph(
-        'Jones is a 79-year Utah heavy-civil contractor with no digital presence to match the work. '
+        'Jones is an 80-year Utah heavy-civil contractor with no digital presence to match the work. '
         'Callus is the welding/fab arm with no presence at all. Every direct competitor in the comp set '
         '(W.W. Clyde, Geneva Rock, Staker Parson, Sunroc) has 4,000\u20137,000+ LinkedIn followers and '
         'an active Google Business Profile. One additional bid won per year pays for this engagement '
