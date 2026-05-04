@@ -658,7 +658,7 @@ def build():
         'three. The website matters \u2014 but only after they have already found you on the map.',
         body_lead))
 
-    s.append(P('Google Business Profile \u2014 day-one work', h3_teal))
+    s.append(P('Google Business Profile (GBP) \u2014 day-one work', h3_teal))
     s.append(bullet('Claim and verify both GBPs (Jones is partially claimed; Callus needs to be added).'))
     s.append(bullet('Categorize precisely \u2014 primary plus all relevant secondaries (Excavating Contractor, '
                     'Earthworks, General Contractor, Construction Services for Jones; Welder, Welding Supply, '
@@ -1007,7 +1007,7 @@ def build():
                        '7 templated pages + shop section.'))
     s.append(price_row('SEO foundation (both)',
                        '$3,500',
-                       'GBP setup, schema, citations, technical audit, on-page.'))
+                       'Google Business Profile setup, schema, citations, technical audit, on-page.'))
     s.append(price_row('Content shoot + initial library',
                        '$2,500',
                        'Half-day jobsite + shop photo/video; 90-day post library.'))
