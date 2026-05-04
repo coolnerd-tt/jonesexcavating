@@ -655,22 +655,25 @@ def build():
                     'Custom Fabricator for Callus).'))
     s.append(bullet('Service areas: every Utah county you actually work in, with named locality pages on '
                     'the website to back them up.'))
-    s.append(bullet('Hours, contacts, attributes, accessibility, payment methods, languages \u2014 all '
-                    'filled, all consistent across the web.'))
-    s.append(bullet('Photo backfill: 30+ recent geo-tagged jobsite photos uploaded in batch, then a steady '
-                    'cadence of 4\u20136 per month.'))
-    s.append(bullet('Review program: outbound ask after every completed job, with a polite SMS template '
-                    'and direct GBP link. Goal: 100+ reviews on each within 12 months.'))
-    s.append(bullet('Owner replies on every review (target: within 48 hours), positive or negative.'))
+    s.append(bullet('Hours, contacts, attributes, accessibility, payment methods, languages \u2014 consistent '
+                    'across the web.'))
+    s.append(bullet('Add 30+ recent geo-tagged jobsite photos in batch, then continue adding 4\u20136 per month '
+                    'consistently.'))
+    s.append(bullet('Review program: a text template to send to clients after every completed job, with a '
+                    'direct GBP link.'))
+    s.append(bullet('Owner replies (target within 48 hours) on every review, positive or negative.'))
 
     s.append(P('Technical SEO foundation', h3_teal))
-    s.append(bullet('Schema markup: LocalBusiness, Service, Project, FAQ on every relevant page.'))
-    s.append(bullet('Site speed: Lighthouse 95+ across the board; image optimization, lazy loading, '
-                    'modern font delivery.'))
-    s.append(bullet('Internal linking strategy mapping service pages to project case studies.'))
-    s.append(bullet('XML sitemap, robots.txt, and Google Search Console + Bing Webmaster set up day one.'))
-    s.append(bullet('NAP citations: name/address/phone consistent across 30+ directories (BBB, AGC of '
-                    'Utah, Yelp, BuildZoom, Procore, Yellow Pages, etc.).'))
+    s.append(bullet('Add structured data tags to every relevant page (business, services, projects, FAQs) '
+                    'so search engines can read your site cleanly.'))
+    s.append(bullet('Tune every page for fast load times \u2014 optimized images, lazy loading, and modern fonts '
+                    'so the site feels instant on a phone or laptop.'))
+    s.append(bullet('Smart internal linking: service pages connect to relevant project case studies, helping '
+                    'visitors and search engines find the right work.'))
+    s.append(bullet('Submit sitemaps and connect to the major search engines (Google, Bing) on day one so '
+                    'pages get indexed quickly.'))
+    s.append(bullet('Consistent business listings \u2014 name, address, and phone match across 30+ directories '
+                    '(BBB, AGC of Utah, Yelp, BuildZoom, Procore, and others).'))
 
     s.append(P('Target keywords \u2014 first wave', h3_teal))
     s.append(two_col([
@@ -693,12 +696,6 @@ def build():
         bullet('emergency welding utah'),
     ]))
 
-    s.append(callout(
-        'Outcome target',
-        'Within 6 months: top-3 map pack ranking for the first-wave keywords across the Salt Lake, '
-        'Utah, Davis, and Weber county service areas. Within 12 months: 100+ Google reviews per '
-        'brand at a 4.5+ star average, with steady review velocity.',
-        bg=TEAL_BG, accent=TEAL))
     s.append(PageBreak())
 
     # ═══ 05 SOCIAL & CONTENT ═════════════════════════════════════════════════
@@ -717,8 +714,8 @@ def build():
                     'company page launches with the website.'))
     s.append(bullet('Posting cadence: <b>3 posts/week per brand</b> mixing project milestones, behind-the-scenes '
                     'shop/yard content, hiring posts, and short ownership notes.'))
-    s.append(bullet('Employee advocacy: foremen, PMs, and ownership reshare from personal accounts. '
-                    'Single largest organic-reach lever in B2B construction.'))
+    s.append(bullet('Employee advocacy: foremen, PMs, and ownership reshare from personal accounts to boost '
+                    'social engagement and amplify reach.'))
     s.append(bullet('Targeted connection campaign: 50\u2013100 thoughtful outbound connections per month '
                     '(Utah GCs, owners\u2019 reps, developers, public works PMs).'))
 
@@ -747,8 +744,9 @@ def build():
     s.append(bullet('Geo-tagging every post (site city + Utah) for local discovery.'))
 
     s.append(P('Content engine', h3))
-    s.append(bullet('Half-day quarterly content shoot at active jobsites + the Callus shop. One shoot '
-                    'feeds 8\u201310 weeks of posts across both brands.'))
+    s.append(bullet('<b>Professional photography &amp; videography</b> \u2014 drone, jobsite, and shop coverage. '
+                    'Quarterly half-day shoots at active jobsites and the Callus shop, captured by our '
+                    'team and edited in-house. One shoot feeds 8\u201310 weeks of posts across both brands.'))
     s.append(bullet('Shared content library (Dropbox or similar) so PMs and foremen can drop in raw '
                     'photos and we do the editing.'))
     s.append(bullet('Monthly performance review: top posts, follower growth, engagement, lead-source '
@@ -756,8 +754,9 @@ def build():
 
     s.append(callout(
         'Realistic 12-month targets',
-        'Jones LinkedIn: 1,750 \u2192 3,500+ followers. Callus LinkedIn: 0 \u2192 1,000+. '
-        'Combined cross-platform reach: 5\u201310x current. Direct attributable inbound: '
+        '<b>Jones</b> \u2014 LinkedIn 331 \u2192 2,500+, Instagram 0 \u2192 800+, Facebook 0 \u2192 500+. &nbsp; '
+        '<b>Callus</b> \u2014 LinkedIn 0 \u2192 1,000+, Instagram 0 \u2192 1,000+, Facebook 0 \u2192 500+. &nbsp; '
+        'Combined cross-platform reach: 5\u201310\u00d7 current. Direct attributable inbound: '
         '4\u20138 qualified leads per month per brand by month 9.',
         bg=CHARCOAL, accent=ORANGE))
     s.append(PageBreak())
