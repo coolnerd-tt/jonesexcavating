@@ -545,7 +545,7 @@ def build():
     s.append(bullet('<b>89% of B2B marketers</b> use LinkedIn for lead generation, and <b>40%</b> rate as their '
                     'most effective channel.'))
 
-    s.append(P('Google Business Profile: Win the Map Pack', h2))
+    s.append(P('Google Business Profile: Maximize SEO', h2))
     s.append(P(
         'Google Maps is where most buyers build the short list. A search for &quot;excavating contractor '
         'Utah&quot; or &quot;deep foundation Salt Lake City&quot; returns the Map Pack first — star ratings, '
