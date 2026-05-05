@@ -596,6 +596,7 @@ def build():
                     'Industrial feel that loads fast on any device.'))
     s.append(bullet('Photography: add on-site photos and video from active jobs (we run a half-day '
                     'shoot in week 2).'))
+    s.append(bullet('Tagline: &quot;Built for the Tough Jobs.&quot;'))
 
     s.append(P('Callus Fabrication \u2014 Brand build (Spark direction)', h3_spark))
     s.append(P(
@@ -604,10 +605,10 @@ def build():
         'type. The brand speaks directly to the people who hire welders, including GCs, plant '
         'managers, and foremen working by the hour or by the project.',
         body))
-    s.append(bullet('Logo: glove + spark mark, finalized, with horizontal lockup and stacked variant.'))
-    s.append(bullet('Palette: black + spark red + amber, with charcoal and metal grays for depth.'))
-    s.append(bullet('Voice: short sentences. Trade language. No corporate filler. "Built tough. Welded right."'))
-    s.append(bullet('Family link: Callus carries a "backed by Jones Excavating Co." line in the banner, '
+    s.append(bullet('Logo: glove + spark mark, with horizontal and vertical options.'))
+    s.append(bullet('Tagline: &quot;Built tough. Welded right.&quot;'))
+    s.append(bullet('Voice: short sentences. Trade language. No corporate filler.'))
+    s.append(bullet('Family link: Callus carries a &quot;Part of the Jones Family&quot; line in the banner, '
                     'about, and footer \u2014 borrowing trust without diluting the new brand.'))
 
     s.append(P('Web build \u2014 both sites', h2))
