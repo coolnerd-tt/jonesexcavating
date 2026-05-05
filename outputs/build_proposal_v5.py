@@ -531,7 +531,7 @@ def build():
         ['Sunroc / Suncore',            '~6,000',    '1937',     'Materials + civil'],
         ['Hadco',                       '~1,300',    '1989',     'Excavation'],
         ['Jones Excavating Co.',        '331',       '1946',     ''],
-    ]))
+    ], center=True))
     s.append(sp(4))
     s.append(P(
         'LinkedIn followings as of May 2026, rounded. Sources: company LinkedIn pages, '
