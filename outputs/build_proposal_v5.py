@@ -487,7 +487,7 @@ def build():
     s.append(bullet('<b>Two production websites</b>: a refreshed jonesexcavating.com and a new callusfabrication.com.'))
     s.append(bullet('<b>Local SEO + Google Business Profile (GBP) overhaul</b> to reposition both brands in the '
                     'highest-leverage channel for this category.'))
-    s.append(bullet('<b>Social media content engine</b> \u2014 LinkedIn-led, sustainable post-launch.'))
+    s.append(bullet('<b>Social media content engine</b> \u2014 LinkedIn-focused and sustainable post-launch.'))
     s.append(bullet('<b>90-day fixed-price build</b>, with monthly retainer options for ongoing support and '
                     'maintenance.'))
 
