@@ -540,8 +540,8 @@ def build():
                        textColor=GRAY_500, leading=10)))
 
     s.append(P('Why this gap matters', h3))
-    s.append(bullet('LinkedIn delivers <b>80% of B2B social leads</b> across all sectors and converts '
-                    '<b>2.74%</b> visitor-to-lead \u2014 277% higher than Facebook or X.'))
+    s.append(bullet('LinkedIn is where <b>80% of B2B social leads</b> come from, and it converts about '
+                    '<b>4\u00d7</b> better than Facebook or X for commercial work.'))
     s.append(bullet('<b>89% of B2B marketers</b> use LinkedIn for lead gen and <b>40%</b> rate it their '
                     'most effective channel.'))
     s.append(bullet('In Utah heavy-civil specifically, LinkedIn following runs roughly <b>33% higher</b> '
