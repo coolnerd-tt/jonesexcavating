@@ -451,7 +451,7 @@ def build():
         ('03', 'Brand &amp; Web Strategy',    '07'),
         ('04', 'SEO &amp; Local Search',      '10'),
         ('05', 'Social &amp; Content',        '12'),
-        ('06', 'The Marketing OS',            '14'),
+        ('06', 'The Marketing Operating System',            '14'),
         ('07', 'Investment &amp; Timeline',   '17'),
         ('08', 'Next Steps',                  '19'),
     ]
@@ -772,7 +772,7 @@ def build():
     s.append(PageBreak())
 
     # ═══ 06 THE MARKETING OS ═════════════════════════════════════════════════
-    s.append(section_header(6, 'The Marketing OS',
+    s.append(section_header(6, 'The Marketing Operating System',
         kicker='An AI-driven marketing system you own, not an agency you rent.'))
 
     s.append(P(
@@ -782,7 +782,7 @@ def build():
         body_lead))
 
     s.append(P(
-        'The Marketing OS is a custom-built, AI-agent-driven system that automates 80% of the '
+        'The Marketing Operating System is a custom-built, AI-agent-driven system that automates 80% of the '
         'ongoing marketing work \u2014 social posts, review responses, SEO content, lead triage \u2014 '
         'while keeping a human (you) in the approval seat for every published artifact. We build it, '
         'we train it on your voice, and we hand it over. After 90 days you own a working system, not '
@@ -845,7 +845,7 @@ def build():
     s.append(callout(
         'What this replaces',
         'A part-time marketing coordinator at $50,000\u2013$70,000/yr fully loaded, or an agency '
-        'retainer at $1,500\u20133,000/mo. The Marketing OS does the same job with a 15-minute '
+        'retainer at $1,500\u20133,000/mo. The Marketing Operating System does the same job with a 15-minute '
         'approval routine and roughly $200/mo in infrastructure.',
         bg=CHARCOAL, accent=ORANGE))
 
@@ -980,7 +980,7 @@ def build():
     s.append(callout(
         'What you own at the end',
         'You own all your data, content, brand voice configuration, and historical drafts. The '
-        'underlying Marketing OS — the agents, prompts, and orchestration code — stays our IP, with '
+        'underlying Marketing Operating System — the agents, prompts, and orchestration code — stays our IP, with '
         'a perpetual license to operate it as long as you are on a retainer tier (including the '
         '$350/mo Self-serve tier). Move on whenever you want; your data, content, and configuration '
         'come with you.',
@@ -1011,7 +1011,7 @@ def build():
     s.append(price_row('Content shoot + initial library',
                        '$2,500',
                        'Half-day jobsite + shop photo/video; 90-day post library.'))
-    s.append(price_row('Marketing OS build',
+    s.append(price_row('Marketing Operating System build',
                        '$12,000',
                        '5 agents, orchestrator, approval queue, brand-voice training, integrations.'))
     s.append(price_row('Build phase total',

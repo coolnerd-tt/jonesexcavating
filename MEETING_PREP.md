@@ -10,7 +10,7 @@
 We heard Jen's concern about ongoing dependence. We rebuilt the proposal around it.
 
 **Old pitch:** $30k build + $1,900/mo retainer (we run it forever).
-**New pitch:** $42k build (includes a Marketing OS) + a three-tier model that drops to $350/mo by month 7. They own the system at the end.
+**New pitch:** $42k build (includes a Marketing Operating System) + a three-tier model that drops to $350/mo by month 7. They own the system at the end.
 
 That single reframe should defuse 80% of the resistance before we go into details.
 
@@ -25,7 +25,7 @@ Open with the live URL on a screen Jen can see:
 ### 1. Hero + concept cards (45 sec)
 Two brands, one team. Point at the Jones card (refresh — keep equity) and the Callus Spark card (new build — different buyer, same family).
 
-### 2. Click "Marketing OS Diagram" (90 sec)
+### 2. Click "Marketing Operating System Diagram" (90 sec)
 **https://coolnerd-tt.github.io/jonesexcavating/outputs/marketing-os-diagram.html**
 
 Walk through the four pipeline rows. Land the line:
@@ -46,10 +46,10 @@ This is the closer. Scroll through:
 **Key talking point:** every draft references real Jones details — Mapleton, Spanish Fork, UDOT, Rocky Mountain Power, "since 1946," the actual ops org chart. This isn't generic AI slop. The system already knows Jones.
 
 ### 4. Inline PDF or download (60 sec)
-Open chapter 06 (The Marketing OS) in the v4 proposal for the technical/financial backup. Then Investment chapter for the three-tier pricing.
+Open chapter 06 (The Marketing Operating System) in the v4 proposal for the technical/financial backup. Then Investment chapter for the three-tier pricing.
 
 ### 5. Close (45 sec)
-> "We're proposing 90 days of build, then handing you a working system with three pricing tiers based on how hands-on you want to be. The Marketing OS itself becomes a Jones asset. If we ever stop being your vendor, the system keeps running."
+> "We're proposing 90 days of build, then handing you a working system with three pricing tiers based on how hands-on you want to be. The Marketing Operating System itself becomes a Jones asset. If we ever stop being your vendor, the system keeps running."
 
 ---
 
@@ -85,7 +85,7 @@ Spark direction is the recommended path and what the v4 proposal reflects. Kints
 | v4 Proposal (16pg PDF) | https://coolnerd-tt.github.io/jonesexcavating/outputs/jones_callus_proposal_v4.pdf |
 | One-page exec summary | https://coolnerd-tt.github.io/jonesexcavating/outputs/jones_callus_one_pager.pdf |
 | Jones site (current) | https://jonesexcavating.com |
-| Marketing OS repo | https://github.com/coolnerd-tt/marketing-os (private) |
+| Marketing Operating System repo | https://github.com/coolnerd-tt/marketing-os (private) |
 
 ---
 
@@ -111,6 +111,6 @@ If we get 1 + 2 in this meeting, we can move to MSA next week.
 ## Things NOT to do in this meeting
 
 - Don't go deep on technical architecture unless asked. The diagram + sample output is enough proof.
-- Don't pitch the Marketing OS as "AI" first. Pitch it as "you own the system, here's how." AI is the means, not the headline.
+- Don't pitch the Marketing Operating System as "AI" first. Pitch it as "you own the system, here's how." AI is the means, not the headline.
 - Don't price-shop against agencies — we're not selling agency labor, we're selling an asset.
 - Don't apologize for v3 → v4 changes. Frame it as "we listened to your concern about ongoing cost and rebuilt the model around it."

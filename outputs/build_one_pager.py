@@ -103,7 +103,7 @@ def build():
     s = []
     s.append(Paragraph('PROPOSAL AT A GLANCE', eyebrow))
     s.append(Paragraph('Jones &amp; Callus &mdash; 2026 Digital Engagement', title))
-    s.append(Paragraph('Two brands, two websites, one Marketing OS the team owns at the end.', subtitle))
+    s.append(Paragraph('Two brands, two websites, one Marketing Operating System the team owns at the end.', subtitle))
     s.append(HRFlowable(width='100%', thickness=0.5, color=GRAY_300, spaceAfter=10))
 
     # The opportunity (compressed)
@@ -122,11 +122,11 @@ def build():
         bullet('<b>Two production websites</b> &mdash; jonesexcavating.com + callusfabrication.com.'),
         bullet('<b>SEO foundation</b> &mdash; GBP overhaul, schema, citations, target service-area pages.'),
         bullet('<b>Content engine</b> &mdash; jobsite shoot + 90-day post library, both brands.'),
-        bullet('<b>Marketing OS</b> &mdash; 5 AI agents, approval queue, Jones brand-voice config.'),
+        bullet('<b>Marketing Operating System</b> &mdash; 5 AI agents, approval queue, Jones brand-voice config.'),
     ]
     right = [
         Paragraph('What you own at handoff', h2),
-        bullet('Working code for the Marketing OS &mdash; agents, prompts, integrations.'),
+        bullet('Working code for the Marketing Operating System &mdash; agents, prompts, integrations.'),
         bullet('Tenant config: brand voice, services, target keywords, all editable YAML.'),
         bullet('90 days of approved content as training data for ongoing tuning.'),
         bullet('All API keys, accounts, and admin access.'),
@@ -143,8 +143,8 @@ def build():
     s.append(cols)
     s.append(Spacer(1, 6))
 
-    # Marketing OS quick description
-    s.append(Paragraph('The Marketing OS &mdash; new in v4', h2))
+    # Marketing Operating System quick description
+    s.append(Paragraph('The Marketing Operating System &mdash; new in v4', h2))
     s.append(Paragraph(
         'Foreman texts in 3 photos and 2 sentences from a jobsite. Five agents (Field-to-Content, '
         'Reputation, SEO, Lead Triage, Orchestrator) draft brand-voice posts, replies, pages, and '
