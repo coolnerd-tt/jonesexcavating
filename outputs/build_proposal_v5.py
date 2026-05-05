@@ -594,7 +594,7 @@ def build():
                     'and a soft off-white background for sections with a lot of text.'))
     s.append(bullet('Typography: bold, condensed headlines paired with clean, readable body text. '
                     'Industrial feel that loads fast on any device.'))
-    s.append(bullet('Photography: replace stock with on-site photos from active jobs (we run a half-day '
+    s.append(bullet('Photography: add on-site photos and video from active jobs (we run a half-day '
                     'shoot in week 2).'))
 
     s.append(P('Callus Fabrication \u2014 Brand build (Spark direction)', h3_spark))
