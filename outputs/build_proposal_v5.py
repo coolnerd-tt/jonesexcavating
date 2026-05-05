@@ -346,7 +346,7 @@ class Canv:
             c.drawString(30, H-21, 'JONES \u00D7 CALLUS')
             c.setFillColor(ORANGE); c.drawString(30+82, H-21, '|')
             c.setFillColor(GRAY_300); c.setFont('Helvetica', 7.5)
-            c.drawString(30+90, H-21, 'Complete Digital Proposal  \u00B7  v5  \u00B7  2026')
+            c.drawString(30+90, H-21, 'Digital Proposal  \u00B7  v5  \u00B7  2026')
             c.setFont('Helvetica-Bold', 7.5); c.setFillColor(ORANGE)
             c.drawRightString(W-30, H-21, f'{page}')
             # Footer bar
@@ -369,7 +369,7 @@ def build():
 
     # ═══ COVER ═══════════════════════════════════════════════════════════════
     s.append(sp(0.9*inch))
-    s.append(P('COMPLETE DIGITAL PROPOSAL', cover_label))
+    s.append(P('DIGITAL PROPOSAL', cover_label))
     s.append(P('BRAND  \u00B7  WEB  \u00B7  SEO  \u00B7  SOCIAL', cover_label))
     s.append(sp(14))
 
