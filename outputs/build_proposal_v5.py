@@ -588,10 +588,10 @@ def build():
         'and 80 years of excavation and utilities work back it up. The refresh sharpens the typography, '
         'modernizes the palette, and tightens the visual system while keeping core elements people know.',
         body))
-    s.append(bullet('Logo: keep the orange mark; clean up the lockup and add a horizontal version for '
-                    'web/social.'))
-    s.append(bullet('Palette: anchor on charcoal + Jones orange; add an amber accent for highlights '
-                    'and a clean off-white for type-heavy panels.'))
+    s.append(bullet('Logo: keep the original mark; refresh the original and add a horizontal version '
+                    'for web/social.'))
+    s.append(bullet('Palette: charcoal and Jones orange as the core colors, with amber accents on '
+                    'highlights and a soft off-white background for sections with a lot of text.'))
     s.append(bullet('Typography: bold condensed display + readable Inter body. Industrial feel, '
                     'web-safe, performant.'))
     s.append(bullet('Photography: replace stock with on-site photos from active jobs (we run a half-day '
