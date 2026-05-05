@@ -472,8 +472,8 @@ def build():
     s.append(P(
         'Jones Excavating Co. is an 80-year Utah heavy-civil contractor specializing in '
         'excavation and utilities, founded in 1946. Callus Fabrication is its welding and '
-        'custom-fabrication arm. Both companies do excellent work. Neither has a digital '
-        'presence that reflects it.',
+        'custom-fabrication arm. Both companies do excellent work; it is time their digital '
+        'presence reflects it.',
         body_lead))
     s.append(P(
         'This proposal lays out a coordinated plan for two distinct brands, two new '
