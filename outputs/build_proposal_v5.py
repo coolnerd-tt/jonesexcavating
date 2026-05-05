@@ -592,8 +592,8 @@ def build():
                     'for web/social.'))
     s.append(bullet('Palette: charcoal and orange as the core colors, with amber accents on highlights '
                     'and a soft off-white background for sections with a lot of text.'))
-    s.append(bullet('Typography: bold condensed display + readable Inter body. Industrial feel, '
-                    'web-safe, performant.'))
+    s.append(bullet('Typography: bold, condensed headlines paired with clean, readable body text. '
+                    'Industrial feel that loads fast on any device.'))
     s.append(bullet('Photography: replace stock with on-site photos from active jobs (we run a half-day '
                     'shoot in week 2).'))
 
