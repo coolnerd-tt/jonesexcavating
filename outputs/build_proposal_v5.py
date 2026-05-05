@@ -599,10 +599,10 @@ def build():
 
     s.append(P('Callus Fabrication \u2014 Brand build (Spark direction)', h3_spark))
     s.append(P(
-        'Callus is new enough to be designed deliberately. The Spark direction \u2014 industrial '
-        'badge, dark steel, glove-and-spark mark, cropped-iron typography \u2014 lands the brand '
-        'where its buyers already are: GCs, plant managers, foremen who hire welders by the hour '
-        'or by the project.',
+        'Callus came to us with a solid starting point. We refined it into the Spark direction: '
+        'an industrial badge feel, dark steel tones, a glove-and-spark mark, and rugged headline '
+        'type. The brand speaks directly to the people who hire welders, including GCs, plant '
+        'managers, and foremen working by the hour or by the project.',
         body))
     s.append(bullet('Logo: glove + spark mark, finalized, with horizontal lockup and stacked variant.'))
     s.append(bullet('Palette: black + spark red + amber, with charcoal and metal grays for depth.'))
