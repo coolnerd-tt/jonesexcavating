@@ -607,23 +607,24 @@ def build():
         body))
     s.append(bullet('Logo: glove + spark mark, with horizontal and vertical options.'))
     s.append(bullet('Tagline: &quot;Built tough. Welded right.&quot;'))
-    s.append(bullet('Voice: short sentences. Trade language. No corporate filler.'))
     s.append(bullet('Family link: Callus carries a &quot;Part of the Jones Family&quot; line in the banner, '
                     'about, and footer \u2014 borrowing trust without diluting the new brand.'))
 
     s.append(P('Web build \u2014 both sites', h2))
     s.append(P(
-        'Both sites ship on the same modern stack so they are fast, easy to update, and search-friendly. '
+        'Both sites will use modern technology so they are fast, easy to update, and search-friendly. '
         'Each site is built for the company\u2019s needs.',
         body))
 
-    s.append(P('Architecture', h3))
-    s.append(bullet('Static-first build (HTML/CSS/JS) with a content management system for blog and project '
-                    'entries, so updates take minutes, not engineering tickets.'))
-    s.append(bullet('Designed for mobile first \u2014 too many websites get built for desktop and feel broken on '
-                    'a phone. Most contractor staff and customers browse from the jobsite or the truck.'))
-    s.append(bullet('Maximize search outputs by using schema.org on every page (LocalBusiness, Service, '
-                    'Project) so search engines can read the site cleanly.'))
+    s.append(P('Built to save time and bring in leads', h3))
+    s.append(bullet('<b>Update without a developer.</b> Add a new project, post a blog, or change a service '
+                    'description in minutes. The site stays current without becoming a chore for your team.'))
+    s.append(bullet('<b>Built for the phone.</b> Most customers, GCs, and crew look at the site from the '
+                    'jobsite or the truck, not a desktop. Pages load fast and read cleanly on mobile \u2014 '
+                    'where the decision to call actually happens.'))
+    s.append(bullet('<b>Found by Google.</b> Every page is structured so search engines recognize Jones, '
+                    'its services, and its projects, putting you in front of buyers searching for '
+                    'excavation work right now.'))
 
     s.append(P('Page set', h3))
     s.append(two_col([
