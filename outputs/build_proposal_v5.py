@@ -722,15 +722,16 @@ def build():
     s.append(P('Content pillars', h3))
     s.append(two_col([
         P('<b>Jones</b>', body),
-        bullet('Jobsite milestones (with permission)'),
+        bullet('Jobsite milestones'),
+        bullet('Video and photo action shots'),
         bullet('Equipment in action (drone, B-roll)'),
         bullet('Crew spotlights / safety wins'),
-        bullet('Project case studies (50/50 LinkedIn + site)'),
+        bullet('Project case studies'),
         bullet('Industry commentary from leadership'),
     ], [
         P('<b>Callus</b>', body),
-        bullet('Welding before/after (mobile + shop)'),
-        bullet('Time-lapse fab work (CNC, plasma, line bore)'),
+        bullet('Welding before/after'),
+        bullet('Time-lapse videos of cutting, welding, and fabrication'),
         bullet('Same-day service moments'),
         bullet('Crew skill spotlights'),
         bullet('Quick how-it-was-done write-ups'),
