@@ -732,7 +732,7 @@ def build():
     ], [
         P('<b>Callus</b>', body),
         bullet('Welding before/after'),
-        bullet('Time-lapse videos of cutting, welding, and fabrication'),
+        bullet('Time-lapse videos'),
         bullet('Same-day service moments'),
         bullet('Crew skill spotlights'),
         bullet('Quick how-it-was-done write-ups'),
