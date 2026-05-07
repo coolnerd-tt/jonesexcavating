@@ -352,7 +352,7 @@ class Canv:
             # Footer bar
             c.setFillColor(GRAY_100); c.rect(0,0,W,22,fill=1,stroke=0)
             c.setFont('Helvetica', 6.5); c.setFillColor(GRAY_500)
-            c.drawString(30, 8, 'CONFIDENTIAL \u2014 prepared for Jones Excavating Co. \u00B7 \u00A9 2026')
+            c.drawString(30, 8, 'CONFIDENTIAL  \u00B7  prepared for Jones Excavating Co.  \u00B7  \u00A9 2026')
             c.drawRightString(W-30, 8, 'jonesexcavating.com  \u00B7  callusfabrication.com')
         c.restoreState()
 
@@ -773,35 +773,34 @@ def build():
 
     # ═══ 06 THE MARKETING OS ═════════════════════════════════════════════════
     s.append(section_header(6, 'The Marketing Operating System',
-        kicker='An AI-driven marketing system you own, not an agency you rent.'))
+        kicker='A marketing system you can manage, not an agency you rent.'))
 
     s.append(P(
-        'Most marketing engagements end one of two ways: the agency keeps billing forever, or '
+        'Most marketing engagements end one of two ways. The agency keeps billing forever, or '
         'the client tries to take it in-house and the work quietly stops. Neither outcome is good '
         'for Jones or Callus. This chapter describes the third option.',
         body_lead))
 
     s.append(P(
-        'The Marketing Operating System is a custom-built, AI-agent-driven system that automates 80% of the '
-        'ongoing marketing work \u2014 social posts, review responses, SEO content, lead triage \u2014 '
-        'while keeping a human (you) in the approval seat for every published artifact. We build it, '
-        'we train it on your voice, and we hand it over. After 90 days you own a working system, not '
-        'an agency dependency.',
+        'The Marketing Operating System is a custom-built system that automates roughly 80% of the '
+        'ongoing marketing work: social posts, review replies, SEO content, and lead triage. A human '
+        '(you) approves every item before it publishes. We build it, train it on your brand voice, '
+        'and hand it over. After 90 days you own a working system, not an agency dependency.',
         body))
 
     s.append(P('Why this is possible now', h2))
-    s.append(bullet('AI models are now good enough to draft brand-voice content from a 2-sentence note + '
-                    '3 photos sent by a foreman from a jobsite.'))
-    s.append(bullet('Modern workflow tools can route those drafts into approval queues, post on '
+    s.append(bullet('Modern AI tools are good enough to draft brand-voice content from a two-sentence '
+                    'note and three photos sent by a foreman from a jobsite.'))
+    s.append(bullet('Today\u2019s workflow tools can route those drafts into approval queues, post on '
                     'schedule, and track performance without custom engineering.'))
-    s.append(bullet('Google, Meta, and LinkedIn APIs are stable and accessible \u2014 we are no longer '
-                    'screen-scraping or fighting tooling.'))
+    s.append(bullet('Google, Meta, and LinkedIn now offer stable connections so we can publish to them '
+                    'reliably, without workarounds.'))
     s.append(bullet('The result: marketing work that used to require a part-time hire can run on a '
-                    '15-minute-per-day approval routine for an office manager.'))
+                    '15-minute-a-day approval routine for an office manager.'))
 
     s.append(P('The five agents', h2))
     s.append(P(
-        'Five specialized AI agents handle distinct jobs. Each one drafts; a human approves. '
+        'Five specialized agents handle distinct jobs. Each one drafts. A human approves. '
         'Nothing publishes without a click.',
         body))
 
@@ -810,27 +809,28 @@ def build():
         'A foreman or PM texts a number with photos and a short note ("Finished the Lehi sewer '
         'tie-in, biggest pour of the year, 14 hours"). The agent generates a LinkedIn post, '
         'Google Business Profile post, Instagram caption, blog snippet, and internal newsletter '
-        'blurb \u2014 all in Jones or Callus voice. Office manager taps approve.',
+        'blurb, all in Jones or Callus voice. Office manager taps approve.',
         body))
 
     s.append(P('Reputation Agent', h3))
     s.append(P(
         'Watches Google reviews and Facebook recommendations across both brands. Drafts a brand-voice '
-        'reply within hours, calibrated to the rating (gracious for 5\u2605, measured with a private '
-        'resolution offer for 1\u20132\u2605). Office manager approves; reply posts.',
+        'reply within hours, tuned to the rating: gracious for 5-star, measured with a private '
+        'resolution offer for 1- and 2-star. Office manager approves and the reply posts.',
         body))
 
     s.append(P('SEO Content Agent', h3))
     s.append(P(
-        'Each month: pulls keyword movement, identifies 1\u20132 service-area pages or blog posts that '
-        'would close ranking gaps with competitors, drafts the full page, and queues it for review. '
-        'Closes the gap between you and your competitors over 12 months without a copywriter.',
+        'Each month, the agent pulls keyword movement, identifies one or two service-area pages or '
+        'blog posts that would close ranking gaps with competitors, drafts the full page, and queues '
+        'it for review. Closes the gap between you and your competitors over 12 months without a '
+        'copywriter.',
         body))
 
     s.append(P('Lead Triage Agent', h3))
     s.append(P(
-        'Sits behind the website contact form and (optionally) a site chat widget. Classifies inbound '
-        'inquiries (excavation / fabrication / spam / general), extracts contact info and project '
+        'Sits behind the website contact form and an optional site chat widget. Classifies inbound '
+        'inquiries (excavation, fabrication, spam, or general), pulls out contact info and project '
         'signals, drafts an internal message alert and a 3-line auto-reply. Routes hot leads '
         'directly to estimating in under a minute.',
         body))
@@ -838,15 +838,15 @@ def build():
     s.append(P('Orchestrator + Approval Queue', h3))
     s.append(P(
         'A central scheduler routes events to the right agent and lands all drafts in a single '
-        'approval queue \u2014 one screen, one inbox, every brand. Approved items publish on the '
-        'right cadence. Rejected items improve the AI prompts inside each agent.',
+        'approval queue: one screen, one inbox, every brand. Approved items publish on the right '
+        'schedule. Rejected items improve the prompts inside each agent.',
         body))
 
     s.append(callout(
         'What this replaces',
-        'A part-time marketing coordinator at $50,000\u2013$70,000/yr fully loaded, or an agency '
-        'retainer at $1,500\u20133,000/mo. The Marketing Operating System does the same job with a 15-minute '
-        'approval routine and roughly $200/mo in infrastructure.',
+        'A part-time marketing coordinator at $50,000 to $70,000 per year fully loaded, or an agency '
+        'retainer at $1,500 to $3,000 per month. The Marketing Operating System does the same job with '
+        'a 15-minute approval routine and roughly $200 per month in infrastructure.',
         bg=CHARCOAL, accent=ORANGE))
 
     s.append(PageBreak())
@@ -950,8 +950,8 @@ def build():
 
     s.append(sp(14))
     s.append(P(
-        'Built on modern orchestration tools and platform APIs (LinkedIn, Google Business Profile, '
-        'Meta). Self-hosted; no monthly SaaS lock-in.',
+        'Built on modern technology with direct connections to LinkedIn, Google Business Profile, '
+        'and Meta. Self-hosted, with no monthly subscription lock-in.',
         body))
 
     s.append(P('Three-phase ownership transfer', h2))
@@ -962,28 +962,28 @@ def build():
         body))
 
     s.append(phase_card_basic('Phase 1', 'Concierge', 'Months 1\u20133',
-        ['We run the OS day-to-day while training it on your voice',
-         '90 days of approved content captured as training data',
-         'Office manager observes; we document the standard operating procedures (everything on how to run the system)']))
+        ['We run the system day-to-day while training it on your voice',
+         '90 days of approved content captured to teach the system how you sound',
+         'Office manager observes while we document everything on how to run the system']))
     s.append(sp(6))
     s.append(phase_card_basic('Phase 2', 'Co-pilot', 'Months 4\u20136',
-        ['Office manager runs the approval queue; we maintain the system',
-         'Weekly check-ins; we handle prompt tuning + integrations',
+        ['Office manager runs the approval queue while we maintain the system',
+         'Weekly check-ins while we handle voice tuning and integrations',
          'Performance review at month 6 to right-size phase 3']))
     s.append(sp(6))
     s.append(phase_card_basic('Phase 3', 'Self-serve', 'Month 7+',
         ['You run it. We are on retainer for system maintenance only',
-         'Quarterly strategy review + prompt updates as Google/AI shift',
-         'Cancel anytime; the system keeps running either way']))
+         'Quarterly strategy review and updates as Google and AI tools change',
+         'Cancel anytime. The system keeps running either way']))
 
     s.append(sp(10))
     s.append(callout(
         'What you own at the end',
         'You own all your data, content, brand voice configuration, and historical drafts. The '
-        'underlying Marketing Operating System — the agents, prompts, and orchestration code — stays our IP, with '
-        'a perpetual license to operate it as long as you are on a retainer tier (including the '
-        '$350/mo Self-serve tier). Move on whenever you want; your data, content, and configuration '
-        'come with you.',
+        'underlying Marketing Operating System (the agents, prompts, and code) stays our intellectual '
+        'property, with a perpetual license for you to operate it as long as you are on a retainer '
+        'tier, including the $350/mo Self-serve tier. Move on whenever you want. Your data, content, '
+        'and configuration come with you.',
         bg=CHARCOAL, accent=ORANGE))
     s.append(PageBreak())
 
@@ -991,57 +991,57 @@ def build():
     s.append(section_header(7, 'Investment &amp; Timeline',
         kicker='Fixed-price build, three-tier ongoing model.'))
 
-    s.append(P('Build phase \u2014 fixed price', h2))
+    s.append(P('Build phase: fixed price', h2))
 
-    s.append(price_row('Brand system \u2014 Jones',
+    s.append(price_row('Brand system: Jones',
                        '$3,500',
                        'Logo refresh, palette, typography, usage guide.'))
-    s.append(price_row('Brand system \u2014 Callus',
+    s.append(price_row('Brand system: Callus',
                        '$4,500',
-                       'New brand identity from the ground up — logo system, palette, tone of voice, and brand guidelines.'))
-    s.append(price_row('Website \u2014 jonesexcavating.com',
+                       'New brand identity from the ground up: logo system, palette, tone of voice, and brand guidelines.'))
+    s.append(price_row('Website: jonesexcavating.com',
                        '$8,500',
-                       '7 templated pages + service-area pages.'))
-    s.append(price_row('Website \u2014 callusfabrication.com',
+                       '7 templated pages plus service-area pages.'))
+    s.append(price_row('Website: callusfabrication.com',
                        '$7,500',
-                       '7 templated pages + shop section.'))
+                       '7 templated pages plus shop section.'))
     s.append(price_row('SEO foundation (both)',
                        '$3,500',
-                       'Google Business Profile setup, schema, citations, technical audit, on-page.'))
+                       'Google Business Profile setup, structured data, business listings, technical audit, on-page work.'))
     s.append(price_row('Content shoot + initial library',
                        '$2,500',
-                       'Half-day jobsite + shop photo/video; 90-day post library.'))
+                       'Half-day jobsite and shop photo/video, plus a 90-day post library.'))
     s.append(price_row('Marketing Operating System build',
                        '$12,000',
-                       '5 agents, orchestrator, approval queue, brand-voice training, integrations.'))
+                       'Five agents, central scheduler, approval queue, brand-voice training, and integrations.'))
     s.append(price_row('Build phase total',
                        '$42,000',
                        'One-time. 40% on signature, 30% at design approval, 30% at launch.',
                        highlight=True))
 
-    s.append(P('Ongoing \u2014 three tiers', h2))
+    s.append(P('Ongoing: three tiers', h2))
     s.append(P(
         'Pick the tier that matches how hands-on you want to be. You can step down a tier any time '
         'after month 3 with 30 days\u2019 notice.',
         body))
 
-    s.append(price_row('Concierge \u2014 we run it',
+    s.append(price_row('Concierge: we run it',
                        '$1,900 / mo',
-                       'Months 1\u20133 default. We operate the OS, you receive a monthly report.',
+                       'Months 1\u20133 default. We operate the system and you receive a monthly report.',
                        highlight=False))
-    s.append(price_row('Co-pilot \u2014 you run it, we maintain',
+    s.append(price_row('Co-pilot: you run it, we maintain',
                        '$850 / mo',
-                       'Recommended for months 4\u20136. Office manager runs queue; we tune system.'))
-    s.append(price_row('Self-serve \u2014 system maintenance',
+                       'Recommended for months 4\u20136. Office manager runs the queue while we tune the system.'))
+    s.append(price_row('Self-serve: system maintenance',
                        '$350 / mo',
-                       'Month 7+. Quarterly strategy review, prompt updates, integration patches.'))
+                       'Month 7+. Quarterly strategy review, voice updates, and integration patches.'))
     s.append(sp(6))
     s.append(P(
         '<b>Plus infrastructure:</b> ~$200/mo in API + hosting costs (AI provider, hosting, '
-        'scheduler, email), billed at cost or paid directly to providers \u2014 your choice.',
+        'scheduler, email), billed at cost or paid directly to providers, your choice.',
         body))
 
-    s.append(P('Timeline \u2014 90 days to launch', h2))
+    s.append(P('Timeline: 90 days to launch', h2))
 
     def phase_card(num, title, weeks, items, bg=GRAY_50, accent=ORANGE):
         ph_s = S('ps', fontName='Helvetica-Bold', fontSize=8, textColor=accent, leading=11)
@@ -1069,9 +1069,9 @@ def build():
          'Brand approval gate']))
     s.append(sp(6))
     s.append(phase_card('02', 'Design + Build', 'Weeks 4\u20139',
-        ['Both sites designed and built page by page',
+        ['Both sites designed and built for each company’s needs',
          'Content drafted with leadership input',
-         'GBP optimization + citation pass',
+         'Google Business Profile setup and business listing pass',
          'Design and content approval gates']))
     s.append(sp(6))
     s.append(phase_card('03', 'Launch + Activate', 'Weeks 10\u201312',
@@ -1086,13 +1086,13 @@ def build():
         kicker='What we need to start, and when we can start.'))
 
     s.append(P('Approvals required', h3))
-    s.append(bullet('Sign-off on this proposal (this PDF + a brief MSA).'))
-    s.append(bullet('Decision on Callus direction \u2014 the Spark direction is the recommended path '
+    s.append(bullet('Sign-off on this proposal (this PDF and a brief MSA).'))
+    s.append(bullet('Decision on Callus direction. The Spark direction is the recommended path '
                     'and what the website concept reflects today.'))
     s.append(bullet('Designated point of contact at each company for weekly check-ins.'))
 
     s.append(P('What we need from you', h3))
-    s.append(bullet('GBP and social account access (or the green light to claim/create).'))
+    s.append(bullet('Google Business Profile and social account access (or the green light to claim/create).'))
     s.append(bullet('Domain access for both jonesexcavating.com and callusfabrication.com.'))
     s.append(bullet('Two upcoming jobsites we can shoot in weeks 2\u20133.'))
     s.append(bullet('A list of 3\u20135 case-study-worthy projects from the last 5 years.'))
@@ -1122,7 +1122,7 @@ def build():
 
     sign_data = [
         [P('PREPARED BY', sign_lbl), '', P('APPROVED BY', sign_lbl)],
-        [P('Project Lead', sign_body), '', P('Jones Excavating Co. \u2014 Authorized Signer', sign_body)],
+        [P('Project Lead', sign_body), '', P('Jones Excavating Co., Authorized Signer', sign_body)],
         [P('_________________________', sign_line), '', P('_________________________', sign_line)],
         [P('Date', sign_body), '', P('Date', sign_body)],
     ]
