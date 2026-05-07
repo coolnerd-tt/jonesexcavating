@@ -675,8 +675,7 @@ def build():
     s.append(P('Technical SEO foundation', h3_teal))
     s.append(bullet('Add structured data tags to every relevant page (business, services, projects, FAQs) '
                     'so search engines can read your site cleanly.'))
-    s.append(bullet('Tune every page for fast load times \u2014 optimized images, lazy loading, and modern fonts '
-                    'so the site feels instant on a phone or laptop.'))
+    s.append(bullet('Tune every page for fast load times.'))
     s.append(bullet('Create smart internal linking so service pages connect to relevant project case '
                     'studies, helping visitors and search engines find the right work.'))
     s.append(bullet('Connect your sitemaps to the major search engines (Google, Bing) so pages get indexed '
