@@ -708,24 +708,17 @@ def build():
 
     # ═══ 05 SOCIAL & CONTENT ═════════════════════════════════════════════════
     s.append(section_header(5, 'Social &amp; Content',
-        kicker='Where the comp set already lives \u2014 and where Jones can catch up fastest.'))
-
-    s.append(P(
-        'Two channels matter: <b>LinkedIn</b> (B2B vetting, PM-to-PM trust) and <b>Instagram</b> '
-        '(jobsite proof points, recruiting, owner-to-owner credibility). Facebook is maintenance only. '
-        'TikTok is not part of this plan.',
-        body_lead))
+        kicker='Where the competition already lives \u2014 and where Jones can catch up fastest.'))
 
     s.append(P('LinkedIn \u2014 the priority channel', h3))
-    s.append(bullet('Two channels: <b>linkedin.com/company/jones-excavating-co</b> already exists; '
-                    'we will refresh the page, banner, about copy, and post cadence. A new Callus '
-                    'company page launches with the website.'))
+    s.append(bullet('We will refresh the Jones LinkedIn page (banner, about copy, and post cadence) '
+                    'and create a Callus LinkedIn company page to launch with the website.'))
     s.append(bullet('Posting cadence: <b>3 posts/week per brand</b> mixing project milestones, behind-the-scenes '
                     'shop/yard content, hiring posts, and short ownership notes.'))
     s.append(bullet('Employee advocacy: foremen, PMs, and ownership reshare from personal accounts to boost '
                     'social engagement and amplify reach.'))
-    s.append(bullet('Targeted connection campaign: 50\u2013100 thoughtful outbound connections per month '
-                    '(Utah GCs, owners\u2019 reps, developers, public works PMs).'))
+    s.append(bullet('Each month, send 50\u2013100 personalized connection requests on LinkedIn to potential '
+                    'clients \u2014 Utah GCs, owners\u2019 reps, developers, and public works project managers.'))
 
     s.append(P('Content pillars', h3))
     s.append(two_col([
