@@ -655,35 +655,34 @@ def build():
     s.append(P(
         'For excavating and fabrication, the search journey is local-first: someone types a '
         'job-site need into Google, sees a map of local providers, and calls one of the top '
-        'three. The website matters \u2014 but only after they have already found you on the map.',
+        'three. The website matters \u2014 but only after they have found you on Google Maps.',
         body_lead))
 
     s.append(P('Google Business Profile (GBP) \u2014 day-one work', h3_teal))
     s.append(bullet('Claim and verify both GBPs (Jones is partially claimed; Callus needs to be added).'))
-    s.append(bullet('Categorize precisely \u2014 primary plus all relevant secondaries (Excavating Contractor, '
-                    'Earthworks, General Contractor, Construction Services for Jones; Welder, Welding Supply, '
-                    'Custom Fabricator for Callus).'))
-    s.append(bullet('Service areas: every Utah county you actually work in, with named locality pages on '
-                    'the website to back them up.'))
-    s.append(bullet('Hours, contacts, attributes, accessibility, payment methods, languages \u2014 consistent '
-                    'across the web.'))
+    s.append(bullet('Categorize your primary and secondary services (Excavating Contractor, Earthworks, '
+                    'General Contractor, Construction Services for Jones; Welder, Welding Supply, '
+                    'Custom Fabricator).'))
+    s.append(bullet('List and claim all the service areas where you do business.'))
+    s.append(bullet('Ensure hours, contacts, attributes, accessibility, payment methods, and languages are '
+                    'consistent across both businesses.'))
     s.append(bullet('Add 30+ recent geo-tagged jobsite photos in batch, then continue adding 4\u20136 per month '
                     'consistently.'))
-    s.append(bullet('Review program: a text template to send to clients after every completed job, with a '
-                    'direct GBP link.'))
-    s.append(bullet('Owner replies (target within 48 hours) on every review, positive or negative.'))
+    s.append(bullet('Create a review program with a text template to send to clients after every completed '
+                    'job, with a direct GBP link.'))
+    s.append(bullet('Set up a process so you can respond to all reviews quickly, positive or negative.'))
 
     s.append(P('Technical SEO foundation', h3_teal))
     s.append(bullet('Add structured data tags to every relevant page (business, services, projects, FAQs) '
                     'so search engines can read your site cleanly.'))
     s.append(bullet('Tune every page for fast load times \u2014 optimized images, lazy loading, and modern fonts '
                     'so the site feels instant on a phone or laptop.'))
-    s.append(bullet('Smart internal linking: service pages connect to relevant project case studies, helping '
-                    'visitors and search engines find the right work.'))
-    s.append(bullet('Submit sitemaps and connect to the major search engines (Google, Bing) on day one so '
-                    'pages get indexed quickly.'))
-    s.append(bullet('Consistent business listings \u2014 name, address, and phone match across 30+ directories '
-                    '(BBB, AGC of Utah, Yelp, BuildZoom, Procore, and others).'))
+    s.append(bullet('Create smart internal linking so service pages connect to relevant project case '
+                    'studies, helping visitors and search engines find the right work.'))
+    s.append(bullet('Connect your sitemaps to the major search engines (Google, Bing) so pages get indexed '
+                    'quickly.'))
+    s.append(bullet('Ensure your business information is consistent across 30+ directories (BBB, AGC of '
+                    'Utah, Yelp, BuildZoom, Procore, and others).'))
 
     s.append(P('Target keywords \u2014 first wave', h3_teal))
     s.append(two_col([
