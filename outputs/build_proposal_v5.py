@@ -717,8 +717,7 @@ def build():
                     'shop/yard content, hiring posts, and short ownership notes.'))
     s.append(bullet('Employee advocacy: foremen, PMs, and ownership reshare from personal accounts to boost '
                     'social engagement and amplify reach.'))
-    s.append(bullet('Each month, send 50\u2013100 personalized connection requests on LinkedIn to potential '
-                    'clients, Utah GCs, owners\u2019 reps, developers, and public works project managers.'))
+    s.append(bullet('Each month, send 50\u2013100 personalized connection requests on LinkedIn to potential clients.'))
 
     s.append(P('Content pillars', h3))
     s.append(two_col([
