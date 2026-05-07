@@ -754,13 +754,13 @@ def build():
                     'month over month.'))
 
     s.append(P('Content engine', h3))
-    s.append(bullet('<b>Professional photography &amp; videography</b> \u2014 drone, jobsite, and shop coverage. '
-                    'Quarterly half-day shoots at active jobsites and the Callus shop, captured by our '
-                    'team and edited in-house. One shoot feeds 8\u201310 weeks of posts across both brands.'))
-    s.append(bullet('Shared content library (Dropbox or similar) so PMs and foremen can drop in raw '
-                    'photos and we do the editing.'))
-    s.append(bullet('Monthly performance review: top posts, follower growth, engagement, lead-source '
-                    'attribution where possible.'))
+    s.append(bullet('<b>We provide professional photography and videography.</b> Drone, jobsite, and shop '
+                    'coverage captured during quarterly half-day shoots, with one shoot feeding 8\u201310 weeks '
+                    'of posts across both brands.'))
+    s.append(bullet('<b>We engage your team so they can send us content easily.</b> Foremen and PMs drop '
+                    'in photos and short clips from the field, and we handle the editing.'))
+    s.append(bullet('<b>We run monthly performance reviews.</b> We look at top posts, follower growth, and '
+                    'engagement, then adjust each month so it keeps getting better.'))
 
     s.append(callout(
         'Realistic 12-month targets',
