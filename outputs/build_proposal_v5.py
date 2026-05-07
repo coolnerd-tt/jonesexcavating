@@ -629,20 +629,20 @@ def build():
     s.append(P('Page set', h3))
     s.append(two_col([
         P('<b>jonesexcavating.com</b>', body),
-        bullet('Home (banner, services, projects, callout)'),
-        bullet('Services (with sub-pages: excavation, shoring, deep foundation, trucking)'),
+        bullet('Home page content and menu'),
+        bullet('Company services and sub pages'),
         bullet('Projects (case studies, filterable)'),
-        bullet('About (history, leadership, equipment yard)'),
+        bullet('About (history, leadership, etc.)'),
         bullet('Careers'),
         bullet('Service areas'),
         bullet('Contact / Get a quote'),
     ], [
         P('<b>callusfabrication.com</b>', body),
-        bullet('Home (split banner, services, shop, projects)'),
-        bullet('Services (mobile welding, MIG/TIG/Stick, line boring, OFC-A)'),
+        bullet('Home page content and menu'),
+        bullet('Company services and sub pages'),
         bullet('Shop (capabilities, equipment, certifications)'),
         bullet('Projects (gallery)'),
-        bullet('About / family of companies'),
+        bullet('About'),
         bullet('Service areas'),
         bullet('Contact / 24-hour line'),
     ]))
