@@ -728,6 +728,7 @@ def build():
         bullet('Crew spotlights / safety wins'),
         bullet('Project case studies'),
         bullet('Industry commentary from leadership'),
+        bullet('Create a hype video'),
     ], [
         P('<b>Callus</b>', body),
         bullet('Welding before/after'),
@@ -735,6 +736,7 @@ def build():
         bullet('Same-day service moments'),
         bullet('Crew skill spotlights'),
         bullet('Quick how-it-was-done write-ups'),
+        bullet('Create a hype video'),
     ]))
 
     s.append(P('Instagram + Facebook', h3))
