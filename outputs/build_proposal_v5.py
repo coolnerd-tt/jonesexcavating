@@ -762,13 +762,129 @@ def build():
     s.append(bullet('<b>We run monthly performance reviews.</b> We look at top posts, follower growth, and '
                     'engagement, then adjust each month so it keeps getting better.'))
 
-    s.append(callout(
-        'Realistic 12-month targets',
-        '<b>Jones</b> \u2014 LinkedIn 331 \u2192 2,500+, Instagram 0 \u2192 800+, Facebook 0 \u2192 500+. &nbsp; '
-        '<b>Callus</b> \u2014 LinkedIn 0 \u2192 1,000+, Instagram 0 \u2192 1,000+, Facebook 0 \u2192 500+. &nbsp; '
-        'Combined cross-platform reach: 5\u201310\u00d7 current. Direct attributable inbound: '
-        '4\u20138 qualified leads per month per brand by month 9.',
-        bg=CHARCOAL, accent=ORANGE))
+    # \u2500\u2500 Realistic 12-month targets \u2014 custom dashboard panel \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+    tgt_eyebrow  = S('TgtEy', fontName='Helvetica-Bold', fontSize=8,
+                     textColor=ORANGE, leading=11, alignment=TA_CENTER)
+    tgt_title    = S('TgtTi', fontName='Helvetica-Bold', fontSize=18,
+                     textColor=WHITE, leading=22, alignment=TA_CENTER, spaceAfter=4)
+    tgt_brand_j  = S('TgtBJ', fontName='Helvetica-Bold', fontSize=12,
+                     textColor=ORANGE, leading=15, alignment=TA_LEFT)
+    tgt_brand_c  = S('TgtBC', fontName='Helvetica-Bold', fontSize=12,
+                     textColor=SPARK, leading=15, alignment=TA_LEFT)
+    tgt_plat     = S('TgtPl', fontName='Helvetica-Bold', fontSize=8,
+                     textColor=GRAY_500, leading=11, alignment=TA_LEFT)
+    tgt_from     = S('TgtFr', fontName='Helvetica', fontSize=10,
+                     textColor=GRAY_500, leading=13, alignment=TA_LEFT)
+    tgt_to       = S('TgtTo', fontName='Helvetica-Bold', fontSize=20,
+                     textColor=WHITE, leading=24, alignment=TA_LEFT)
+    tgt_arrow_o  = S('TgtAo', fontName='Helvetica-Bold', fontSize=14,
+                     textColor=ORANGE, leading=18, alignment=TA_CENTER)
+    tgt_arrow_s  = S('TgtAs', fontName='Helvetica-Bold', fontSize=14,
+                     textColor=SPARK, leading=18, alignment=TA_CENTER)
+    tgt_foot_lbl = S('TgtFL', fontName='Helvetica-Bold', fontSize=8,
+                     textColor=AMBER, leading=11, alignment=TA_CENTER)
+    tgt_foot_val = S('TgtFV', fontName='Helvetica-Bold', fontSize=14,
+                     textColor=WHITE, leading=18, alignment=TA_CENTER)
+
+    def metric_row(platform, from_n, to_n, arrow_style):
+        """One platform stat line: 'LinkedIn   331 \u2192 2,500+'."""
+        t = Table([[
+            P(platform.upper(), tgt_plat),
+            P(str(from_n), tgt_from),
+            P('\u2192', arrow_style),
+            P(str(to_n), tgt_to),
+        ]], colWidths=[0.8*inch, 0.5*inch, 0.25*inch, 1.0*inch])
+        t.setStyle(TableStyle([
+            ('VALIGN',(0,0),(-1,-1),'BOTTOM'),
+            ('TOPPADDING',(0,0),(-1,-1),4),
+            ('BOTTOMPADDING',(0,0),(-1,-1),4),
+            ('LEFTPADDING',(0,0),(-1,-1),0),
+            ('RIGHTPADDING',(0,0),(-1,-1),0),
+        ]))
+        return t
+
+    # Jones brand card
+    jones_card = Table([
+        [P('JONES', tgt_brand_j)],
+        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
+                    spaceBefore=4, spaceAfter=8)],
+        [metric_row('LinkedIn',  '331', '2,500+', tgt_arrow_o)],
+        [metric_row('Instagram', '0',   '800+',   tgt_arrow_o)],
+        [metric_row('Facebook',  '0',   '500+',   tgt_arrow_o)],
+    ], colWidths=[2.6*inch])
+    jones_card.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
+        ('LEFTPADDING',(0,0),(-1,-1),18),
+        ('RIGHTPADDING',(0,0),(-1,-1),18),
+        ('TOPPADDING',(0,0),(0,0),16),
+        ('BOTTOMPADDING',(0,-1),(-1,-1),12),
+        ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
+    ]))
+
+    # Callus brand card
+    callus_card = Table([
+        [P('CALLUS', tgt_brand_c)],
+        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
+                    spaceBefore=4, spaceAfter=8)],
+        [metric_row('LinkedIn',  '0', '1,000+', tgt_arrow_s)],
+        [metric_row('Instagram', '0', '1,000+', tgt_arrow_s)],
+        [metric_row('Facebook',  '0', '500+',   tgt_arrow_s)],
+    ], colWidths=[2.6*inch])
+    callus_card.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
+        ('LEFTPADDING',(0,0),(-1,-1),18),
+        ('RIGHTPADDING',(0,0),(-1,-1),18),
+        ('TOPPADDING',(0,0),(0,0),16),
+        ('BOTTOMPADDING',(0,-1),(-1,-1),12),
+        ('LINEBEFORE',(0,0),(0,-1), 3, SPARK),
+    ]))
+
+    # Two-column row of brand cards
+    cards_row = Table([[jones_card, '', callus_card]],
+                     colWidths=[2.85*inch, 0.2*inch, 2.85*inch])
+    cards_row.setStyle(TableStyle([
+        ('VALIGN',(0,0),(-1,-1),'TOP'),
+        ('LEFTPADDING',(0,0),(-1,-1),0),
+        ('RIGHTPADDING',(0,0),(-1,-1),0),
+        ('TOPPADDING',(0,0),(-1,-1),0),
+        ('BOTTOMPADDING',(0,0),(-1,-1),0),
+    ]))
+
+    # Bottom strip \u2014 combined metrics
+    foot_strip = Table([
+        [P('COMBINED REACH', tgt_foot_lbl),     '',   P('QUALIFIED LEADS / MONTH', tgt_foot_lbl)],
+        [P('5\u201310\u00d7 current', tgt_foot_val), '', P('4\u20138 per brand by month 9', tgt_foot_val)],
+    ], colWidths=[2.85*inch, 0.2*inch, 2.85*inch])
+    foot_strip.setStyle(TableStyle([
+        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+        ('TOPPADDING',(0,0),(-1,-1),5),
+        ('BOTTOMPADDING',(0,0),(-1,-1),5),
+        ('LEFTPADDING',(0,0),(-1,-1),0),
+        ('RIGHTPADDING',(0,0),(-1,-1),0),
+    ]))
+
+    # Outer wrapper \u2014 full panel with eyebrow + title + cards + footer
+    panel = Table([
+        [P('REALISTIC 12-MONTH TARGETS', tgt_eyebrow)],
+        [P('Where Jones and Callus land by month 12.', tgt_title)],
+        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
+                    spaceBefore=2, spaceAfter=14)],
+        [cards_row],
+        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
+                    spaceBefore=14, spaceAfter=10)],
+        [foot_strip],
+    ], colWidths=[CONTENT_W])
+    panel.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(-1,-1), CHARCOAL),
+        ('LEFTPADDING',(0,0),(-1,-1),18),
+        ('RIGHTPADDING',(0,0),(-1,-1),18),
+        ('TOPPADDING',(0,0),(0,0),16),
+        ('BOTTOMPADDING',(0,-1),(-1,-1),16),
+        ('TOPPADDING',(0,1),(-1,-1),0),
+        ('BOTTOMPADDING',(0,0),(-1,-2),0),
+        ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
+    ]))
+    s.append(panel)
     s.append(PageBreak())
 
     # ═══ 06 THE MARKETING OS ═════════════════════════════════════════════════
