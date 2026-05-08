@@ -825,9 +825,9 @@ def build():
         [P('JONES', tgt_brand_j)],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
                     spaceBefore=4, spaceAfter=8)],
-        [metric_row('LinkedIn',  '331', '1,500', tgt_arrow_o, tgt_growth_o)],
+        [metric_row('LinkedIn',  '331', '1,400', tgt_arrow_o, tgt_growth_o)],
         [metric_row('Instagram', '519', '800+',  tgt_arrow_o, tgt_growth_o)],
-        [metric_row('Facebook',  '171', '500+',  tgt_arrow_o, tgt_growth_o)],
+        [metric_row('Facebook',  '171', '350+',  tgt_arrow_o, tgt_growth_o)],
     ], colWidths=[2.85*inch])
     jones_card.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
@@ -843,9 +843,9 @@ def build():
         [P('CALLUS', tgt_brand_c)],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
                     spaceBefore=4, spaceAfter=8)],
-        [metric_row('LinkedIn',  '331', '1,000', tgt_arrow_s, tgt_growth_s)],
-        [metric_row('Instagram', '102', '1,000', tgt_arrow_s, tgt_growth_s)],
-        [metric_row('Facebook',  '54',  '500+',  tgt_arrow_s, tgt_growth_s)],
+        [metric_row('LinkedIn',  '331', '700',   tgt_arrow_s, tgt_growth_s)],
+        [metric_row('Instagram', '102', '500',   tgt_arrow_s, tgt_growth_s)],
+        [metric_row('Facebook',  '54',  '300',   tgt_arrow_s, tgt_growth_s)],
     ], colWidths=[2.85*inch])
     callus_card.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
