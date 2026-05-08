@@ -762,141 +762,166 @@ def build():
     s.append(bullet('<b>We run monthly performance reviews.</b> We look at top posts, follower growth, and '
                     'engagement, then adjust each month so it keeps getting better.'))
 
-    # \u2500\u2500 Realistic 12-month targets \u2014 custom dashboard panel \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+    # \u2500\u2500 Realistic 12-month targets \u2014 comparison dashboard panel \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
     tgt_eyebrow  = S('TgtEy', fontName='Helvetica-Bold', fontSize=8,
                      textColor=ORANGE, leading=11, alignment=TA_CENTER)
     tgt_title    = S('TgtTi', fontName='Helvetica-Bold', fontSize=18,
-                     textColor=WHITE, leading=22, alignment=TA_CENTER, spaceAfter=4)
-    tgt_brand_j  = S('TgtBJ', fontName='Helvetica-Bold', fontSize=12,
-                     textColor=ORANGE, leading=15, alignment=TA_LEFT)
-    tgt_brand_c  = S('TgtBC', fontName='Helvetica-Bold', fontSize=12,
-                     textColor=SPARK, leading=15, alignment=TA_LEFT)
-    tgt_plat     = S('TgtPl', fontName='Helvetica-Bold', fontSize=8,
-                     textColor=GRAY_500, leading=11, alignment=TA_LEFT)
-    tgt_from     = S('TgtFr', fontName='Helvetica', fontSize=10,
-                     textColor=GRAY_500, leading=13, alignment=TA_LEFT)
-    tgt_to       = S('TgtTo', fontName='Helvetica-Bold', fontSize=20,
-                     textColor=WHITE, leading=24, alignment=TA_LEFT)
-    tgt_arrow_o  = S('TgtAo', fontName='Helvetica-Bold', fontSize=14,
-                     textColor=ORANGE, leading=18, alignment=TA_CENTER)
-    tgt_arrow_s  = S('TgtAs', fontName='Helvetica-Bold', fontSize=14,
-                     textColor=SPARK, leading=18, alignment=TA_CENTER)
+                     textColor=WHITE, leading=22, alignment=TA_CENTER, spaceAfter=2)
+    tgt_subtitle = S('TgtSu', fontName='Helvetica-Oblique', fontSize=10,
+                     textColor=GRAY_300, leading=13, alignment=TA_CENTER)
+    tgt_col_lbl  = S('TgtCL', fontName='Helvetica-Bold', fontSize=9,
+                     textColor=GRAY_300, leading=12, alignment=TA_CENTER)
+    tgt_col_lbl_with = S('TgtCLw', fontName='Helvetica-Bold', fontSize=9,
+                     textColor=ORANGE, leading=12, alignment=TA_CENTER)
+    tgt_brand_j  = S('TgtBJ', fontName='Helvetica-Bold', fontSize=10,
+                     textColor=ORANGE, leading=13, alignment=TA_LEFT)
+    tgt_brand_c  = S('TgtBC', fontName='Helvetica-Bold', fontSize=10,
+                     textColor=SPARK, leading=13, alignment=TA_LEFT)
+    tgt_plat     = S('TgtPl', fontName='Helvetica-Bold', fontSize=7.5,
+                     textColor=GRAY_500, leading=10, alignment=TA_LEFT)
+    tgt_to_dim   = S('TgtTd', fontName='Helvetica-Bold', fontSize=14,
+                     textColor=GRAY_300, leading=18, alignment=TA_RIGHT)
+    tgt_to_full  = S('TgtTf', fontName='Helvetica-Bold', fontSize=16,
+                     textColor=WHITE, leading=20, alignment=TA_RIGHT)
+    tgt_lift     = S('TgtLf', fontName='Helvetica-Bold', fontSize=9,
+                     textColor=AMBER, leading=12, alignment=TA_CENTER)
     tgt_foot_lbl = S('TgtFL', fontName='Helvetica-Bold', fontSize=8,
                      textColor=AMBER, leading=11, alignment=TA_CENTER)
     tgt_foot_val = S('TgtFV', fontName='Helvetica-Bold', fontSize=14,
                      textColor=WHITE, leading=18, alignment=TA_CENTER)
 
-    tgt_growth_o = S('TgtGrO', fontName='Helvetica-Bold', fontSize=9,
-                     textColor=ORANGE, leading=12, alignment=TA_RIGHT)
-    tgt_growth_s = S('TgtGrS', fontName='Helvetica-Bold', fontSize=9,
-                     textColor=SPARK, leading=12, alignment=TA_RIGHT)
-
-    def _growth(from_n, to_n):
+    def _ratio(without_n, with_n):
         try:
-            f = int(str(from_n).replace(',', '').replace('+', ''))
-            t = int(str(to_n).replace(',', '').replace('+', ''))
-            if f <= 0:
-                return 'new'
-            return f'+{round((t - f) / f * 100)}%'
+            w = int(str(without_n).replace(',', '').replace('+', ''))
+            wi = int(str(with_n).replace(',', '').replace('+', ''))
+            if w <= 0:
+                return ''
+            return f'{wi / w:.2f}\u00d7'
         except Exception:
             return ''
 
-    def metric_row(platform, from_n, to_n, arrow_style, growth_style):
-        """One platform stat line: 'LinkedIn   331 \u2192 2,500+   +353%'."""
-        growth = _growth(from_n, to_n)
+    def comp_row(platform, without_n, with_n, brand_color):
+        """One platform comparison row: PLATFORM | without | with | lift."""
+        plat_style = S(f'pl{brand_color.hexval()}',
+                       fontName='Helvetica-Bold', fontSize=8.5,
+                       textColor=brand_color, leading=11, alignment=TA_LEFT)
         t = Table([[
-            P(platform.upper(), tgt_plat),
-            P(str(from_n), tgt_from),
-            P('\u2192', arrow_style),
-            P(str(to_n), tgt_to),
-            P(growth, growth_style),
-        ]], colWidths=[0.7*inch, 0.32*inch, 0.18*inch, 0.7*inch, 0.55*inch])
+            P(platform.upper(), plat_style),
+            P(str(without_n), tgt_to_dim),
+            P(str(with_n),    tgt_to_full),
+            P(_ratio(without_n, with_n), tgt_lift),
+        ]], colWidths=[1.05*inch, 1.0*inch, 1.05*inch, 0.6*inch])
         t.setStyle(TableStyle([
-            ('VALIGN',(0,0),(-1,-1),'BOTTOM'),
-            ('TOPPADDING',(0,0),(-1,-1),4),
-            ('BOTTOMPADDING',(0,0),(-1,-1),4),
+            ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+            ('TOPPADDING',(0,0),(-1,-1),3),
+            ('BOTTOMPADDING',(0,0),(-1,-1),3),
             ('LEFTPADDING',(0,0),(-1,-1),0),
-            ('RIGHTPADDING',(0,0),(-1,-1),0),
+            ('RIGHTPADDING',(0,0),(-1,-1),6),
         ]))
         return t
 
-    # Jones brand card
-    jones_card = Table([
+    # Header row above the comparison table
+    header_row = Table([[
+        P('PLATFORM', tgt_plat),
+        P('WITHOUT', tgt_col_lbl),
+        P('WITH MOS', tgt_col_lbl_with),
+        P('LIFT', tgt_col_lbl),
+    ]], colWidths=[1.05*inch, 1.0*inch, 1.05*inch, 0.6*inch])
+    header_row.setStyle(TableStyle([
+        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+        ('TOPPADDING',(0,0),(-1,-1),3),
+        ('BOTTOMPADDING',(0,0),(-1,-1),6),
+        ('LEFTPADDING',(0,0),(-1,-1),0),
+        ('RIGHTPADDING',(0,0),(-1,-1),6),
+        ('LINEBELOW',(0,0),(-1,-1),0.5, GRAY_700),
+    ]))
+
+    # Jones comparison block
+    jones_block = Table([
         [P('JONES', tgt_brand_j)],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=4, spaceAfter=8)],
-        [metric_row('LinkedIn',  '331', '1,100', tgt_arrow_o, tgt_growth_o)],
-        [metric_row('Instagram', '519', '750',   tgt_arrow_o, tgt_growth_o)],
-        [metric_row('Facebook',  '171', '300',   tgt_arrow_o, tgt_growth_o)],
-    ], colWidths=[2.85*inch])
-    jones_card.setStyle(TableStyle([
+                    spaceBefore=2, spaceAfter=4)],
+        [header_row],
+        [comp_row('LinkedIn',  '600', '1,100', ORANGE)],
+        [comp_row('Instagram', '600', '750',   ORANGE)],
+        [comp_row('Facebook',  '215', '300',   ORANGE)],
+    ], colWidths=[3.85*inch])
+    jones_block.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
-        ('LEFTPADDING',(0,0),(-1,-1),12),
-        ('RIGHTPADDING',(0,0),(-1,-1),12),
-        ('TOPPADDING',(0,0),(0,0),16),
-        ('BOTTOMPADDING',(0,-1),(-1,-1),12),
+        ('LEFTPADDING',(0,0),(-1,-1),14),
+        ('RIGHTPADDING',(0,0),(-1,-1),14),
+        ('TOPPADDING',(0,0),(0,0),12),
+        ('BOTTOMPADDING',(0,-1),(-1,-1),10),
         ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
     ]))
 
-    # Callus brand card
-    callus_card = Table([
+    # Callus comparison block \u2014 header_row needs its own instance because tables can't be reused
+    header_row_2 = Table([[
+        P('PLATFORM', tgt_plat),
+        P('WITHOUT', tgt_col_lbl),
+        P('WITH MOS', tgt_col_lbl_with),
+        P('LIFT', tgt_col_lbl),
+    ]], colWidths=[1.05*inch, 1.0*inch, 1.05*inch, 0.6*inch])
+    header_row_2.setStyle(TableStyle([
+        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+        ('TOPPADDING',(0,0),(-1,-1),3),
+        ('BOTTOMPADDING',(0,0),(-1,-1),6),
+        ('LEFTPADDING',(0,0),(-1,-1),0),
+        ('RIGHTPADDING',(0,0),(-1,-1),6),
+        ('LINEBELOW',(0,0),(-1,-1),0.5, GRAY_700),
+    ]))
+
+    callus_block = Table([
         [P('CALLUS', tgt_brand_c)],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=4, spaceAfter=8)],
-        [metric_row('LinkedIn',  '331', '550',   tgt_arrow_s, tgt_growth_s)],
-        [metric_row('Instagram', '102', '350',   tgt_arrow_s, tgt_growth_s)],
-        [metric_row('Facebook',  '54',  '200',   tgt_arrow_s, tgt_growth_s)],
-    ], colWidths=[2.85*inch])
-    callus_card.setStyle(TableStyle([
+                    spaceBefore=2, spaceAfter=4)],
+        [header_row_2],
+        [comp_row('LinkedIn',  '400', '550', SPARK)],
+        [comp_row('Instagram', '190', '350', SPARK)],
+        [comp_row('Facebook',  '100', '200', SPARK)],
+    ], colWidths=[3.85*inch])
+    callus_block.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
-        ('LEFTPADDING',(0,0),(-1,-1),12),
-        ('RIGHTPADDING',(0,0),(-1,-1),12),
-        ('TOPPADDING',(0,0),(0,0),16),
-        ('BOTTOMPADDING',(0,-1),(-1,-1),12),
+        ('LEFTPADDING',(0,0),(-1,-1),14),
+        ('RIGHTPADDING',(0,0),(-1,-1),14),
+        ('TOPPADDING',(0,0),(0,0),12),
+        ('BOTTOMPADDING',(0,-1),(-1,-1),10),
         ('LINEBEFORE',(0,0),(0,-1), 3, SPARK),
     ]))
 
-    # Two-column row of brand cards
-    cards_row = Table([[jones_card, '', callus_card]],
-                     colWidths=[2.85*inch, 0.2*inch, 2.85*inch])
-    cards_row.setStyle(TableStyle([
-        ('VALIGN',(0,0),(-1,-1),'TOP'),
-        ('LEFTPADDING',(0,0),(-1,-1),0),
-        ('RIGHTPADDING',(0,0),(-1,-1),0),
-        ('TOPPADDING',(0,0),(-1,-1),0),
-        ('BOTTOMPADDING',(0,0),(-1,-1),0),
-    ]))
-
-    # Bottom strip \u2014 combined metrics
+    # Bottom strip \u2014 average lift
     foot_strip = Table([
-        [P('COMBINED REACH', tgt_foot_lbl),     '',   P('QUALIFIED LEADS / MONTH', tgt_foot_lbl)],
-        [P('5\u201310\u00d7 current', tgt_foot_val), '', P('4\u20138 per brand by month 9', tgt_foot_val)],
-    ], colWidths=[2.85*inch, 0.2*inch, 2.85*inch])
+        [P('AVERAGE LIFT WITH MARKETING OS', tgt_foot_lbl)],
+        [P('1.6\u00d7 more followers across both brands', tgt_foot_val)],
+    ], colWidths=[CONTENT_W - 36])
     foot_strip.setStyle(TableStyle([
         ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
-        ('TOPPADDING',(0,0),(-1,-1),5),
-        ('BOTTOMPADDING',(0,0),(-1,-1),5),
+        ('TOPPADDING',(0,0),(-1,-1),4),
+        ('BOTTOMPADDING',(0,0),(-1,-1),4),
         ('LEFTPADDING',(0,0),(-1,-1),0),
         ('RIGHTPADDING',(0,0),(-1,-1),0),
     ]))
 
-    # Outer wrapper \u2014 full panel with eyebrow + title + cards + footer
+    # Outer wrapper \u2014 full panel with eyebrow + title + comparison blocks + footer
     panel = Table([
         [P('REALISTIC 12-MONTH TARGETS', tgt_eyebrow)],
-        [P('Where Jones and Callus land by month 12.', tgt_title)],
+        [P('With and without the Marketing Operating System', tgt_title)],
+        [P('How far Jones and Callus get on the static buildout alone vs. with the full system running.', tgt_subtitle)],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=2, spaceAfter=14)],
-        [cards_row],
+                    spaceBefore=8, spaceAfter=10)],
+        [jones_block],
+        [Spacer(1, 8)],
+        [callus_block],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=14, spaceAfter=10)],
+                    spaceBefore=10, spaceAfter=8)],
         [foot_strip],
     ], colWidths=[CONTENT_W])
     panel.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), CHARCOAL),
         ('LEFTPADDING',(0,0),(-1,-1),18),
         ('RIGHTPADDING',(0,0),(-1,-1),18),
-        ('TOPPADDING',(0,0),(0,0),16),
-        ('BOTTOMPADDING',(0,-1),(-1,-1),16),
+        ('TOPPADDING',(0,0),(0,0),14),
+        ('BOTTOMPADDING',(0,-1),(-1,-1),14),
         ('TOPPADDING',(0,1),(-1,-1),0),
         ('BOTTOMPADDING',(0,0),(-1,-2),0),
         ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
@@ -1145,15 +1170,28 @@ def build():
     s.append(price_row('Content shoot + initial library',
                        '$2,500',
                        'Half-day jobsite and shop photo/video, plus a 90-day post library.'))
+    s.append(price_row('Build phase total',
+                       '$30,000',
+                       'One-time. Static buildout: brand, websites, SEO foundation, and content library.',
+                       highlight=True))
+
+    s.append(sp(8))
+    s.append(P('Marketing Operating System', h2))
+    s.append(P(
+        'A separate, one-time build that delivers the agents, approval queue, and integrations. '
+        'Operated under a monthly retainer (three tiers below) that covers ongoing support and '
+        'maintenance.',
+        body))
+
     s.append(price_row('Marketing Operating System build',
                        '$12,000',
                        'Five agents, central scheduler, approval queue, brand-voice training, and integrations.'))
-    s.append(price_row('Build phase total',
+    s.append(price_row('Combined build total',
                        '$42,000',
-                       'One-time. 40% on signature, 30% at design approval, 30% at launch.',
+                       'Build phase ($30,000) plus Marketing Operating System build ($12,000). 40% on signature, 30% at design approval, 30% at launch.',
                        highlight=True))
 
-    s.append(P('Ongoing: three tiers', h2))
+    s.append(P('Marketing Operating System retainer: three tiers', h2))
     s.append(P(
         'Pick the tier that matches how hands-on you want to be. You can step down a tier any time '
         'after month 3 with 30 days\u2019 notice.',
