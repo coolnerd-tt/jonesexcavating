@@ -786,14 +786,31 @@ def build():
     tgt_foot_val = S('TgtFV', fontName='Helvetica-Bold', fontSize=14,
                      textColor=WHITE, leading=18, alignment=TA_CENTER)
 
-    def metric_row(platform, from_n, to_n, arrow_style):
-        """One platform stat line: 'LinkedIn   331 \u2192 2,500+'."""
+    tgt_growth_o = S('TgtGrO', fontName='Helvetica-Bold', fontSize=9,
+                     textColor=ORANGE, leading=12, alignment=TA_RIGHT)
+    tgt_growth_s = S('TgtGrS', fontName='Helvetica-Bold', fontSize=9,
+                     textColor=SPARK, leading=12, alignment=TA_RIGHT)
+
+    def _growth(from_n, to_n):
+        try:
+            f = int(str(from_n).replace(',', '').replace('+', ''))
+            t = int(str(to_n).replace(',', '').replace('+', ''))
+            if f <= 0:
+                return 'new'
+            return f'+{round((t - f) / f * 100)}%'
+        except Exception:
+            return ''
+
+    def metric_row(platform, from_n, to_n, arrow_style, growth_style):
+        """One platform stat line: 'LinkedIn   331 \u2192 2,500+   +353%'."""
+        growth = _growth(from_n, to_n)
         t = Table([[
             P(platform.upper(), tgt_plat),
             P(str(from_n), tgt_from),
             P('\u2192', arrow_style),
             P(str(to_n), tgt_to),
-        ]], colWidths=[0.8*inch, 0.5*inch, 0.25*inch, 1.0*inch])
+            P(growth, growth_style),
+        ]], colWidths=[0.7*inch, 0.32*inch, 0.18*inch, 0.7*inch, 0.55*inch])
         t.setStyle(TableStyle([
             ('VALIGN',(0,0),(-1,-1),'BOTTOM'),
             ('TOPPADDING',(0,0),(-1,-1),4),
@@ -808,14 +825,14 @@ def build():
         [P('JONES', tgt_brand_j)],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
                     spaceBefore=4, spaceAfter=8)],
-        [metric_row('LinkedIn',  '331', '2,500+', tgt_arrow_o)],
-        [metric_row('Instagram', '0',   '800+',   tgt_arrow_o)],
-        [metric_row('Facebook',  '0',   '500+',   tgt_arrow_o)],
-    ], colWidths=[2.6*inch])
+        [metric_row('LinkedIn',  '331', '1,500', tgt_arrow_o, tgt_growth_o)],
+        [metric_row('Instagram', '519', '800+',  tgt_arrow_o, tgt_growth_o)],
+        [metric_row('Facebook',  '171', '500+',  tgt_arrow_o, tgt_growth_o)],
+    ], colWidths=[2.85*inch])
     jones_card.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
-        ('LEFTPADDING',(0,0),(-1,-1),18),
-        ('RIGHTPADDING',(0,0),(-1,-1),18),
+        ('LEFTPADDING',(0,0),(-1,-1),12),
+        ('RIGHTPADDING',(0,0),(-1,-1),12),
         ('TOPPADDING',(0,0),(0,0),16),
         ('BOTTOMPADDING',(0,-1),(-1,-1),12),
         ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
@@ -826,14 +843,14 @@ def build():
         [P('CALLUS', tgt_brand_c)],
         [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
                     spaceBefore=4, spaceAfter=8)],
-        [metric_row('LinkedIn',  '0', '1,000+', tgt_arrow_s)],
-        [metric_row('Instagram', '0', '1,000+', tgt_arrow_s)],
-        [metric_row('Facebook',  '0', '500+',   tgt_arrow_s)],
-    ], colWidths=[2.6*inch])
+        [metric_row('LinkedIn',  '331', '1,000', tgt_arrow_s, tgt_growth_s)],
+        [metric_row('Instagram', '102', '1,000', tgt_arrow_s, tgt_growth_s)],
+        [metric_row('Facebook',  '54',  '500+',  tgt_arrow_s, tgt_growth_s)],
+    ], colWidths=[2.85*inch])
     callus_card.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
-        ('LEFTPADDING',(0,0),(-1,-1),18),
-        ('RIGHTPADDING',(0,0),(-1,-1),18),
+        ('LEFTPADDING',(0,0),(-1,-1),12),
+        ('RIGHTPADDING',(0,0),(-1,-1),12),
         ('TOPPADDING',(0,0),(0,0),16),
         ('BOTTOMPADDING',(0,-1),(-1,-1),12),
         ('LINEBEFORE',(0,0),(0,-1), 3, SPARK),
