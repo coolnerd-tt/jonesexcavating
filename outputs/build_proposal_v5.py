@@ -1085,7 +1085,7 @@ def build():
     s.append(sp(14))
     s.append(P(
         'Built on modern technology with direct connections to LinkedIn, Google Business Profile, '
-        'and Meta. Self-hosted, with no monthly subscription lock-in.',
+        'and Meta.',
         body))
 
     s.append(P('Three-phase ownership transfer', h2))
