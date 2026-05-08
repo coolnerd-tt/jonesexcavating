@@ -1205,7 +1205,7 @@ def build():
                        '$850 / mo',
                        'Recommended for months 4\u20136. Office manager runs the queue while we tune the system.'))
     s.append(price_row('Self-serve: system maintenance',
-                       '$350 / mo',
+                       'up to $350 / mo<br/><font size="8">$150/hour, whichever is less</font>',
                        'Month 7+. Quarterly strategy review, voice updates, and integration patches.'))
     s.append(sp(6))
     s.append(P(
