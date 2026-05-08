@@ -928,18 +928,18 @@ def build():
                     'schedule, and track performance without custom engineering.'))
     s.append(bullet('Google, Meta, and LinkedIn now offer stable connections so we can publish to them '
                     'reliably, without workarounds.'))
-    s.append(bullet('The result: marketing work that used to require a part-time hire can run on a '
-                    '15-minute-a-day approval routine for an office manager.'))
+    s.append(bullet('The result: <b>MARKETING WORK</b> that used to require a part-time hire can run on '
+                    'a 15-minute-a-day approval routine for an office manager.'))
 
-    s.append(P('The five agents', h2))
+    s.append(P('Your five AI agents', h2))
     s.append(P(
-        'Five specialized agents handle distinct jobs. Each one drafts. A human approves. '
+        'Five specialized AI agents handle distinct jobs. Each one drafts. A human approves. '
         'Nothing publishes without a click.',
         body))
 
     s.append(P('Field-to-Content Agent', h3))
     s.append(P(
-        'A foreman or PM texts a number with photos and a short note ("Finished the Lehi sewer '
+        'A foreman or PM sends photos and a short note via text message ("Finished the Lehi sewer '
         'tie-in, biggest pour of the year, 14 hours"). The agent generates a LinkedIn post, '
         'Google Business Profile post, Instagram caption, blog snippet, and internal newsletter '
         'blurb, all in Jones or Callus voice. Office manager taps approve.',
@@ -947,25 +947,26 @@ def build():
 
     s.append(P('Reputation Agent', h3))
     s.append(P(
-        'Watches Google reviews and Facebook recommendations across both brands. Drafts a brand-voice '
-        'reply within hours, tuned to the rating: gracious for 5-star, measured with a private '
-        'resolution offer for 1- and 2-star. Office manager approves and the reply posts.',
+        'This agent watches your Google and Facebook reviews on both brands. When a new review '
+        'comes in, it drafts a reply in your brand voice and adjusts the tone to match the rating. '
+        'A 5-star review gets a friendly thank-you. A 1- or 2-star review gets a measured response '
+        'with a private offer to resolve the issue. The office manager approves and the reply posts.',
         body))
 
     s.append(P('SEO Content Agent', h3))
     s.append(P(
-        'Each month, the agent pulls keyword movement, identifies one or two service-area pages or '
-        'blog posts that would close ranking gaps with competitors, drafts the full page, and queues '
-        'it for review. Closes the gap between you and your competitors over 12 months without a '
-        'copywriter.',
+        'Each month, this agent looks at how your search rankings are changing, finds one or two '
+        'pages or blog posts that would help you compete better in your service areas, drafts the '
+        'full content, and sends it to you for approval. Over 12 months, this closes the search '
+        'gap between you and your competitors without hiring a copywriter.',
         body))
 
     s.append(P('Lead Triage Agent', h3))
     s.append(P(
-        'Sits behind the website contact form and an optional site chat widget. Classifies inbound '
-        'inquiries (excavation, fabrication, spam, or general), pulls out contact info and project '
-        'signals, drafts an internal message alert and a 3-line auto-reply. Routes hot leads '
-        'directly to estimating in under a minute.',
+        'This agent classifies inbound inquiries into excavation, fabrication, spam, and general '
+        'categories. It extracts contact info and potential project info, then drafts an internal '
+        'message alert and a 3-line auto-reply. Hot leads are routed directly to you in under a '
+        'minute.',
         body))
 
     s.append(P('Orchestrator + Approval Queue', h3))
