@@ -901,7 +901,7 @@ def build():
         'The Marketing Operating System is a custom-built system that automates roughly 80% of the '
         'ongoing marketing work: social posts, review replies, SEO content, and lead triage. A human '
         '(you) approves every item before it publishes. We build it, train it on your brand voice, '
-        'and hand it over. After 90 days you own a working system, not an agency dependency.',
+        'and hand it over. After 90 days you have a working system, not an agency dependency.',
         body))
 
     s.append(P('Why this is possible now', h2))
