@@ -1168,10 +1168,16 @@ def build():
                        '$3,500',
                        'Google Business Profile setup, structured data, business listings, technical audit, on-page work.'))
     s.append(price_row('Content shoot + initial library',
-                       '$2,500',
-                       'Half-day jobsite and shop photo/video, plus a 90-day post library.'))
+                       '$8,000',
+                       '3-day shoot at Jones sites and 1-day shoot at Callus shop. Photo and video, plus a 90-day post library.'))
+    s.append(price_row('Hype video: Jones',
+                       '$1,000',
+                       'Branded hype video edited from shoot footage. ~10 hours of editing.'))
+    s.append(price_row('Hype video: Callus',
+                       '$1,000',
+                       'Branded hype video edited from shoot footage. ~10 hours of editing.'))
     s.append(price_row('Build phase total',
-                       '$30,000',
+                       '$37,500',
                        'One-time. Static buildout: brand, websites, SEO foundation, and content library.',
                        highlight=True))
 
@@ -1187,8 +1193,8 @@ def build():
                        '$12,000',
                        'Five agents, central scheduler, approval queue, brand-voice training, and integrations.'))
     s.append(price_row('Combined build total',
-                       '$42,000',
-                       'Build phase ($30,000) plus Marketing Operating System build ($12,000). 40% on signature, 30% at design approval, 30% at launch.',
+                       '$49,500',
+                       'Build phase ($37,500) plus Marketing Operating System build ($12,000). 40% on signature, 30% at design approval, 30% at launch.',
                        highlight=True))
 
     s.append(P('Marketing Operating System retainer: three tiers', h2))
