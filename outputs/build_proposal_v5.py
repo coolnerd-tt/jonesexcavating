@@ -220,7 +220,7 @@ def phase_card_basic(num, title, weeks, items, bg=GRAY_50, accent=ORANGE):
     it_s = S('pi2', fontName='Helvetica',     fontSize=8.5, textColor=GRAY_700, leading=12)
     items_html = '<br/>'.join([f'\u2022 {x}' for x in items])
     data = [[P(num, ph_s), P(title, ti_s), P(weeks.upper(), wk_s), P(items_html, it_s)]]
-    t = Table(data, colWidths=[0.6*inch, 1.4*inch, 0.9*inch, 3.7*inch])
+    t = Table(data, colWidths=[0.85*inch, 1.4*inch, 0.95*inch, 3.4*inch])
     t.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), bg),
         ('TOPPADDING',(0,0),(-1,-1),12),
@@ -556,6 +556,8 @@ def build():
         'qualified traffic to the new website.',
         body))
 
+    s.append(PageBreak())
+
     s.append(comp_table([
         ['Benchmark',                                           'Strong',    'Typical',   'Gap'],
         ['Google review count (regional civil contractor)',     '100+',      '20\u201380','&lt;10'],
@@ -626,6 +628,7 @@ def build():
                     'its services, and its projects, putting you in front of buyers searching for '
                     'excavation work right now.'))
 
+    s.append(PageBreak())
     s.append(P('Page set', h3))
     s.append(two_col([
         P('<b>jonesexcavating.com</b>', body),
@@ -926,6 +929,7 @@ def build():
         ('BOTTOMPADDING',(0,0),(-1,-2),0),
         ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
     ]))
+    s.append(PageBreak())
     s.append(panel)
     s.append(PageBreak())
 
@@ -994,6 +998,7 @@ def build():
         'minute.',
         body))
 
+    s.append(PageBreak())
     s.append(P('Orchestrator + Approval Queue', h3))
     s.append(P(
         'A central scheduler routes events to the right agent and lands all drafts in a single '
@@ -1138,11 +1143,10 @@ def build():
     s.append(sp(10))
     s.append(callout(
         'What you own at the end',
-        'You own all your data, content, brand voice configuration, and historical drafts. The '
-        'underlying Marketing Operating System (the agents, prompts, and code) stays our intellectual '
-        'property, with a perpetual license for you to operate it as long as you are on a retainer '
-        'tier, including the $350/mo Self-serve tier. Move on whenever you want. Your data, content, '
-        'and configuration come with you.',
+        'You own all your data, content, brand identity, and historical drafts. To keep operating '
+        'the Marketing Operating System, you can stay on the $350/mo Self-serve retainer or pay '
+        '$150/hour for support, whichever is less. Move on whenever you want, and your data, '
+        'content, and brand work come with you.',
         bg=CHARCOAL, accent=ORANGE))
     s.append(PageBreak())
 
@@ -1228,7 +1232,7 @@ def build():
         it_s = S('pi', fontName='Helvetica',     fontSize=8.5, textColor=GRAY_700, leading=12)
         items_html = '<br/>'.join([f'\u2022 {x}' for x in items])
         data = [[P(num, ph_s), P(title, ti_s), P(weeks.upper(), wk_s), P(items_html, it_s)]]
-        t = Table(data, colWidths=[0.5*inch, 1.7*inch, 0.9*inch, 3.5*inch])
+        t = Table(data, colWidths=[0.55*inch, 1.65*inch, 1.0*inch, 3.4*inch])
         t.setStyle(TableStyle([
             ('BACKGROUND',(0,0),(-1,-1), bg),
             ('TOPPADDING',(0,0),(-1,-1),12),
@@ -1264,7 +1268,7 @@ def build():
         kicker='What we need to start, and when we can start.'))
 
     s.append(P('Approvals required', h3))
-    s.append(bullet('Sign-off on this proposal (this PDF and a brief MSA).'))
+    s.append(bullet('Sign-off on this proposal (this PDF and a brief Master Service Agreement).'))
     s.append(bullet('Decision on Callus direction. The Spark direction is the recommended path '
                     'and what the website concept reflects today.'))
     s.append(bullet('Designated point of contact at each company for weekly check-ins.'))
