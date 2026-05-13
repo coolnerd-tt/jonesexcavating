@@ -608,14 +608,14 @@ def build():
 
     s.append(P('Callus Fabrication \u2014 Brand build (Spark direction)', h3_spark))
     s.append(P(
-        'Callus came to us with a solid starting point. We refined it into the Spark direction: '
+        'Callus has a solid starting point. We refined it into the Spark direction: '
         'an industrial badge feel, dark steel tones, a glove-and-spark mark, and rugged headline '
         'type. The brand speaks directly to the people who hire welders, including GCs, plant '
         'managers, and foremen working by the hour or by the project.',
         body))
     s.append(bullet('Logo: glove + spark mark, with horizontal and vertical options.'))
     s.append(bullet('Tagline: &quot;Built tough. Welded right.&quot;'))
-    s.append(bullet('Family link: Callus carries a &quot;Part of the Jones Family&quot; line in the banner, '
+    s.append(bullet('Family link: Callus carries a &quot;proud part of the Jones Excavating family&quot; line in the banner, '
                     'about, and footer \u2014 borrowing trust without diluting the new brand.'))
 
     s.append(P('Web build \u2014 both sites', h2))
