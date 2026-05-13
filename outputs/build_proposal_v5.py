@@ -717,7 +717,7 @@ def build():
 
     # ═══ 05 SOCIAL & CONTENT ═════════════════════════════════════════════════
     s.append(section_header(5, 'Social &amp; Content',
-        kicker='Where the competition already lives.'))
+        kicker='Where the competition already lives, and where Jones and Callus can catch up fastest.'))
 
     s.append(P('LinkedIn \u2014 the priority channel', h3))
     s.append(bullet('We will refresh the Jones LinkedIn page (banner, about copy, and post cadence) '
@@ -733,7 +733,7 @@ def build():
         P('<b>Jones</b>', body),
         bullet('Jobsite milestones'),
         bullet('Video and photo action shots'),
-        bullet('Equipment in action (drone, B-roll)'),
+        bullet('Equipment in action (drone, video)'),
         bullet('Crew spotlights / safety wins'),
         bullet('Project case studies'),
         bullet('Industry commentary from leadership'),
