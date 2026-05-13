@@ -662,7 +662,7 @@ def build():
         kicker='The highest-leverage channel for both brands.', accent=TEAL))
 
     s.append(P(
-        'For excavating and fabrication, the search journey is local-first: someone types a '
+        'For excavating and fabrication, the search journey is local-first: Someone types a '
         'job-site need into Google, sees a map of local providers, and calls one of the top '
         'three. The website matters \u2014 but only after they have found you on Google Maps.',
         body_lead))
