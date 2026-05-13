@@ -61,7 +61,7 @@ cover_meta   = S('CM', fontName='Helvetica',      fontSize=9,  textColor=GRAY_30
 # Chapter
 chapter_num   = S('CN', fontName='Helvetica-Bold', fontSize=8,  textColor=ORANGE, leading=11, spaceAfter=4)
 chapter_title = S('CTI',fontName='Helvetica-Bold', fontSize=26, textColor=BLACK,  leading=30, spaceAfter=14)
-chapter_kicker= S('CK', fontName='Helvetica-Oblique', fontSize=10, textColor=GRAY_500, leading=14, spaceAfter=14)
+chapter_kicker= S('CK', fontName='Helvetica-Oblique', fontSize=10, textColor=GRAY_500, leading=14, spaceAfter=24)
 
 # Headings
 h2 = S('H2',  fontName='Helvetica-Bold', fontSize=14, textColor=BLACK,  leading=18, spaceBefore=18, spaceAfter=6)
@@ -412,7 +412,7 @@ def build():
     s.append(drule)
     s.append(sp(24))
 
-    s.append(P('A two-brand digital engagement covering brand, web,', cover_meta))
+    s.append(P('A two-brand digital proposal covering brand, web,', cover_meta))
     s.append(P('search visibility, and social for two Utah contractors.', cover_meta))
     s.append(sp(40))
 
@@ -470,7 +470,7 @@ def build():
     s.append(section_header(1, 'Executive Summary',
         kicker='What we are building, who it is for, and why it pays for itself.'))
     s.append(P(
-        'Jones Excavating Co. is an 80-year Utah heavy-civil contractor specializing in '
+        'Jones Excavating Co. is an 80-year-old Utah heavy-civil contractor specializing in '
         'excavation and utilities, founded in 1946. Callus Fabrication is its welding and '
         'custom-fabrication arm. Both companies do excellent work; it is time their digital '
         'presence reflects it.',
@@ -512,7 +512,7 @@ def build():
     s.append(P(
         'Before designing anything, we conducted market research. Two takeaways drive this proposal: '
         '<b>(1) LinkedIn is where Utah heavy-civil B2B happens</b>, and <b>(2) Google Business Profile '
-        'is critical to building local awareness of your business.</b> Both are areas of opportunity for Jones.',
+        'is critical to building local awareness of your business.</b> Both are areas of opportunity for Jones and Callus.',
         body_lead))
 
     s.append(P('LinkedIn Competitive Landscape', h2))
@@ -528,9 +528,9 @@ def build():
         ['W.W. Clyde &amp; Co.',        '~14k',      '1926',     'Clyde Companies'],
         ['Staker Parson',               '~6,100',    '1952',     'Materials + civil'],
         ['Geneva Rock Products',        '~6,000',    '1954',     'Clyde Companies'],
-        ['Sunroc / Suncore',            '~6,000',    '1937',     'Materials + civil'],
+        ['Sunroc / Suncore',            '~6,000',    '1937',     'Clyde Companies'],
         ['Hadco',                       '~1,300',    '1989',     'Excavation'],
-        ['Jones Excavating Co.',        '331',       '1946',     ''],
+        ['Jones Excavating Co.',        '331',       '1946',     'Excavation, Shoring, Utilities'],
     ], center=True))
     s.append(sp(4))
     s.append(P(
