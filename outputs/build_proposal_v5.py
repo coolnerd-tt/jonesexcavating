@@ -454,12 +454,12 @@ def build():
     toc_rows = [
         ('01', 'Executive Summary',           '03'),
         ('02', 'The Opportunity',             '04'),
-        ('03', 'Brand &amp; Web Strategy',    '07'),
-        ('04', 'SEO &amp; Local Search',      '10'),
-        ('05', 'Social &amp; Content',        '12'),
-        ('06', 'The Marketing Operating System',            '14'),
-        ('07', 'Investment &amp; Timeline',   '17'),
-        ('08', 'Next Steps',                  '19'),
+        ('03', 'Brand &amp; Web Strategy',    '06'),
+        ('04', 'SEO &amp; Local Search',      '08'),
+        ('05', 'Social &amp; Content',        '09'),
+        ('06', 'The Marketing Operating System',            '10'),
+        ('07', 'Investment &amp; Timeline',   '14'),
+        ('08', 'Next Steps',                  '16'),
     ]
     rows = [[P(n, toc_num), P(t, toc_entry), P(p, toc_pg)] for n,t,p in toc_rows]
     toc = Table(rows, colWidths=[0.55*inch, 5.55*inch, 0.5*inch])
@@ -771,172 +771,6 @@ def build():
     s.append(bullet('<b>We run monthly performance reviews.</b> We look at top posts, follower growth, and '
                     'engagement, then adjust each month so it keeps getting better.'))
 
-    # \u2500\u2500 Realistic 12-month targets \u2014 comparison dashboard panel \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-    tgt_eyebrow  = S('TgtEy', fontName='Helvetica-Bold', fontSize=8,
-                     textColor=ORANGE, leading=11, alignment=TA_CENTER)
-    tgt_title    = S('TgtTi', fontName='Helvetica-Bold', fontSize=18,
-                     textColor=WHITE, leading=22, alignment=TA_CENTER, spaceAfter=2)
-    tgt_subtitle = S('TgtSu', fontName='Helvetica-Oblique', fontSize=10,
-                     textColor=GRAY_300, leading=13, alignment=TA_CENTER)
-    tgt_col_lbl  = S('TgtCL', fontName='Helvetica-Bold', fontSize=9,
-                     textColor=GRAY_300, leading=12, alignment=TA_CENTER)
-    tgt_col_lbl_with = S('TgtCLw', fontName='Helvetica-Bold', fontSize=9,
-                     textColor=ORANGE, leading=12, alignment=TA_CENTER)
-    tgt_brand_j  = S('TgtBJ', fontName='Helvetica-Bold', fontSize=10,
-                     textColor=ORANGE, leading=13, alignment=TA_LEFT)
-    tgt_brand_c  = S('TgtBC', fontName='Helvetica-Bold', fontSize=10,
-                     textColor=SPARK, leading=13, alignment=TA_LEFT)
-    tgt_plat     = S('TgtPl', fontName='Helvetica-Bold', fontSize=7.5,
-                     textColor=GRAY_500, leading=10, alignment=TA_LEFT)
-    tgt_to_dim   = S('TgtTd', fontName='Helvetica-Bold', fontSize=14,
-                     textColor=GRAY_300, leading=18, alignment=TA_RIGHT)
-    tgt_to_full  = S('TgtTf', fontName='Helvetica-Bold', fontSize=16,
-                     textColor=WHITE, leading=20, alignment=TA_RIGHT)
-    tgt_lift     = S('TgtLf', fontName='Helvetica-Bold', fontSize=9,
-                     textColor=AMBER, leading=12, alignment=TA_CENTER)
-    tgt_foot_lbl = S('TgtFL', fontName='Helvetica-Bold', fontSize=8,
-                     textColor=AMBER, leading=11, alignment=TA_CENTER)
-    tgt_foot_val = S('TgtFV', fontName='Helvetica-Bold', fontSize=14,
-                     textColor=WHITE, leading=18, alignment=TA_CENTER)
-
-    def _ratio(without_n, with_n):
-        try:
-            w = int(str(without_n).replace(',', '').replace('+', ''))
-            wi = int(str(with_n).replace(',', '').replace('+', ''))
-            if w <= 0:
-                return ''
-            return f'{wi / w:.2f}\u00d7'
-        except Exception:
-            return ''
-
-    def comp_row(platform, without_n, with_n, brand_color):
-        """One platform comparison row: PLATFORM | without | with | lift."""
-        plat_style = S(f'pl{brand_color.hexval()}',
-                       fontName='Helvetica-Bold', fontSize=8.5,
-                       textColor=brand_color, leading=11, alignment=TA_LEFT)
-        t = Table([[
-            P(platform.upper(), plat_style),
-            P(str(without_n), tgt_to_dim),
-            P(str(with_n),    tgt_to_full),
-            P(_ratio(without_n, with_n), tgt_lift),
-        ]], colWidths=[1.05*inch, 1.0*inch, 1.05*inch, 0.6*inch])
-        t.setStyle(TableStyle([
-            ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
-            ('TOPPADDING',(0,0),(-1,-1),3),
-            ('BOTTOMPADDING',(0,0),(-1,-1),3),
-            ('LEFTPADDING',(0,0),(-1,-1),0),
-            ('RIGHTPADDING',(0,0),(-1,-1),6),
-        ]))
-        return t
-
-    # Header row above the comparison table
-    header_row = Table([[
-        P('PLATFORM', tgt_plat),
-        P('WITHOUT', tgt_col_lbl),
-        P('WITH MOS', tgt_col_lbl_with),
-        P('LIFT', tgt_col_lbl),
-    ]], colWidths=[1.05*inch, 1.0*inch, 1.05*inch, 0.6*inch])
-    header_row.setStyle(TableStyle([
-        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
-        ('TOPPADDING',(0,0),(-1,-1),3),
-        ('BOTTOMPADDING',(0,0),(-1,-1),6),
-        ('LEFTPADDING',(0,0),(-1,-1),0),
-        ('RIGHTPADDING',(0,0),(-1,-1),6),
-        ('LINEBELOW',(0,0),(-1,-1),0.5, GRAY_700),
-    ]))
-
-    # Jones comparison block
-    jones_block = Table([
-        [P('JONES', tgt_brand_j)],
-        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=2, spaceAfter=4)],
-        [header_row],
-        [comp_row('LinkedIn',  '600', '1,100', ORANGE)],
-        [comp_row('Instagram', '600', '750',   ORANGE)],
-        [comp_row('Facebook',  '215', '300',   ORANGE)],
-    ], colWidths=[3.85*inch])
-    jones_block.setStyle(TableStyle([
-        ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
-        ('LEFTPADDING',(0,0),(-1,-1),14),
-        ('RIGHTPADDING',(0,0),(-1,-1),14),
-        ('TOPPADDING',(0,0),(0,0),12),
-        ('BOTTOMPADDING',(0,-1),(-1,-1),10),
-        ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
-    ]))
-
-    # Callus comparison block \u2014 header_row needs its own instance because tables can't be reused
-    header_row_2 = Table([[
-        P('PLATFORM', tgt_plat),
-        P('WITHOUT', tgt_col_lbl),
-        P('WITH MOS', tgt_col_lbl_with),
-        P('LIFT', tgt_col_lbl),
-    ]], colWidths=[1.05*inch, 1.0*inch, 1.05*inch, 0.6*inch])
-    header_row_2.setStyle(TableStyle([
-        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
-        ('TOPPADDING',(0,0),(-1,-1),3),
-        ('BOTTOMPADDING',(0,0),(-1,-1),6),
-        ('LEFTPADDING',(0,0),(-1,-1),0),
-        ('RIGHTPADDING',(0,0),(-1,-1),6),
-        ('LINEBELOW',(0,0),(-1,-1),0.5, GRAY_700),
-    ]))
-
-    callus_block = Table([
-        [P('CALLUS', tgt_brand_c)],
-        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=2, spaceAfter=4)],
-        [header_row_2],
-        [comp_row('LinkedIn',  '400', '550', SPARK)],
-        [comp_row('Instagram', '190', '350', SPARK)],
-        [comp_row('Facebook',  '100', '200', SPARK)],
-    ], colWidths=[3.85*inch])
-    callus_block.setStyle(TableStyle([
-        ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
-        ('LEFTPADDING',(0,0),(-1,-1),14),
-        ('RIGHTPADDING',(0,0),(-1,-1),14),
-        ('TOPPADDING',(0,0),(0,0),12),
-        ('BOTTOMPADDING',(0,-1),(-1,-1),10),
-        ('LINEBEFORE',(0,0),(0,-1), 3, SPARK),
-    ]))
-
-    # Bottom strip \u2014 average lift
-    foot_strip = Table([
-        [P('AVERAGE LIFT WITH MARKETING OS', tgt_foot_lbl)],
-        [P('1.6\u00d7 more followers across both brands', tgt_foot_val)],
-    ], colWidths=[CONTENT_W - 36])
-    foot_strip.setStyle(TableStyle([
-        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
-        ('TOPPADDING',(0,0),(-1,-1),4),
-        ('BOTTOMPADDING',(0,0),(-1,-1),4),
-        ('LEFTPADDING',(0,0),(-1,-1),0),
-        ('RIGHTPADDING',(0,0),(-1,-1),0),
-    ]))
-
-    # Outer wrapper \u2014 full panel with eyebrow + title + comparison blocks + footer
-    panel = Table([
-        [P('REALISTIC 12-MONTH TARGETS', tgt_eyebrow)],
-        [P('With and without the Marketing Operating System', tgt_title)],
-        [P('How far Jones and Callus get on the static buildout alone vs. with the full system running.', tgt_subtitle)],
-        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=8, spaceAfter=10)],
-        [jones_block],
-        [Spacer(1, 8)],
-        [callus_block],
-        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
-                    spaceBefore=10, spaceAfter=8)],
-        [foot_strip],
-    ], colWidths=[CONTENT_W])
-    panel.setStyle(TableStyle([
-        ('BACKGROUND',(0,0),(-1,-1), CHARCOAL),
-        ('LEFTPADDING',(0,0),(-1,-1),18),
-        ('RIGHTPADDING',(0,0),(-1,-1),18),
-        ('TOPPADDING',(0,0),(0,0),14),
-        ('BOTTOMPADDING',(0,-1),(-1,-1),14),
-        ('TOPPADDING',(0,1),(-1,-1),0),
-        ('BOTTOMPADDING',(0,0),(-1,-2),0),
-        ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
-    ]))
-    s.append(PageBreak())
-    s.append(panel)
     s.append(PageBreak())
 
     # ═══ 06 THE MARKETING OS ═════════════════════════════════════════════════
@@ -1154,6 +988,154 @@ def build():
         '$150/hour for support, whichever is less. Move on whenever you want, and your data, '
         'content, and brand work come with you.',
         bg=CHARCOAL, accent=ORANGE))
+
+    # ── Realistic 12-month targets — compact comparison panel ────────────
+    # Side-by-side brand layout so the panel fits on page 13 alongside the
+    # "What you own at the end" callout above.
+    s.append(sp(10))
+
+    cm_eyebrow  = S('CmEy', fontName='Helvetica-Bold', fontSize=7.5,
+                    textColor=ORANGE, leading=10, alignment=TA_CENTER)
+    cm_title    = S('CmTi', fontName='Helvetica-Bold', fontSize=13,
+                    textColor=WHITE, leading=16, alignment=TA_CENTER, spaceAfter=2)
+    cm_brand_j  = S('CmBJ', fontName='Helvetica-Bold', fontSize=9,
+                    textColor=ORANGE, leading=12, alignment=TA_LEFT)
+    cm_brand_c  = S('CmBC', fontName='Helvetica-Bold', fontSize=9,
+                    textColor=SPARK, leading=12, alignment=TA_LEFT)
+    cm_col_lbl  = S('CmCL', fontName='Helvetica-Bold', fontSize=6.5,
+                    textColor=GRAY_500, leading=9, alignment=TA_CENTER)
+    cm_col_lbl_with_o = S('CmCLwO', fontName='Helvetica-Bold', fontSize=6.5,
+                    textColor=ORANGE, leading=9, alignment=TA_CENTER)
+    cm_col_lbl_with_s = S('CmCLwS', fontName='Helvetica-Bold', fontSize=6.5,
+                    textColor=SPARK, leading=9, alignment=TA_CENTER)
+    cm_plat     = S('CmPl', fontName='Helvetica-Bold', fontSize=7.5,
+                    textColor=GRAY_500, leading=10, alignment=TA_LEFT)
+    cm_to_dim   = S('CmTd', fontName='Helvetica-Bold', fontSize=10,
+                    textColor=GRAY_300, leading=13, alignment=TA_RIGHT)
+    cm_to_full  = S('CmTf', fontName='Helvetica-Bold', fontSize=12,
+                    textColor=WHITE, leading=15, alignment=TA_RIGHT)
+    cm_lift     = S('CmLf', fontName='Helvetica-Bold', fontSize=7.5,
+                    textColor=AMBER, leading=10, alignment=TA_CENTER)
+    cm_foot_lbl = S('CmFL', fontName='Helvetica-Bold', fontSize=7.5,
+                    textColor=AMBER, leading=10, alignment=TA_CENTER)
+    cm_foot_val = S('CmFV', fontName='Helvetica-Bold', fontSize=11,
+                    textColor=WHITE, leading=14, alignment=TA_CENTER)
+
+    def _cm_ratio(without_n, with_n):
+        try:
+            w = int(str(without_n).replace(',', '').replace('+', ''))
+            wi = int(str(with_n).replace(',', '').replace('+', ''))
+            if w <= 0:
+                return ''
+            return f'{wi / w:.2f}×'
+        except Exception:
+            return ''
+
+    def cm_metric_row(platform, without_n, with_n, brand_color):
+        plat_style = S(f'cmpl{brand_color.hexval()}',
+                       fontName='Helvetica-Bold', fontSize=7.5,
+                       textColor=brand_color, leading=10, alignment=TA_LEFT)
+        t = Table([[
+            P(platform.upper(), plat_style),
+            P(str(without_n), cm_to_dim),
+            P(str(with_n),    cm_to_full),
+            P(_cm_ratio(without_n, with_n), cm_lift),
+        ]], colWidths=[0.7*inch, 0.62*inch, 0.7*inch, 0.5*inch])
+        t.setStyle(TableStyle([
+            ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+            ('TOPPADDING',(0,0),(-1,-1),2),
+            ('BOTTOMPADDING',(0,0),(-1,-1),2),
+            ('LEFTPADDING',(0,0),(-1,-1),0),
+            ('RIGHTPADDING',(0,0),(-1,-1),3),
+        ]))
+        return t
+
+    def cm_brand_block(brand_label, brand_style, accent, metrics):
+        hdr = Table([[
+            P('PLATFORM', cm_plat),
+            P('W/O',  cm_col_lbl),
+            P('W/MOS', cm_col_lbl_with_o if accent is ORANGE else cm_col_lbl_with_s),
+            P('LIFT', cm_col_lbl),
+        ]], colWidths=[0.7*inch, 0.62*inch, 0.7*inch, 0.5*inch])
+        hdr.setStyle(TableStyle([
+            ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+            ('TOPPADDING',(0,0),(-1,-1),2),
+            ('BOTTOMPADDING',(0,0),(-1,-1),4),
+            ('LEFTPADDING',(0,0),(-1,-1),0),
+            ('RIGHTPADDING',(0,0),(-1,-1),3),
+            ('LINEBELOW',(0,0),(-1,-1),0.5, GRAY_700),
+        ]))
+
+        block = Table([
+            [P(brand_label, brand_style)],
+            [hdr],
+        ] + [[cm_metric_row(p, w, m, accent)] for (p, w, m) in metrics],
+        colWidths=[2.95*inch])
+        block.setStyle(TableStyle([
+            ('BACKGROUND',(0,0),(-1,-1), HexColor('#0E1115')),
+            ('LEFTPADDING',(0,0),(-1,-1),10),
+            ('RIGHTPADDING',(0,0),(-1,-1),10),
+            ('TOPPADDING',(0,0),(0,0),8),
+            ('BOTTOMPADDING',(0,-1),(-1,-1),8),
+            ('LINEBEFORE',(0,0),(0,-1), 3, accent),
+        ]))
+        return block
+
+    jones_block = cm_brand_block('JONES', cm_brand_j, ORANGE, [
+        ('LinkedIn',  '600', '1,100'),
+        ('Instagram', '600', '750'),
+        ('Facebook',  '215', '300'),
+    ])
+    callus_block = cm_brand_block('CALLUS', cm_brand_c, SPARK, [
+        ('LinkedIn',  '400', '550'),
+        ('Instagram', '190', '350'),
+        ('Facebook',  '100', '200'),
+    ])
+
+    cards_row = Table([[jones_block, '', callus_block]],
+                      colWidths=[2.95*inch, 0.2*inch, 2.95*inch])
+    cards_row.setStyle(TableStyle([
+        ('VALIGN',(0,0),(-1,-1),'TOP'),
+        ('LEFTPADDING',(0,0),(-1,-1),0),
+        ('RIGHTPADDING',(0,0),(-1,-1),0),
+        ('TOPPADDING',(0,0),(-1,-1),0),
+        ('BOTTOMPADDING',(0,0),(-1,-1),0),
+    ]))
+
+    foot_strip = Table([
+        [P('AVERAGE LIFT WITH MARKETING OS', cm_foot_lbl)],
+        [P('1.6× more followers across both brands', cm_foot_val)],
+    ], colWidths=[CONTENT_W - 32])
+    foot_strip.setStyle(TableStyle([
+        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+        ('TOPPADDING',(0,0),(-1,-1),3),
+        ('BOTTOMPADDING',(0,0),(-1,-1),3),
+        ('LEFTPADDING',(0,0),(-1,-1),0),
+        ('RIGHTPADDING',(0,0),(-1,-1),0),
+    ]))
+
+    targets_panel = Table([
+        [P('REALISTIC 12-MONTH TARGETS', cm_eyebrow)],
+        [P('With and without the Marketing Operating System', cm_title)],
+        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
+                    spaceBefore=6, spaceAfter=8)],
+        [cards_row],
+        [HRFlowable(width='100%', thickness=0.5, color=GRAY_700,
+                    spaceBefore=8, spaceAfter=6)],
+        [foot_strip],
+    ], colWidths=[CONTENT_W])
+    targets_panel.setStyle(TableStyle([
+        ('BACKGROUND',(0,0),(-1,-1), CHARCOAL),
+        ('LEFTPADDING',(0,0),(-1,-1),16),
+        ('RIGHTPADDING',(0,0),(-1,-1),16),
+        ('TOPPADDING',(0,0),(0,0),12),
+        ('BOTTOMPADDING',(0,-1),(-1,-1),12),
+        ('TOPPADDING',(0,1),(-1,-1),0),
+        ('BOTTOMPADDING',(0,0),(-1,-2),0),
+        ('LINEBEFORE',(0,0),(0,-1), 3, ORANGE),
+    ]))
+    s.append(targets_panel)
+
     s.append(PageBreak())
 
     # ═══ 07 INVESTMENT & TIMELINE ════════════════════════════════════════════
