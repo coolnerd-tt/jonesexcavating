@@ -1227,12 +1227,12 @@ def build():
          'Jones brand refresh; Callus brand build',
          'Photography and videography for days at active jobsites + shop',
          'Google Business Profile setup and business listing pass',
-         'Brand approval gate']))
+         'You approve the brand work before we start the website']))
     s.append(sp(6))
     s.append(phase_card('02', 'Design + Build', 'Weeks 4\u20139',
         ['Both sites designed and built for each company’s needs',
          'Content drafted with leadership input',
-         'Design and content approval gates']))
+         'You approve the design and content before we launch']))
     s.append(sp(6))
     s.append(phase_card('03', 'Launch + Activate', 'Weeks 10\u201312',
         ['Soft launch \u2192 final QA \u2192 hard launch',
