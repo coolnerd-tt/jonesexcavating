@@ -137,6 +137,10 @@ def section_header(num, title, kicker=None, accent=ORANGE):
         ('RIGHTPADDING',(0,0),(-1,-1),0),
         ('TOPPADDING',(0,0),(-1,-1),0),
         ('BOTTOMPADDING',(0,0),(-1,-1),0),
+        # Generous bottom padding on the last row (kicker or title)
+        # so chapter headers always have proper breathing room before
+        # the first body paragraph.
+        ('BOTTOMPADDING',(0,-1),(-1,-1),32),
         ('LINEBEFORE',(0,0),(0,-1), 3, accent),
     ]))
     return t
