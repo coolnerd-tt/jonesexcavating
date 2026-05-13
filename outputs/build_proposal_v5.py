@@ -1197,9 +1197,9 @@ def build():
                        'Month 7+. Quarterly strategy review, voice updates, and integration patches.'))
     s.append(sp(6))
     s.append(P(
-        '<b>Plus infrastructure:</b> ~$200/mo in API + hosting costs (AI provider, hosting, '
+        'Plus infrastructure: ~$200/mo in API + hosting costs (AI provider, hosting, '
         'scheduler, email), billed at cost or paid directly to providers, your choice.',
-        body))
+        h2))
 
     s.append(P('Timeline: 90 days to launch', h2))
 
