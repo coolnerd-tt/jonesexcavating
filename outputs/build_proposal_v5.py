@@ -459,7 +459,7 @@ def build():
         ('05', 'Social &amp; Content',        '09'),
         ('06', 'The Marketing Operating System',            '10'),
         ('07', 'Investment &amp; Timeline',   '14'),
-        ('08', 'Next Steps',                  '16'),
+        ('08', 'Next Steps',                  '17'),
     ]
     rows = [[P(n, toc_num), P(t, toc_entry), P(p, toc_pg)] for n,t,p in toc_rows]
     toc = Table(rows, colWidths=[0.55*inch, 5.55*inch, 0.5*inch])
@@ -980,18 +980,8 @@ def build():
          'Quarterly strategy review and updates as Google and AI tools change',
          'Cancel anytime. The system keeps running either way']))
 
-    s.append(sp(10))
-    s.append(callout(
-        'What you own at the end',
-        'You own all your data, content, brand identity, and historical drafts. To keep operating '
-        'the Marketing Operating System, you can stay on the $350/mo Self-serve retainer or pay '
-        '$150/hour for support, whichever is less. Move on whenever you want, and your data, '
-        'content, and brand work come with you.',
-        bg=CHARCOAL, accent=ORANGE))
-
     # ── Realistic 12-month targets — compact comparison panel ────────────
-    # Side-by-side brand layout so the panel fits on page 13 alongside the
-    # "What you own at the end" callout above.
+    # Side-by-side brand layout - sits at the end of chapter 06.
     s.append(sp(10))
 
     cm_eyebrow  = S('CmEy', fontName='Helvetica-Bold', fontSize=7.5,
@@ -1249,6 +1239,15 @@ def build():
          'LinkedIn relaunch with refreshed pages and content',
          'Review ask program activated for both brands',
          'Retainer phase begins']))
+
+    s.append(sp(14))
+    s.append(callout(
+        'What you own at the end',
+        'You own all your data, content, brand identity, and historical drafts. To keep operating '
+        'the Marketing Operating System, you can stay on the $350/mo Self-serve retainer or pay '
+        '$150/hour for support, whichever is less. Move on whenever you want, and your data, '
+        'content, and brand work come with you.',
+        bg=CHARCOAL, accent=ORANGE))
     s.append(PageBreak())
 
     # ═══ 08 NEXT STEPS ═══════════════════════════════════════════════════════
