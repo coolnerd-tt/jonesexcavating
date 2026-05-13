@@ -755,14 +755,14 @@ def build():
     s.append(bullet('<b>Facebook</b> reaches Utah professionals, local community pages, and crew families '
                     'who share what they see. Everything cross-posts from Instagram automatically, so '
                     'you cover both audiences with one effort.'))
-    s.append(bullet('<b>Reels (short videos):</b> one per brand each month showing a time-lapse pour, a '
-                    'build progression, or equipment doing what it does. Cheap to produce, and the single '
-                    'biggest credibility and recruiting lift available on social media.'))
+    s.append(bullet('<b>Reels (short videos):</b> one per brand each month showing a time-lapse project, '
+                    'a build progression, or equipment in action. Cheap to produce, and the single biggest '
+                    'credibility and recruiting lift available on social media.'))
     s.append(bullet('<b>Tag every post with the jobsite city and &quot;Utah&quot;</b> so people in your '
-                    'service area discover you when they search nearby. Free visibility that compounds '
-                    'month over month.'))
+                    'service area discover you when they search nearby. This is free visibility that '
+                    'compounds month over month.'))
 
-    s.append(P('Content engine', h3))
+    s.append(P('Content', h3))
     s.append(bullet('<b>We provide professional photography and videography.</b> Drone, jobsite, and shop '
                     'coverage captured during quarterly half-day shoots, with one shoot feeding 8\u201310 weeks '
                     'of posts across both brands.'))
