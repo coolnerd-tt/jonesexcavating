@@ -749,12 +749,12 @@ def build():
     ]))
 
     s.append(P('Instagram + Facebook', h3))
-    s.append(bullet('<b>Instagram</b> is where younger Utah professionals spend their time. Posting jobsite '
-                    'photos and short videos here puts Jones and Callus in front of the next generation of '
-                    'GCs, project managers, and field workers you want to hire.'))
-    s.append(bullet('<b>Facebook</b> still reaches the older Utah professionals, local community pages, and '
-                    'crew families who share what they see. Everything cross-posts from Instagram '
-                    'automatically, so you get both audiences without doing the work twice.'))
+    s.append(bullet('<b>Instagram</b> is where the visual story lives. Jobsite photos and short videos '
+                    'put Jones and Callus in front of GCs, project managers, field workers, and recruits '
+                    'who respond to seeing the work, not just reading about it.'))
+    s.append(bullet('<b>Facebook</b> reaches Utah professionals, local community pages, and crew families '
+                    'who share what they see. Everything cross-posts from Instagram automatically, so '
+                    'you cover both audiences with one effort.'))
     s.append(bullet('<b>Reels (short videos):</b> one per brand each month showing a time-lapse pour, a '
                     'build progression, or equipment doing what it does. Cheap to produce, and the single '
                     'biggest credibility and recruiting lift available on social media.'))
