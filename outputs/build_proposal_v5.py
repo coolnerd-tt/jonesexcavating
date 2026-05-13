@@ -131,17 +131,19 @@ def section_header(num, title, kicker=None, accent=ORANGE):
             [P(title, chapter_title)]]
     if kicker:
         rows.append([P(kicker, chapter_kicker)])
+    # Append an empty spacer row so we can keep the breathing room
+    # below the kicker/title WITHOUT the accent bar extending through
+    # the empty space.
+    rows.append([Spacer(1, 30)])
     t = Table(rows, colWidths=[CONTENT_W])
     t.setStyle(TableStyle([
         ('LEFTPADDING',(0,0),(-1,-1),12),
         ('RIGHTPADDING',(0,0),(-1,-1),0),
         ('TOPPADDING',(0,0),(-1,-1),0),
         ('BOTTOMPADDING',(0,0),(-1,-1),0),
-        # Generous bottom padding on the last row (kicker or title)
-        # so chapter headers always have proper breathing room before
-        # the first body paragraph.
-        ('BOTTOMPADDING',(0,-1),(-1,-1),32),
-        ('LINEBEFORE',(0,0),(0,-1), 3, accent),
+        # Accent bar stops at the kicker/title row and does NOT extend
+        # through the spacer row at the bottom.
+        ('LINEBEFORE',(0,0),(0,-2), 3, accent),
     ]))
     return t
 
@@ -555,7 +557,7 @@ def build():
         'your services (excavating, deep foundation, custom fabrication, welding), Google shows three '
         'local businesses at the top of the page, with star ratings, reviews, photos, and a '
         'tap-to-call button. That box appears before any regular search results. Miss that spot and '
-        'Jones is invisible at the moment a buyer is ready to act. A strong Google Business Profile '
+        'Jones and Callus are invisible at the moment a buyer is ready to act. A strong Google Business Profile '
         'and an active review program earn it, building instant trust, driving inbound calls, and '
         'routing qualified traffic to the new website.',
         body))
@@ -590,7 +592,7 @@ def build():
 
     s.append(P('Jones Excavating Co. \u2014 Brand refresh', h3))
     s.append(P(
-        'Jones already has equity. The orange J-mark is the most recognizable element you have, '
+        'Jones already has equity. The J-mark is the most recognizable element you have, '
         'and 80 years of excavation and utilities work back it up. The refresh sharpens the typography, '
         'modernizes the palette, and tightens the visual system while keeping core elements people know.',
         body))
