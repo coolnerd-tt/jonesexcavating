@@ -1172,23 +1172,19 @@ def build():
         body))
 
     s.append(price_row('Marketing Operating System build',
-                       '$12,000',
-                       'Five agents, central scheduler, approval queue, brand-voice training, and integrations.'))
+                       '$17,700',
+                       'Five agents, central scheduler, approval queue, brand-voice training, and integrations. Full support for the Marketing Operating System and a monthly report.'))
     s.append(price_row('Combined build total',
-                       '$49,500',
-                       'Build phase ($37,500) plus Marketing Operating System build ($12,000). 40% on signature, 30% at design approval, 30% at launch.',
+                       '$55,200',
+                       'Build phase ($37,500) plus Marketing Operating System build ($17,700). 40% on signature, 30% at design approval, 30% at launch.',
                        highlight=True))
 
-    s.append(P('Marketing Operating System retainer: three tiers', h2))
+    s.append(P('Marketing Operating System retainer: two tiers', h2))
     s.append(P(
         'Pick the tier that matches how hands-on you want to be. You can step down a tier any time '
         'after month 3 with 30 days\u2019 notice.',
         body))
 
-    s.append(price_row('Concierge: we run it',
-                       '$1,900 / mo',
-                       'Months 1\u20133 default. We operate the system and you receive a monthly report.',
-                       highlight=False))
     s.append(price_row('Co-pilot: you run it, we maintain',
                        '$850 / mo',
                        'Recommended for months 4\u20136. Office manager runs the queue while we tune the system.'))
