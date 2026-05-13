@@ -547,13 +547,13 @@ def build():
 
     s.append(P('Google Business Profile: Maximize SEO', h2))
     s.append(P(
-        'Google Maps is where most buyers build their short list. When someone searches '
-        '&quot;excavating contractor Utah&quot; or &quot;deep foundation Salt Lake City,&quot; the top of the '
-        'page shows three local businesses with star ratings, reviews, photos, and a tap-to-call '
-        'button. That box appears before any regular search results. Miss that spot and Jones is '
-        'invisible at the moment a buyer is ready to act. A strong Google Business Profile and an '
-        'active review program earn it, building instant trust, driving inbound calls, and routing '
-        'qualified traffic to the new website.',
+        'Google Maps is where most buyers build their short list. When someone searches for any of '
+        'your services (excavating, deep foundation, custom fabrication, welding), Google shows three '
+        'local businesses at the top of the page, with star ratings, reviews, photos, and a '
+        'tap-to-call button. That box appears before any regular search results. Miss that spot and '
+        'Jones is invisible at the moment a buyer is ready to act. A strong Google Business Profile '
+        'and an active review program earn it, building instant trust, driving inbound calls, and '
+        'routing qualified traffic to the new website.',
         body))
 
     s.append(PageBreak())
