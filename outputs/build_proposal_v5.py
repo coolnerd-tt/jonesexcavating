@@ -848,8 +848,8 @@ def build():
 
     s.append(callout(
         'What this replaces',
-        'A part-time marketing coordinator at $50,000 to $70,000 per year fully loaded, or an agency '
-        'retainer at $1,500 to $3,000 per month. The Marketing Operating System does the same job with '
+        'A marketing coordinator at $50,000 to $70,000 per year or an agency retainer for several '
+        'thousands of dollars per month. The Marketing Operating System does the same job with '
         'a 15-minute approval routine and roughly $200 per month in infrastructure.',
         bg=CHARCOAL, accent=ORANGE))
 
