@@ -667,11 +667,11 @@ def build():
         'three. The website matters \u2014 but only after they have found you on Google Maps.',
         body_lead))
 
-    s.append(P('Google Business Profile (GBP) \u2014 day-one work', h3_teal))
+    s.append(P('Google Business Profile (GBP)', h3_teal))
     s.append(bullet('Claim and verify both GBPs (Jones is partially claimed; Callus needs to be added).'))
     s.append(bullet('Categorize your primary and secondary services (Excavating Contractor, Earthworks, '
                     'General Contractor, Construction Services for Jones; Welder, Welding Supply, '
-                    'Custom Fabricator).'))
+                    'Custom Fabricator for Callus).'))
     s.append(bullet('List and claim all the service areas where you do business.'))
     s.append(bullet('Ensure hours, contacts, attributes, accessibility, payment methods, and languages are '
                     'consistent across both businesses.'))
@@ -692,7 +692,7 @@ def build():
     s.append(bullet('Ensure your business information is consistent across 30+ directories (BBB, AGC of '
                     'Utah, Yelp, BuildZoom, Procore, and others).'))
 
-    s.append(P('Target keywords \u2014 first wave', h3_teal))
+    s.append(P('Target keywords', h3_teal))
     s.append(two_col([
         P('<b>Jones Excavating</b>', body),
         bullet('excavating contractor utah'),
@@ -717,7 +717,7 @@ def build():
 
     # ═══ 05 SOCIAL & CONTENT ═════════════════════════════════════════════════
     s.append(section_header(5, 'Social &amp; Content',
-        kicker='Where the competition already lives \u2014 and where Jones can catch up fastest.'))
+        kicker='Where the competition already lives.'))
 
     s.append(P('LinkedIn \u2014 the priority channel', h3))
     s.append(bullet('We will refresh the Jones LinkedIn page (banner, about copy, and post cadence) '
