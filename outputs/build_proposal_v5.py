@@ -1225,20 +1225,20 @@ def build():
     s.append(phase_card('01', 'Discovery + Brand', 'Weeks 1\u20133',
         ['Stakeholder interviews; site audit',
          'Jones brand refresh; Callus brand build',
-         'Photography day at active jobsites + shop',
+         'Photography and videography for days at active jobsites + shop',
+         'Google Business Profile setup and business listing pass',
          'Brand approval gate']))
     s.append(sp(6))
     s.append(phase_card('02', 'Design + Build', 'Weeks 4\u20139',
         ['Both sites designed and built for each company’s needs',
          'Content drafted with leadership input',
-         'Google Business Profile setup and business listing pass',
          'Design and content approval gates']))
     s.append(sp(6))
     s.append(phase_card('03', 'Launch + Activate', 'Weeks 10\u201312',
         ['Soft launch \u2192 final QA \u2192 hard launch',
          'LinkedIn relaunch with refreshed pages and content',
          'Review ask program activated for both brands',
-         'Retainer phase begins']))
+         'Optional retainer phase begins for the Marketing Operating System']))
 
     s.append(sp(14))
     s.append(callout(
@@ -1256,7 +1256,7 @@ def build():
 
     s.append(P('Approvals required', h3))
     s.append(bullet('Sign-off on this proposal (this PDF and a brief Master Service Agreement).'))
-    s.append(bullet('Decision on Callus direction. The Spark direction is the recommended path '
+    s.append(bullet('Decision on Callus concept. The Spark direction is the recommended path '
                     'and what the website concept reflects today.'))
     s.append(bullet('Designated point of contact at each company for weekly check-ins.'))
 
