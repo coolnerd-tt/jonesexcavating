@@ -49,6 +49,8 @@ white_h = S('wh', fontName='Helvetica-Bold', fontSize=10, textColor=WHITE, leadi
 white_b = S('wb', fontName='Helvetica',     fontSize=9,  textColor=WHITE, leading=12.5)
 price_n = S('pn', fontName='Helvetica-Bold', fontSize=18, textColor=ORANGE,
             leading=22, alignment=TA_CENTER)
+price_n_sm = S('pnsm', fontName='Helvetica-Bold', fontSize=13, textColor=ORANGE,
+               leading=17, alignment=TA_CENTER)
 price_l = S('pl', fontName='Helvetica-Bold', fontSize=7,  textColor=GRAY_500,
             leading=10, alignment=TA_CENTER)
 
@@ -57,8 +59,9 @@ def bullet(t):
                      S('bu', fontName='Helvetica', fontSize=8.5, textColor=GRAY_700,
                        leading=11, leftIndent=10, spaceAfter=2))
 
-def stat_card(num, label):
-    t = Table([[Paragraph(num, price_n)], [Paragraph(label, price_l)]],
+def stat_card(num, label, num_style=None):
+    style = num_style if num_style else price_n
+    t = Table([[Paragraph(num, style)], [Paragraph(label, price_l)]],
               colWidths=[1.4*inch])
     t.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,-1), GRAY_50),
@@ -171,9 +174,9 @@ def build():
     s.append(Paragraph('Investment', h2))
     pricing = Table([[
         stat_card('$55,200', 'COMBINED BUILD &mdash; ONE TIME'),
-        stat_card('INCLUDED', 'CONCIERGE &mdash; MO 1\u20133'),
+        stat_card('INCLUDED', 'CONCIERGE &mdash; MO 1\u20133', num_style=price_n_sm),
         stat_card('$850', 'CO-PILOT &mdash; MO 4\u20136'),
-        stat_card('up to $350', 'SELF-SERVE &mdash; MO 7+'),
+        stat_card('up to $350', 'SELF-SERVE &mdash; MO 7+', num_style=price_n_sm),
         stat_card('~$200', 'INFRA &mdash; AT COST'),
     ]], colWidths=[1.5*inch]*5)
     pricing.setStyle(TableStyle([
