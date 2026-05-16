@@ -39,10 +39,10 @@ subtitle= S('st', fontName='Helvetica-Oblique', fontSize=11, textColor=GRAY_500,
             leading=14, spaceAfter=12)
 h2      = S('h2', fontName='Helvetica-Bold', fontSize=11, textColor=ORANGE,
             leading=14, spaceBefore=10, spaceAfter=4)
-body    = S('bd', fontName='Helvetica', fontSize=9, textColor=GRAY_700,
-            leading=12.5, spaceAfter=5)
-body_b  = S('bdb',fontName='Helvetica-Bold', fontSize=9, textColor=BLACK,
-            leading=12.5, spaceAfter=5)
+body    = S('bd', fontName='Helvetica', fontSize=8.5, textColor=GRAY_700,
+            leading=11, spaceAfter=4)
+body_b  = S('bdb',fontName='Helvetica-Bold', fontSize=8.5, textColor=BLACK,
+            leading=11, spaceAfter=4)
 small   = S('sm', fontName='Helvetica', fontSize=7.5, textColor=GRAY_500,
             leading=10)
 white_h = S('wh', fontName='Helvetica-Bold', fontSize=10, textColor=WHITE, leading=13)
@@ -54,8 +54,8 @@ price_l = S('pl', fontName='Helvetica-Bold', fontSize=7,  textColor=GRAY_500,
 
 def bullet(t):
     return Paragraph(f'<font color="#E8621A"><b>\u25AA</b></font>  {t}',
-                     S('bu', fontName='Helvetica', fontSize=9, textColor=GRAY_700,
-                       leading=12.5, leftIndent=10, spaceAfter=3))
+                     S('bu', fontName='Helvetica', fontSize=8.5, textColor=GRAY_700,
+                       leading=11, leftIndent=10, spaceAfter=2))
 
 def stat_card(num, label):
     t = Table([[Paragraph(num, price_n)], [Paragraph(label, price_l)]],
@@ -86,12 +86,12 @@ class Cover:
             pass
         c.setFillColor(WHITE)
         c.setFont('Helvetica-Bold', 8)
-        c.drawRightString(W-36, H-30, 'EXECUTIVE SUMMARY  ·  APRIL 2026')
+        c.drawRightString(W-36, H-30, 'EXECUTIVE SUMMARY  ·  MAY 2026')
         # Footer
         c.setFillColor(GRAY_500)
         c.setFont('Helvetica', 7)
         c.drawString(36, 24,
-            'Full v4 proposal: coolnerd-tt.github.io/jonesexcavating/outputs/jones_callus_proposal_v4.pdf')
+            'Full v5 proposal: coolnerd-tt.github.io/jonesexcavating/outputs/jones_callus_proposal_v5.pdf')
         c.drawRightString(W-36, 24, 'Page 1 of 1')
         c.restoreState()
 
@@ -103,34 +103,33 @@ def build():
     s = []
     s.append(Paragraph('PROPOSAL AT A GLANCE', eyebrow))
     s.append(Paragraph('Jones &amp; Callus &mdash; 2026 Digital Engagement', title))
-    s.append(Paragraph('Two brands, two websites, one Marketing Operating System the team owns at the end.', subtitle))
+    s.append(Paragraph('Two brands, two websites, and a Marketing Operating System built for the team to run.', subtitle))
     s.append(HRFlowable(width='100%', thickness=0.5, color=GRAY_300, spaceAfter=10))
 
     # The opportunity (compressed)
     s.append(Paragraph('The opportunity', h2))
     s.append(Paragraph(
-        'Jones is an 80-year Utah heavy-civil contractor with no digital presence to match the work. '
-        'Callus is the welding/fab arm with no presence at all. Every direct competitor in the comp set '
-        '(W.W. Clyde, Geneva Rock, Staker Parson, Sunroc) has 4,000\u20137,000+ LinkedIn followers and '
-        'an active Google Business Profile. One additional bid won per year pays for this engagement '
-        '10\u2013100\u00D7 over.', body))
+        'Jones is an 80-year-old Utah heavy-civil contractor with a digital presence that does not match '
+        'the work. Callus is the welding and custom-fabrication arm. The Utah comp set sits between '
+        '1,300 and 19,000 LinkedIn followers; Jones is at 331. One additional bid won per year pays for '
+        'this engagement 10\u2013100\u00D7 over.', body))
 
     # Two-column: what we build / what they own
     left = [
         Paragraph('What we build (90 days)', h2),
-        bullet('<b>Two brand systems</b> &mdash; Jones refresh + Callus identity build (Spark direction).'),
+        bullet('<b>Two brand systems</b> &mdash; Jones refresh + Callus identity build.'),
         bullet('<b>Two production websites</b> &mdash; jonesexcavating.com + callusfabrication.com.'),
-        bullet('<b>SEO foundation</b> &mdash; GBP overhaul, schema, citations, target service-area pages.'),
-        bullet('<b>Content engine</b> &mdash; jobsite shoot + 90-day post library, both brands.'),
-        bullet('<b>Marketing Operating System</b> &mdash; 5 AI agents, approval queue, Jones brand-voice config.'),
+        bullet('<b>SEO foundation</b> &mdash; Google Business Profile setup, structured data, business listings, target service-area pages.'),
+        bullet('<b>Content engine</b> &mdash; 3-day Jones shoot + 1-day Callus shoot, 90-day post library, 2 hype videos.'),
+        bullet('<b>Marketing Operating System</b> &mdash; five agents, approval queue, brand-voice training, full support and monthly reporting.'),
     ]
     right = [
-        Paragraph('What you own at handoff', h2),
-        bullet('Working code for the Marketing Operating System &mdash; agents, prompts, integrations.'),
-        bullet('Tenant config: brand voice, services, target keywords, all editable YAML.'),
+        Paragraph('What you own at the end', h2),
+        bullet('Your data, content, brand identity, and historical drafts &mdash; all yours.'),
+        bullet('Tenant configuration: brand voice, services, target keywords.'),
         bullet('90 days of approved content as training data for ongoing tuning.'),
-        bullet('All API keys, accounts, and admin access.'),
-        bullet('SOPs and a 15-min/day office-manager runbook.'),
+        bullet('All accounts, integrations, and admin access.'),
+        bullet('Standard operating procedures and a 15-minute-per-day office-manager runbook.'),
     ]
     cols = Table([[left, right]], colWidths=[3.7*inch, 3.7*inch])
     cols.setStyle(TableStyle([
@@ -144,12 +143,12 @@ def build():
     s.append(Spacer(1, 6))
 
     # Marketing Operating System quick description
-    s.append(Paragraph('The Marketing Operating System &mdash; new in v4', h2))
+    s.append(Paragraph('The Marketing Operating System', h2))
     s.append(Paragraph(
-        'Foreman texts in 3 photos and 2 sentences from a jobsite. Five agents (Field-to-Content, '
-        'Reputation, SEO, Lead Triage, Orchestrator) draft brand-voice posts, replies, pages, and '
-        'lead alerts. Office manager taps approve in a single inbox. Nothing publishes without a click. '
-        'Replaces a $50\u201370K/yr coordinator with a 15-minute-per-day routine and roughly $200/mo in API + hosting.',
+        'A foreman sends photos and a short note via text from a jobsite. Five specialized agents '
+        'draft brand-voice posts, replies, pages, and lead alerts. Office manager taps approve. '
+        'Nothing publishes without a click. Replaces a marketing coordinator or agency retainer '
+        'at a fraction of the cost, with a 15-minute-per-day routine and ~$200/mo in infrastructure.',
         body))
 
     # Sample-output callout
@@ -171,10 +170,10 @@ def build():
     # Pricing strip
     s.append(Paragraph('Investment', h2))
     pricing = Table([[
-        stat_card('$42K', 'BUILD &mdash; ONE TIME'),
-        stat_card('$1,900', 'CONCIERGE &mdash; MO 1\u20133'),
+        stat_card('$55,200', 'COMBINED BUILD &mdash; ONE TIME'),
+        stat_card('INCLUDED', 'CONCIERGE &mdash; MO 1\u20133'),
         stat_card('$850', 'CO-PILOT &mdash; MO 4\u20136'),
-        stat_card('$350', 'SELF-SERVE &mdash; MO 7+'),
+        stat_card('up to $350', 'SELF-SERVE &mdash; MO 7+'),
         stat_card('~$200', 'INFRA &mdash; AT COST'),
     ]], colWidths=[1.5*inch]*5)
     pricing.setStyle(TableStyle([
@@ -185,7 +184,8 @@ def build():
     s.append(pricing)
     s.append(Spacer(1, 6))
     s.append(Paragraph(
-        'Tier-down with 30 days\u2019 notice after month 3. The system keeps running either way.',
+        'Build phase $37,500 + Marketing Operating System build $17,700. Self-serve billed at the '
+        'lesser of $350/mo or $150/hour. Tier-down with 30 days\u2019 notice after month 3.',
         small))
 
     # 90-day timeline strip
