@@ -564,14 +564,71 @@ def build():
 
     s.append(PageBreak())
 
-    s.append(comp_table([
-        ['Benchmark',                                'Strong<br/>Jones', 'Strong<br/>Callus', 'Typical',     'Today<br/>Jones', 'Today<br/>Callus'],
-        ['Google review count',                      '100+',             '50+',                '20\u201380',       '18',              '1'],
-        ['Star rating (jobsite category)',           '4.5\u20134.7',          '4.5\u20134.7',            '4.0\u20134.4',     '4.4',             '5.0'],
-        ['GBP photos (recent, geo-tagged)',          '40+',              '30+',                '10\u201320',       '2',               '6'],
-        ['Owner replies to reviews',                 '100%',             '100%',               '~50%',        '0%',              '0%'],
-        ['Service area pages (linked from GBP)',     '8\u201312',             '4\u20136',                '3\u20136',         '0',               '0'],
-    ], center=True))
+    # \u2500\u2500 GBP benchmark table with grouped two-row header \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+    gbp_hdr_grp = S('GbpHG', fontName='Helvetica-Bold', fontSize=8,   textColor=WHITE,
+                    leading=11, alignment=TA_CENTER)
+    gbp_hdr_sub = S('GbpHS', fontName='Helvetica-Bold', fontSize=7.5, textColor=WHITE,
+                    leading=10, alignment=TA_CENTER)
+    gbp_data    = S('GbpD',  fontName='Helvetica-Bold', fontSize=8.5, textColor=BLACK,
+                    leading=11, alignment=TA_CENTER)
+    gbp_label   = S('GbpL',  fontName='Helvetica-Bold', fontSize=8,   textColor=BLACK,
+                    leading=11, alignment=TA_LEFT)
+
+    gbp_rows = [
+        # Super-header: groups three sections
+        [P('', gbp_hdr_grp),
+         P('Where you want to be', gbp_hdr_grp), '',
+         P('Average company', gbp_hdr_grp),
+         P('Where you are today', gbp_hdr_grp), ''],
+        # Sub-header: brand-level labels under each group
+        [P('Benchmark', gbp_hdr_sub),
+         P('Jones', gbp_hdr_sub),
+         P('Callus', gbp_hdr_sub),
+         P('Typical', gbp_hdr_sub),
+         P('Jones', gbp_hdr_sub),
+         P('Callus', gbp_hdr_sub)],
+        # Data rows
+        [P('Google review count',              gbp_label),
+         P('100+',    gbp_data), P('50+',    gbp_data), P('20\u201380',   gbp_data),
+         P('18',      gbp_data), P('1',      gbp_data)],
+        [P('Star rating (jobsite category)',   gbp_label),
+         P('4.5\u20134.7', gbp_data), P('4.5\u20134.7', gbp_data), P('4.0\u20134.4', gbp_data),
+         P('4.4',     gbp_data), P('5.0',    gbp_data)],
+        [P('GBP photos (recent, geo-tagged)',  gbp_label),
+         P('40+',     gbp_data), P('30+',    gbp_data), P('10\u201320',   gbp_data),
+         P('2',       gbp_data), P('6',      gbp_data)],
+        [P('Owner replies to reviews',         gbp_label),
+         P('100%',    gbp_data), P('100%',   gbp_data), P('~50%',    gbp_data),
+         P('0%',      gbp_data), P('0%',     gbp_data)],
+        [P('Service area pages (linked from GBP)', gbp_label),
+         P('8\u201312',    gbp_data), P('4\u20136',    gbp_data), P('3\u20136',     gbp_data),
+         P('0',       gbp_data), P('0',      gbp_data)],
+    ]
+    # Column widths: benchmark column wider, 5 value columns equal
+    gbp_widths = [1.95*inch] + [(CONTENT_W - 1.95*inch) / 5] * 5
+    gbp_t = Table(gbp_rows, colWidths=gbp_widths, repeatRows=2)
+    gbp_t.setStyle(TableStyle([
+        # Backgrounds
+        ('BACKGROUND',(0,0),(-1,0), CHARCOAL),
+        ('BACKGROUND',(0,1),(-1,1), HexColor('#2A2F33')),
+        ('ROWBACKGROUNDS',(0,2),(-1,-1), [WHITE, GRAY_50]),
+        # Super-header spans
+        ('SPAN',(1,0),(2,0)),  # 'Where you want to be' over Jones + Callus
+        ('SPAN',(4,0),(5,0)),  # 'Where you are today' over Jones + Callus
+        # Padding
+        ('TOPPADDING',(0,0),(-1,-1),6),
+        ('BOTTOMPADDING',(0,0),(-1,-1),6),
+        ('LEFTPADDING',(0,0),(-1,-1),9),
+        ('RIGHTPADDING',(0,0),(-1,-1),9),
+        ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
+        # Subtle separators
+        ('LINEBELOW',(0,1),(-1,1), 0.4, GRAY_500),
+        ('LINEBELOW',(0,2),(-1,-1), 0.4, GRAY_300),
+        # Vertical separators between group sections (after Callus, after Typical)
+        ('LINEAFTER',(2,0),(2,-1), 0.4, GRAY_300),
+        ('LINEAFTER',(3,0),(3,-1), 0.4, GRAY_300),
+    ]))
+    s.append(gbp_t)
     s.append(sp(4))
     s.append(P(
         'Each additional Google review correlates with <b>+80 website visits, +63 direction requests, '
