@@ -565,12 +565,12 @@ def build():
     s.append(PageBreak())
 
     s.append(comp_table([
-        ['Benchmark',                                           'Strong',    'Typical',   'Gap'],
-        ['Google review count (regional civil contractor)',     '100+',      '20\u201380','&lt;10'],
-        ['Star rating (realistic ceiling, jobsite category)',   '4.5\u20134.7','4.0\u20134.4','&lt;3.8'],
-        ['GBP photos (recent, geo-tagged)',                     '40+',       '10\u201320','&lt;5'],
-        ['Owner replies to reviews',                            '100%',      '~50%',      '0%'],
-        ['Service area pages (linked from GBP)',                '8\u201312', '3\u20136',  '0\u20132'],
+        ['Benchmark',                                'Strong<br/>Jones', 'Strong<br/>Callus', 'Typical',     'Today<br/>Jones', 'Today<br/>Callus'],
+        ['Google review count',                      '100+',             '50+',                '20\u201380',       '18',              '1'],
+        ['Star rating (jobsite category)',           '4.5\u20134.7',          '4.5\u20134.7',            '4.0\u20134.4',     '4.4',             '5.0'],
+        ['GBP photos (recent, geo-tagged)',          '40+',              '30+',                '10\u201320',       '2',               '6'],
+        ['Owner replies to reviews',                 '100%',             '100%',               '~50%',        '0%',              '0%'],
+        ['Service area pages (linked from GBP)',     '8\u201312',             '4\u20136',                '3\u20136',         '0',               '0'],
     ], center=True))
     s.append(sp(4))
     s.append(P(
