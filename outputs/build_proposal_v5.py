@@ -1239,6 +1239,90 @@ def build():
                        'Build phase ($37,500) plus Marketing Operating System build ($17,700). 40% on signature, 30% at design approval, 30% at launch.',
                        highlight=True))
 
+    s.append(P('Engagement at a glance', h2))
+    s.append(P(
+        'The full arc on one axis: a 90-day build, then a phased retainer that steps down as your team takes the wheel.',
+        body))
+    s.append(sp(4))
+
+    # \u2500\u2500 Engagement timeline strip \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+    eg_period = S('egp', fontName='Helvetica-Bold', fontSize=7,
+                  textColor=GRAY_500, leading=10, alignment=TA_CENTER)
+    eg_phase  = S('egn', fontName='Helvetica-Bold', fontSize=11,
+                  textColor=WHITE, leading=14, alignment=TA_CENTER)
+    eg_cost   = S('egc', fontName='Helvetica-Bold', fontSize=8.5,
+                  textColor=WHITE, leading=12, alignment=TA_CENTER)
+    eg_sub    = S('egs', fontName='Helvetica', fontSize=7.5,
+                  textColor=HexColor('#F0EFEA'), leading=10, alignment=TA_CENTER)
+
+    periods = [
+        P('WEEKS 1\u201312', eg_period),
+        P('MONTHS 1\u20133 POST-LAUNCH', eg_period),
+        P('MONTHS 4\u20136', eg_period),
+        P('MONTHS 7+', eg_period),
+    ]
+    phases = [
+        P('BUILD', eg_phase),
+        P('CONCIERGE', eg_phase),
+        P('CO-PILOT', eg_phase),
+        P('SELF-SERVE', eg_phase),
+    ]
+    costs = [
+        [P('$55,200', eg_cost), P('one-time', eg_sub)],
+        [P('Included', eg_cost), P('in build', eg_sub)],
+        [P('$850 / mo', eg_cost), P('infra included', eg_sub)],
+        [P('\u2264 $350 / mo', eg_cost), P('+ ~$200 infra', eg_sub)],
+    ]
+
+    eg_data = [periods, phases, costs]
+    eg = Table(eg_data, colWidths=[1.85*inch]*4, rowHeights=[0.32*inch, 0.42*inch, 0.6*inch])
+    eg.setStyle(TableStyle([
+        # Period row (light gray bg)
+        ('BACKGROUND',(0,0),(-1,0), GRAY_50),
+        ('VALIGN',(0,0),(-1,0),'MIDDLE'),
+        # Phase row colors
+        ('BACKGROUND',(0,1),(0,1), ORANGE),
+        ('BACKGROUND',(1,1),(1,1), HexColor('#C9501A')),  # darker orange
+        ('BACKGROUND',(2,1),(2,1), AMBER),
+        ('BACKGROUND',(3,1),(3,1), HexColor('#4A4845')),   # GRAY_700
+        ('VALIGN',(0,1),(-1,1),'MIDDLE'),
+        # Cost row colors (slightly darker variants)
+        ('BACKGROUND',(0,2),(0,2), HexColor('#B84A14')),
+        ('BACKGROUND',(1,2),(1,2), HexColor('#9C3D10')),
+        ('BACKGROUND',(2,2),(2,2), HexColor('#C8861C')),
+        ('BACKGROUND',(3,2),(3,2), HexColor('#2F2D2A')),
+        ('VALIGN',(0,2),(-1,2),'MIDDLE'),
+        # Universal padding
+        ('LEFTPADDING',(0,0),(-1,-1),6),
+        ('RIGHTPADDING',(0,0),(-1,-1),6),
+        ('TOPPADDING',(0,0),(-1,-1),4),
+        ('BOTTOMPADDING',(0,0),(-1,-1),4),
+        # Thin white separators between phase columns
+        ('LINEAFTER',(0,1),(2,2), 1, WHITE),
+    ]))
+    s.append(eg)
+    s.append(sp(4))
+    s.append(P(
+        '<font size="8" color="#8A8880"><i>Build is one-time. Retainer phases begin at launch (weeks 10\u201312) and can step down a tier with 30 days\u2019 notice after month 3.</i></font>',
+        body))
+    s.append(sp(14))
+
+    s.append(P('Marketing Operating System retainer: three tiers', h2))
+    s.append(P(
+        'Pick the tier that matches how hands-on you want to be. The descriptions below detail what each phase covers.',
+        body))
+
+    s.append(price_row('Concierge: we run it',
+                       'No fee<br/><font size="8">infrastructure included</font>',
+                       '<b>First 3 months after launch.</b> Default tier. Included in the Marketing Operating System build above. We operate the system and you receive a monthly report.',
+                       highlight=False))
+    s.append(price_row('Co-pilot: you run it, we maintain',
+                       '$850 / mo<br/><font size="8">infrastructure included</font>',
+                       '<b>Months 4\u20136 post-launch.</b> Recommended next step. Office manager runs the queue while we tune the system.'))
+    s.append(price_row('Self-serve: system maintenance',
+                       'up to $350 / mo<br/><font size="8">or $150/hour, whichever is less</font><br/><font size="8" color="#8A8880">+ ~$200/mo infrastructure</font>',
+                       '<b>Month 7+ post-launch.</b> Quarterly strategy review, voice updates, and integration patches. Infrastructure (AI, hosting, scheduler, email) passes through at cost — billed through us at zero markup, or moved to your own accounts.'))
+
     s.append(P('Timeline: 90 days to launch', h2))
 
     def phase_card(num, title, weeks, items, bg=GRAY_50, accent=ORANGE):
@@ -1277,28 +1361,6 @@ def build():
          'LinkedIn relaunch with refreshed pages and content',
          'Review ask program activated for both brands',
          'Marketing Operating System goes live. Concierge phase begins (included in build).']))
-
-    s.append(PageBreak())
-    s.append(P('Marketing Operating System retainer: three tiers', h2))
-    s.append(P(
-        'Pick the tier that matches how hands-on you want to be. You can step down a tier any time '
-        'after month 3 with 30 days\u2019 notice.',
-        body))
-    s.append(P(
-        '<i>The retainer phases below start at launch \u2014 weeks 10\u201312 of the build timeline. '
-        'Total engagement reads as: 3 months of build, then phased retainer thereafter.</i>',
-        body))
-
-    s.append(price_row('Concierge: we run it',
-                       'No fee<br/><font size="8">infrastructure included</font>',
-                       '<b>First 3 months after launch.</b> Default tier. Included in the Marketing Operating System build above. We operate the system and you receive a monthly report.',
-                       highlight=False))
-    s.append(price_row('Co-pilot: you run it, we maintain',
-                       '$850 / mo<br/><font size="8">infrastructure included</font>',
-                       '<b>Months 4\u20136 post-launch.</b> Recommended next step. Office manager runs the queue while we tune the system.'))
-    s.append(price_row('Self-serve: system maintenance',
-                       'up to $350 / mo<br/><font size="8">or $150/hour, whichever is less</font><br/><font size="8" color="#8A8880">+ ~$200/mo infrastructure</font>',
-                       '<b>Month 7+ post-launch.</b> Quarterly strategy review, voice updates, and integration patches. Infrastructure (AI, hosting, scheduler, email) passes through at cost — billed through us at zero markup, or moved to your own accounts.'))
 
 
     s.append(sp(14))
