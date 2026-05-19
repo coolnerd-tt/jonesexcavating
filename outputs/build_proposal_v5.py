@@ -493,13 +493,13 @@ def build():
     s.append(bullet('<b>Two production websites</b>: a refreshed jonesexcavating.com and a new callusfabrication.com.'))
     s.append(bullet('<b>Local SEO + Google Business Profile (GBP) overhaul</b> to reposition both brands in the '
                     'highest-leverage channel for this category.'))
-    s.append(bullet('<b>Social media content engine</b> \u2014 LinkedIn-focused and sustainable post-launch.'))
+    s.append(bullet('<b>Social media content engine:</b> LinkedIn-focused and sustainable post-launch.'))
     s.append(bullet('<b>90-day fixed-price build</b>, with options for ongoing support and maintenance.'))
 
     s.append(sp(8))
     s.append(callout(
         'Why Act Now',
-        'Construction investment is at a decade high \u2014 putting a spotlight on exactly the '
+        'Construction investment is at a decade high, putting a spotlight on exactly the '
         'specialized work Jones delivers. Now is the time to turn that market momentum into '
         'wins. A polished, modern digital presence positions Jones as the clear, credible '
         'choice for owners, GCs, and engineers, elevates you in search results, and helps you '
