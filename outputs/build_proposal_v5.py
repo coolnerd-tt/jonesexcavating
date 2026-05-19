@@ -580,11 +580,12 @@ def build():
          P('Where you want to be', gbp_hdr_grp), '',
          P('Average company', gbp_hdr_grp),
          P('Where you are today', gbp_hdr_grp), ''],
-        # Sub-header: brand-level labels under each group
+        # Sub-header: brand-level labels under each group (Average company cell
+        # is empty here because it merges with the row above via SPAN)
         [P('Benchmark', gbp_hdr_sub),
          P('Jones', gbp_hdr_sub),
          P('Callus', gbp_hdr_sub),
-         P('Typical', gbp_hdr_sub),
+         '',
          P('Jones', gbp_hdr_sub),
          P('Callus', gbp_hdr_sub)],
         # Data rows
@@ -615,6 +616,9 @@ def build():
         # Super-header spans
         ('SPAN',(1,0),(2,0)),  # 'Where you want to be' over Jones + Callus
         ('SPAN',(4,0),(5,0)),  # 'Where you are today' over Jones + Callus
+        ('SPAN',(3,0),(3,1)),  # 'Average company' merges vertically across both header rows
+        # Make sure the merged Average company cell has the dark super-header background
+        ('BACKGROUND',(3,0),(3,1), CHARCOAL),
         # Padding
         ('TOPPADDING',(0,0),(-1,-1),6),
         ('BOTTOMPADDING',(0,0),(-1,-1),6),
