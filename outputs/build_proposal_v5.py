@@ -1323,6 +1323,7 @@ def build():
                        'up to $350 / mo<br/><font size="8">or $150/hour, whichever is less</font><br/><font size="8" color="#8A8880">+ ~$200/mo infrastructure</font>',
                        '<b>Month 7+ post-launch.</b> Quarterly strategy review, voice updates, and integration patches. Infrastructure (AI, hosting, scheduler, email) passes through at cost — billed through us at zero markup, or moved to your own accounts.'))
 
+    s.append(PageBreak())
     s.append(P('Timeline: 90 days to launch', h2))
 
     def phase_card(num, title, weeks, items, bg=GRAY_50, accent=ORANGE):
