@@ -358,8 +358,7 @@ class Canv:
             # Footer bar
             c.setFillColor(GRAY_100); c.rect(0,0,W,22,fill=1,stroke=0)
             c.setFont('Helvetica', 6.5); c.setFillColor(GRAY_500)
-            c.drawString(30, 8, 'CONFIDENTIAL  \u00B7  prepared for Jones Excavating Co.  \u00B7  \u00A9 2026')
-            c.drawRightString(W-30, 8, 'jonesexcavating.com  \u00B7  callusfabrication.com')
+            c.drawString(30, 8, 'CONFIDENTIAL  \u00B7  prepared for Jones Excavating Co.  \u00B7  \u00A9 2026  JTC Communications & Consulting, LLC  &  Coolnerd, LLC')
         c.restoreState()
 
 # ── DOCUMENT ───────────────────────────────────────────────────────────────────
@@ -444,6 +443,10 @@ def build():
     s.append(P(
         'This proposal contains proprietary methodology and pricing, shared in confidence with '
         'Jones Excavating Co. leadership. Not for external distribution.',
+        confid_style))
+    s.append(sp(6))
+    s.append(P(
+        '© 2026  JTC Communications &amp; Consulting, LLC  &nbsp;&nbsp;and&nbsp;&nbsp;  Coolnerd, LLC',
         confid_style))
 
     s.append(PageBreak())
