@@ -1280,7 +1280,7 @@ def build():
     s.append(phase_card('01', 'Discovery + Brand', 'Weeks 1\u20133',
         ['Stakeholder interviews; site audit',
          'Jones brand refresh; Callus brand build',
-         'Photography and videography for days at active jobsites + shop',
+         'Photography and videography for 4 days at active jobsites + shop',
          'Google Business Profile setup and business listing pass',
          'You approve the brand work before we start the website']))
     s.append(sp(6))
