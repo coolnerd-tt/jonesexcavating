@@ -94,7 +94,7 @@ class Cover:
         c.setFillColor(GRAY_500)
         c.setFont('Helvetica', 7)
         c.drawString(36, 24,
-            '© 2026  JTC Communications & Consulting, LLC   and   Coolnerd, LLC')
+            '© 2026  JTC Communications & Consulting, LLC and Coolnerd, LLC')
         c.drawRightString(W-36, 24, 'Page 1 of 1')
         c.restoreState()
 
