@@ -1253,8 +1253,8 @@ def build():
                        '$850 / mo<br/><font size="8">infrastructure included</font>',
                        'Recommended for months 4\u20136. Office manager runs the queue while we tune the system.'))
     s.append(price_row('Self-serve: system maintenance',
-                       'up to $350 / mo<br/><font size="8">$150/hour, whichever is&nbsp;less</font><br/><font size="8" color="#8A8880">+ ~$200/mo infrastructure</font>',
-                       'Month 7+. Quarterly strategy review, voice updates, and integration patches. Infrastructure costs (AI provider, hosting, scheduler, email) transfer at cost — either billed through us at zero markup, or moved to your own provider accounts. Your choice.'))
+                       'up to $350 / mo<br/><font size="8">or $150/hour, whichever is less</font><br/><font size="8" color="#8A8880">+ ~$200/mo infrastructure</font>',
+                       'Month 7+. Quarterly strategy review, voice updates, and integration patches. Infrastructure (AI, hosting, scheduler, email) passes through at cost — billed through us at zero markup, or moved to your own accounts.'))
 
     s.append(P('Timeline: 90 days to launch', h2))
 
