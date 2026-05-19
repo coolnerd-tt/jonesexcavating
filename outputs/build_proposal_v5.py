@@ -1255,11 +1255,9 @@ def build():
     s.append(price_row('Self-serve: system maintenance',
                        'up to $350 / mo<br/><font size="8">$150/hour, whichever is less</font>',
                        'Month 7+. Quarterly strategy review, voice updates, and integration patches.'))
-    s.append(sp(6))
-    s.append(P(
-        'Plus infrastructure: ~$200/mo in API + hosting costs (AI provider, hosting, '
-        'scheduler, email), billed at cost or paid directly to providers, your choice.',
-        h2))
+    s.append(price_row('+ Infrastructure (every tier)',
+                       '~$200 / mo',
+                       'AI provider, hosting, scheduler, email. Billed at cost or paid directly to providers, your choice.'))
 
     s.append(P('Timeline: 90 days to launch', h2))
 
