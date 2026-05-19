@@ -558,8 +558,8 @@ def build():
         'local businesses at the top of the page, with star ratings, reviews, photos, and a '
         'tap-to-call button. That box appears before any regular search results. Miss that spot and '
         'Jones and Callus are invisible at the moment a buyer is ready to act. A strong Google Business Profile '
-        'and an active review program earn it, building instant trust, driving inbound calls, and '
-        'routing qualified traffic to the new website.',
+        'and an active review program help build instant trust, drive inbound calls, and route '
+        'qualified traffic to the new website.',
         body))
 
     s.append(PageBreak())
@@ -598,13 +598,12 @@ def build():
         body))
     s.append(bullet('Logo: keep the original mark; refresh the original and add a horizontal version '
                     'for web/social.'))
+    s.append(bullet('Tagline: &quot;Built for the Tough Jobs.&quot;'))
     s.append(bullet('Palette: charcoal and orange as the core colors, with amber accents on highlights '
                     'and a soft off-white background for sections with a lot of text.'))
     s.append(bullet('Typography: bold, condensed headlines paired with clean, readable body text. '
                     'Industrial feel that loads fast on any device.'))
-    s.append(bullet('Photography: add on-site photos and video from active jobs (we run a half-day '
-                    'shoot in week 2).'))
-    s.append(bullet('Tagline: &quot;Built for the Tough Jobs.&quot;'))
+    s.append(bullet('Photography: add on-site photos and video from active jobs.'))
 
     s.append(P('Callus Fabrication \u2014 Brand build (Spark direction)', h3_spark))
     s.append(P(
@@ -616,7 +615,7 @@ def build():
     s.append(bullet('Logo: glove + spark mark, with horizontal and vertical options.'))
     s.append(bullet('Tagline: &quot;Built tough. Welded right.&quot;'))
     s.append(bullet('Family link: Callus carries a &quot;proud part of the Jones Excavating family&quot; line in the banner, '
-                    'about, and footer \u2014 borrowing trust without diluting the new brand.'))
+                    'about, and footer, borrowing trust without diluting the new brand.'))
 
     s.append(P('Web build \u2014 both sites', h2))
     s.append(P(
@@ -628,11 +627,11 @@ def build():
     s.append(bullet('<b>Update without a developer.</b> Add a new project, post a blog, or change a service '
                     'description in minutes. The site stays current without becoming a chore for your team.'))
     s.append(bullet('<b>Built for the phone.</b> Most customers, GCs, and crew look at the site from the '
-                    'jobsite or the truck, not a desktop. Pages load fast and read cleanly on mobile \u2014 '
+                    'jobsite or the truck, not a desktop. Pages load fast and read cleanly on mobile, '
                     'where the decision to call actually happens.'))
-    s.append(bullet('<b>Found by Google.</b> Every page is structured so search engines recognize Jones, '
-                    'its services, and its projects, putting you in front of buyers searching for '
-                    'excavation work right now.'))
+    s.append(bullet('<b>Found by Google.</b> Every page is structured so search engines recognize Jones '
+                    'and Callus, their services, and their projects, putting you in front of buyers '
+                    'searching for excavation work right now.'))
 
     s.append(PageBreak())
     s.append(P('Page set', h3))
@@ -652,8 +651,9 @@ def build():
         bullet('Shop (capabilities, equipment, certifications)'),
         bullet('Projects (gallery)'),
         bullet('About'),
+        bullet('Careers'),
         bullet('Service areas'),
-        bullet('Contact / 24-hour line'),
+        bullet('Contact / Get a Quote'),
     ]))
     s.append(PageBreak())
 
@@ -764,8 +764,8 @@ def build():
 
     s.append(P('Content', h3))
     s.append(bullet('<b>We provide professional photography and videography.</b> Drone, jobsite, and shop '
-                    'coverage captured during quarterly half-day shoots, with one shoot feeding 8\u201310 weeks '
-                    'of posts across both brands.'))
+                    'coverage captured during 4 day shoots that will produce 8\u201310 weeks of posts across '
+                    'both brands.'))
     s.append(bullet('<b>We engage your team so they can send us content easily.</b> Foremen and PMs drop '
                     'in photos and short clips from the field, and we handle the editing.'))
     s.append(bullet('<b>We run monthly performance reviews.</b> We look at top posts, follower growth, and '
