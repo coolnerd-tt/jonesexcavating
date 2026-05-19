@@ -827,10 +827,9 @@ def build():
     s.append(bullet('<b>We provide professional photography and videography.</b> Drone, jobsite, and shop '
                     'coverage captured during 4 day shoots that will produce 8\u201310 weeks of posts across '
                     'both brands.'))
-    s.append(bullet('<b>We engage your team so they can send us content easily.</b> Foremen and PMs drop '
-                    'in photos and short clips from the field, and we handle the editing.'))
-    s.append(bullet('<b>We run monthly performance reviews.</b> We look at top posts, follower growth, and '
-                    'engagement, then adjust each month so it keeps getting better.'))
+    s.append(bullet('<b>We train your team so they know how to capture content easily.</b> Someone in '
+                    'your office can then take those photos and video clips and post them manually to '
+                    'your social media platforms.'))
 
     s.append(PageBreak())
 
