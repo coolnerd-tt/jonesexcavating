@@ -1246,18 +1246,15 @@ def build():
         body))
 
     s.append(price_row('Concierge: we run it',
-                       'No fee',
+                       'No fee<br/><font size="8">infrastructure included</font>',
                        'Months 1\u20133 default. Included in the Marketing Operating System build above. We operate the system and you receive a monthly report.',
                        highlight=False))
     s.append(price_row('Co-pilot: you run it, we maintain',
-                       '$850 / mo',
+                       '$850 / mo<br/><font size="8">infrastructure included</font>',
                        'Recommended for months 4\u20136. Office manager runs the queue while we tune the system.'))
     s.append(price_row('Self-serve: system maintenance',
-                       'up to $350 / mo<br/><font size="8">$150/hour, whichever is less</font>',
-                       'Month 7+. Quarterly strategy review, voice updates, and integration patches.'))
-    s.append(price_row('+ Infrastructure (every tier)',
-                       '~$200 / mo',
-                       'AI provider, hosting, scheduler, email. Billed at cost or paid directly to providers, your choice.'))
+                       'up to $350 / mo<br/><font size="8">$150/hour, whichever is less</font><br/><font size="8" color="#8A8880">+ ~$200/mo infrastructure (at cost)</font>',
+                       'Month 7+. Quarterly strategy review, voice updates, and integration patches. Infrastructure costs (AI provider, hosting, scheduler, email) transfer to you at cost.'))
 
     s.append(P('Timeline: 90 days to launch', h2))
 
