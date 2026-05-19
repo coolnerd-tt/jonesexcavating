@@ -1244,17 +1244,21 @@ def build():
         'Pick the tier that matches how hands-on you want to be. You can step down a tier any time '
         'after month 3 with 30 days\u2019 notice.',
         body))
+    s.append(P(
+        '<i>The retainer phases below start at launch \u2014 weeks 10\u201312 of the build timeline. '
+        'Total engagement reads as: 3 months of build, then phased retainer thereafter.</i>',
+        body))
 
     s.append(price_row('Concierge: we run it',
                        'No fee<br/><font size="8">infrastructure included</font>',
-                       'Months 1\u20133 default. Included in the Marketing Operating System build above. We operate the system and you receive a monthly report.',
+                       '<b>First 3 months after launch.</b> Default tier. Included in the Marketing Operating System build above. We operate the system and you receive a monthly report.',
                        highlight=False))
     s.append(price_row('Co-pilot: you run it, we maintain',
                        '$850 / mo<br/><font size="8">infrastructure included</font>',
-                       'Recommended for months 4\u20136. Office manager runs the queue while we tune the system.'))
+                       '<b>Months 4\u20136 post-launch.</b> Recommended next step. Office manager runs the queue while we tune the system.'))
     s.append(price_row('Self-serve: system maintenance',
                        'up to $350 / mo<br/><font size="8">or $150/hour, whichever is less</font><br/><font size="8" color="#8A8880">+ ~$200/mo infrastructure</font>',
-                       'Month 7+. Quarterly strategy review, voice updates, and integration patches. Infrastructure (AI, hosting, scheduler, email) passes through at cost — billed through us at zero markup, or moved to your own accounts.'))
+                       '<b>Month 7+ post-launch.</b> Quarterly strategy review, voice updates, and integration patches. Infrastructure (AI, hosting, scheduler, email) passes through at cost — billed through us at zero markup, or moved to your own accounts.'))
 
     s.append(P('Timeline: 90 days to launch', h2))
 
@@ -1293,7 +1297,7 @@ def build():
         ['Soft launch \u2192 final QA \u2192 hard launch',
          'LinkedIn relaunch with refreshed pages and content',
          'Review ask program activated for both brands',
-         'Optional retainer phase begins for the Marketing Operating System']))
+         'Marketing Operating System goes live. Concierge phase begins (included in build).']))
 
     s.append(sp(14))
     s.append(callout(
@@ -1318,7 +1322,7 @@ def build():
     s.append(P('What we need from you', h3))
     s.append(bullet('Google Business Profile and social account access (or the green light to claim/create).'))
     s.append(bullet('Domain access for both jonesexcavating.com and callusfabrication.com.'))
-    s.append(bullet('Two upcoming jobsites we can shoot in weeks 2\u20133.'))
+    s.append(bullet('Two to three upcoming jobsites we can shoot in weeks 2\u20133.'))
     s.append(bullet('A list of 3\u20135 case-study-worthy projects from the last 5 years.'))
 
     s.append(P('Kickoff', h3))
