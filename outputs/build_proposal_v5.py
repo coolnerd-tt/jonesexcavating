@@ -869,7 +869,7 @@ def build():
     s.append(P('Field-to-Content Agent', h3))
     s.append(P(
         'A foreman or PM sends photos and a short note via text message ("Finished the Lehi sewer '
-        'tie-in, biggest pour of the year, 14 hours"). The agent generates a LinkedIn post, '
+        'tie-in, biggest job of the year, 14 hours"). The agent generates a LinkedIn post, '
         'Google Business Profile post, Instagram caption, blog snippet, and internal newsletter '
         'blurb, all in Jones or Callus voice. Office manager taps approve.',
         body))
